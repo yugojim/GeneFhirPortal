@@ -1,0 +1,414 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="icon" href="data:,">
+    <title>FinalReport</title>	
+	{% include 'utilities-css.html' %}	
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+	<!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+					<div class="card-header py-3">
+                        <center><h3 class="m-0 font-weight-bold text-primary">FinalReport</h3></center>
+                    </div>
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">Record <span class="badge badge-secondary">{{ FuncResult }}</span></h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+								<div class="form-group col-md-1">
+									StagingId
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.StagingId }}
+								</div>
+								<div class="form-group col-md-1">
+									clinicalId
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.clinicalId }}
+								</div>
+								<div class="form-group col-md-1">
+									ReportId
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.ReportId }}
+								</div>
+								<div class="form-group col-md-1">
+									SampleName
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.SampleName }}
+								</div>
+								<div class="form-group col-md-1">
+									Version
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Version }}
+								</div>
+								<div class="form-group col-md-1">
+									Signatures
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Signatures.Signature.OpName }}
+								</div>
+							</div>
+                        </div>
+                    </div>
+					
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">PMI</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+								<div class="form-group col-md-1">
+									FullName
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.FullName}}
+								</div>
+								<div class="form-group col-md-1">
+									SubmittedDiagnosis
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.SubmittedDiagnosis}}
+								</div>
+								<div class="form-group col-md-1">
+									Gender
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.Gender}}
+								</div>
+								<div class="form-group col-md-1">
+									OrderingMD
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMD}}
+								</div>
+								<div class="form-group col-md-1">
+									OrderingMDId
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMDId}}
+								</div>
+								<div class="form-group col-md-1">
+									MedFacilName
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilName}}
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-1">
+									MedFacilID
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID}}
+								</div>
+								<div class="form-group col-md-1">
+									SpecSite
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.SpecSite}}
+								</div>
+								<div class="form-group col-md-1">
+									CollDate
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.CollDate}}
+								</div>
+								<div class="form-group col-md-1">
+									ReceivedDate
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.ReceivedDate}}
+								</div>
+								<div class="form-group col-md-1">
+									CountryOfOrigin
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.CountryOfOrigin}}
+								</div>
+								<div class="form-group col-md-1">
+									ReportId
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.PMI.ReportId}}
+								</div>
+							</div>
+                        </div>
+                    </div>
+
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">Summaries</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+								<div class="form-group col-md-1">
+									alterationCount
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Summaries.alterationCount}}
+								</div>
+								<div class="form-group col-md-1">
+									clinicalTrialCount
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Summaries.clinicalTrialCount}}
+								</div>
+								<div class="form-group col-md-1">
+									resistiveCount
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Summaries.resistiveCount}}
+								</div>
+								<div class="form-group col-md-1">
+									sensitizingCount
+								</div>
+								<div class="form-group col-md-1">
+									{{ data.ResultsReport.ResultsPayload.FinalReport.Summaries.sensitizingCount}}
+								</div>
+							</div>
+                        </div>
+                    </div>
+					
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">VariantProperties</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th>GeneName</th>
+                                            <th>isVUS</th>
+											<th>variantName</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th>GeneName</th>
+                                            <th>isVUS</th>
+											<th>variantName</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for VariantProperty in data.ResultsReport.ResultsPayload.FinalReport.VariantProperties.VariantProperty %}
+										<tr>										
+											<td><a href="https://www.oncokb.org/gene/{{ VariantProperty.geneName }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ VariantProperty.geneName }}</a></td>
+											<td>{{ VariantProperty.isVUS }}</td>
+											<td>{{ VariantProperty.variantName }}</td>										
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Genes</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">GeneName</th>
+                                            <th class="col-sm-1">Include</th>
+											<th class="col-sm-1">Alteration</th>
+											<th class="col-sm-1">isEquivocal</th>
+											<th class="col-sm-9">Interpretation</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th>GeneName</th>
+                                            <th>Include</th>
+											<th>Alteration</th>
+											<th>isEquivocal</th>
+											<th>Interpretation</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for Gene in data.ResultsReport.ResultsPayload.FinalReport.Genes.Gene %}
+										<tr>										
+											<td>{{ Gene.Name }}</td>
+											<td>{{ Gene.Include }}</td>
+											<td>{{ Gene.Alterations.Alteration.Name }}</td>									<td>{{ Gene.Alterations.Alteration.AlterationProperties.AlterationProperty.isEquivocal }}</td>
+											<td>{{ Gene.Alterations.Alteration.Interpretation }}</td>										
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Trials</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">Gene</th>
+                                            <th class="col-sm-1">Alteration</th>
+											<th class="col-sm-1">Title</th>
+											<th class="col-sm-1">StudyPhase</th>
+											<th class="col-sm-1">Target</th>
+											<th class="col-sm-2">Locations</th>
+                                            <th class="col-sm-1">NCTID</th>
+											<th class="col-sm-3">Note</th>
+											<th class="col-sm-1">Include</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">Gene</th>
+                                            <th class="col-sm-1">Alteration</th>
+											<th class="col-sm-1">Title</th>
+											<th class="col-sm-1">StudyPhase</th>
+											<th class="col-sm-1">Target</th>
+											<th class="col-sm-2">Locations</th>
+                                            <th class="col-sm-1">NCTID</th>
+											<th class="col-sm-3">Note</th>
+											<th class="col-sm-1">Include</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for Trial in data.ResultsReport.ResultsPayload.FinalReport.Trials.Trial %}
+										<tr>										
+											<td>{{ Trial.Gene }}</td>
+											<td>{{ Trial.Alteration }}</td>
+											<td>{{ Trial.Title }}</td>
+											<td>{{ Trial.StudyPhase }}</td>
+											<td>{{ Trial.Target }}</td>
+											<td>{{ Trial.Locations }}</td>
+											<td>{{ Trial.NCTID }}</td>
+											<td>{{ Trial.Note }}</td>
+											<td>{{ Trial.Include }}</td>
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>				
+
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">References</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">number</th>
+                                            <th class="col-sm-1">ReferenceId</th>
+											<th class="col-sm-4">FullCitation</th>
+											<th class="col-sm-1">Include</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">number</th>
+                                            <th class="col-sm-1">ReferenceId</th>
+											<th class="col-sm-1">FullCitation</th>
+											<th class="col-sm-1">Include</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for Reference in data.ResultsReport.ResultsPayload.FinalReport.References.Reference %}
+										<tr>										
+											<td>{{ Reference.number }}</td>
+											<td><a href="https://pubmed.ncbi.nlm.nih.gov/{{ Reference.ReferenceId }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ Reference.ReferenceId }}</a></td></td>
+											<td>{{ Reference.FullCitation }}</td>
+											<td>{{ Reference.Include }}</td>
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">reportProperties</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">identifier</th>
+                                            <th class="col-sm-1">key</th>
+											<th class="col-sm-1">value</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">identifier</th>
+                                            <th class="col-sm-1">key</th>
+											<th class="col-sm-1">value</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for reportProperty in data.ResultsReport.ResultsPayload.FinalReport.reportProperties.reportProperty %}
+										<tr>										
+											<td>{{ reportProperty.identifier }}</td>
+											<td>{{ reportProperty.key }}</td>
+											<td>{{ reportProperty.value }}</td>
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>					
+
+				</div>
+			</div>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; 2022 WiAdvance Technology Co. All Rights Reserved.</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+			<!-- /.container-fluid -->
+		</div>
+		<!-- End of Main Content -->
+		
+	</div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+{% include 'utilities-js.html' %}    
+</body>
+
+</html>
