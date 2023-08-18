@@ -44,6 +44,7 @@ urlpatterns = [
     #path('linebot', views.linebot, name='linebot'),
     path('GeneReport/', views.GeneReport, name='GeneReport'),
     path('GeneFinalReportDetails/', views.GeneFinalReportDetails, name='GeneFinalReportDetails'),
+    path('GeneVariantReportDetails/', views.GeneVariantReportDetails, name='GeneVariantReportDetails'),
     
     path('working', views.working, name='working'),
     path('DischargeSummary', views.DischargeSummary, name='DischargeSummary'),

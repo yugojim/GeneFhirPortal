@@ -306,7 +306,7 @@ def GeneReport(request):
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
     cur = conn.cursor()
-    consentsql = 'SELECT id, resultsreport FROM public.reportxml;'
+    consentsql = 'SELECT * FROM public.reportxml;'
     cur.execute(consentsql)
     rows = cur.fetchall()
     SELECTint=len(rows)
@@ -336,7 +336,7 @@ def GeneFinalReportDetails(request):
         #print(rid)
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
-        consentsql = 'SELECT id, resultsreport FROM public.reportxml WHERE id = \'' + rid + '\';'
+        consentsql = 'SELECT * FROM public.reportxml WHERE id = \'' + rid + '\';'
         #print(consentsql)
         cur.execute(consentsql)
         rows = cur.fetchall()
@@ -345,7 +345,7 @@ def GeneFinalReportDetails(request):
         context = {
                 'right' : right,
                 'FuncResult' : rid,
-                'data' : rows[0][1]
+                'data' : rows[0]
                 }             
         return render(request, 'GeneFinalReportDetails.html', context)
     except:
@@ -354,6 +354,36 @@ def GeneFinalReportDetails(request):
                 'FuncResult' : '查無資料'
             } 
         return render(request, 'GeneFinalReportDetails.html', context)
+
+def GeneVariantReportDetails(request):
+    user = request.user
+    #print(user.username)
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    #print(right)
+       
+    try:
+        rid=request.GET['id']
+        #print(rid)
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml WHERE id = \'' + rid + '\';'
+        #print(consentsql)
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        conn.close()
+        #print(rows)
+        context = {
+                'right' : right,
+                'FuncResult' : rid,
+                'data' : rows[0]
+                }             
+        return render(request, 'GeneVariantReportDetails.html', context)
+    except:
+        context = {
+                'right' : right,                
+                'FuncResult' : '查無資料'
+            } 
+        return render(request, 'GeneVariantReportDetails.html', context)
     
 def ambulance(request):
     user = request.user

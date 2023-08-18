@@ -34,6 +34,18 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
+								<label><h5>ReportNo</h5></label>
+							</div>
+							<div class="form-group col-md-1">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>MPNo</h5></label>
+							</div>
+							<div class="form-group col-md-1">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+							</div>						
+							<div class="form-group col-md-1">
 								<label><h5>ReferenceID</h5></label>
 							</div>
 							<div class="form-group col-md-1">
@@ -68,6 +80,8 @@
                                     <thead>
                                         <tr>
 											<th>id</th>
+											<th>ReportNo</th>
+											<th>MPNo</th>
                                             <th>ReferenceID</th>
                                             <th>CSN</th>
                                             <th>TRF</th>
@@ -81,6 +95,8 @@
                                     <tfoot>
                                         <tr>
 											<th>id</th>
+											<th>ReportNo</th>
+											<th>MPNo</th>
                                             <th>ReferenceID</th>
                                             <th>CSN</th>
                                             <th>TRF</th>
@@ -95,6 +111,8 @@
 										{% for row in rows %}
 										<tr>											
 											<td>{{row.0}}</td>
+											<td>{{row.2}}</td>
+											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.ReferenceID}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.CSN}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.TRF}}</td>
