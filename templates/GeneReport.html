@@ -83,13 +83,13 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
                                             <th>ReferenceID</th>
-                                            <th>CSN</th>
                                             <th>TRF</th>
 											<th>MRN</th>
 											<th>PhysicianId</th>
 											<th>NPI</th>
 											<th>FinalReport</th>
-											<th>VariantReport</th>
+											<th>Report PDF</th>		
+											<th>VariantReport</th>																				
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -98,12 +98,12 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
                                             <th>ReferenceID</th>
-                                            <th>CSN</th>
                                             <th>TRF</th>
 											<th>MRN</th>
 											<th>PhysicianId</th>
 											<th>NPI</th>
 											<th>FinalReport</th>
+											<th>Report PDF</th>
 											<th>VariantReport</th>
                                         </tr>
                                     </tfoot>
@@ -114,13 +114,14 @@
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.ReferenceID}}</td>
-											<td>{{row.1.ResultsReport.CustomerInformation.CSN}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.TRF}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.MRN}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.PhysicianId}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.NPI}}</td>
 											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">FinalReport</a></td>
-											<td><a href="/GeneVariantReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">VariantReport</a></td>
+											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
+											<td><a href="/GeneVariantReportDetails?id={{ row.0}}" target="_blank" class="">VariantReport</a></td>
+											
 											
 											<!--
 											<td>{{row.1.ResultsReport.ResultsPayload}}</td>

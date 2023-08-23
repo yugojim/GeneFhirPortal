@@ -304,14 +304,14 @@ def index(request):
 def GeneReport(request):
     user = request.user
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
-    cur = conn.cursor()
-    consentsql = 'SELECT * FROM public.reportxml;'
-    cur.execute(consentsql)
-    rows = cur.fetchall()
-    SELECTint=len(rows)
-    conn.close()
     try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml;'
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        SELECTint=len(rows)
+        conn.close()
         context = {
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -329,8 +329,7 @@ def GeneFinalReportDetails(request):
     user = request.user
     #print(user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    #print(right)
-       
+    #print(right)  
     try:
         rid=request.GET['id']
         #print(rid)
@@ -359,8 +358,7 @@ def GeneVariantReportDetails(request):
     user = request.user
     #print(user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    #print(right)
-       
+    #print(right)       
     try:
         rid=request.GET['id']
         #print(rid)
