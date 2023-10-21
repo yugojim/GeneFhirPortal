@@ -24,9 +24,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
-						<a href="https://emr.mohw.gov.tw/myemr/fhir.html" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-								class="fas fa-download fa-sm text-white-50"></i>衛福部電子病歷推動專區</a>
+						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>						
 					</div>
 					
 					<form method="post" action="{% url 'GeneReport' %}">
@@ -87,9 +85,8 @@
 											<th>MRN</th>
 											<th>PhysicianId</th>
 											<th>NPI</th>
-											<th>FinalReport</th>
-											<th>Report PDF</th>		
-											<th>VariantReport</th>																				
+											<th>Report</th>
+											<th>Report PDF</th>																	
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -102,9 +99,8 @@
 											<th>MRN</th>
 											<th>PhysicianId</th>
 											<th>NPI</th>
-											<th>FinalReport</th>
+											<th>Report</th>
 											<th>Report PDF</th>
-											<th>VariantReport</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -118,34 +114,8 @@
 											<td>{{row.1.ResultsReport.CustomerInformation.MRN}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.PhysicianId}}</td>
 											<td>{{row.1.ResultsReport.CustomerInformation.NPI}}</td>
-											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">FinalReport</a></td>
+											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
 											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
-											<td><a href="/GeneVariantReportDetails?id={{ row.0}}" target="_blank" class="">VariantReport</a></td>
-											
-											
-											<!--
-											<td>{{row.1.ResultsReport.ResultsPayload}}</td>
-											<td><a href="/DischargeSummaryDetails?fhir={{fhiripSelect}}&id={{ entry.resource.id }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ row.0 }}</a></td>
-											<td>{{ entry.resource.subject.display }}</td>
-											<td>{{ entry.resource.encounter.display }}</td>
-											<td>{{ entry.resource.date }}</td>											
-											<td>
-												{% for author in entry.resource.author %}
-													{{ author.display }}
-												{% endfor %}	
-											</td>
-											<td>
-												{% for section in entry.resource.section %}
-													{{ section.title }}<br>
-														
-													{{ section.code.coding.0.display }}<br>	
-													{{ section.text.div }}<br>
-													{% for entry in section.entry %}
-														{{ entry.display }}<br>
-													{% endfor %}	
-													<br>												
-												{% endfor %}												
-											</td>-->	
 										</tr>
 										{% endfor %}										 
                                     </tbody>
@@ -163,15 +133,9 @@
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
-			<!-- /.container-fluid -->
 		</div>
-		<!-- End of Main Content -->
-		
 	</div>
-        <!-- End of Content Wrapper -->
     </div>
-    <!-- End of Page Wrapper -->
 {% include 'utilities-js.html' %}    
 </body>
 

@@ -266,40 +266,27 @@ def linebot(request):
 @csrf_exempt 
 def index(request):
     user = request.user
-    #print(user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    #print(right)
-    #print(type(right))
-    #right_list = list(right)
-    #print(right_list)
-    #print(type(right_list))
     try:
-        #Result,data,datejson,data1,datejson1,lastdata,lastjson,data2,datejson2 = Function.iot5g(request)
-        '''
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml;'
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        SELECTint=len(rows)
+        conn.close()
         context = {
                 'right' : right,
-                'FuncResult' : Result,
-                'data' : data,
-                'data1' : data1,
-                'datejson' :datejson,
-                'datejson1' :datejson1,
-                'lastdata' :lastdata,
-                'lastjson' :lastjson,
-                'data2' :data2,
-                'datejson2' :datejson2,
+                'FuncResult' : SELECTint,
+                'rows' : rows
                 }
-        '''
-        context = {
-                'right' : right,
-                'FuncResult' : 'Function'
-                }
-        return render(request, 'index.html', context)
+        return render(request, 'GeneReport.html', context)
     except:
         context = {
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
-        return render(request, 'index.html', context)
+        return render(request, 'GeneReport.html', context)
     
 def GeneReport(request):
     user = request.user
