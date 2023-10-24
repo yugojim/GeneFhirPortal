@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<link rel="icon" href="data:,">
-    <title>Patient</title>	
+    <title>Data batch</title>	
 	{% include 'utilities-css.html' %}	
 </head>
 
@@ -25,9 +25,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3>資料批次上傳 <span class="badge badge-secondary">Patient batch {{ FuncResult }}</span></h3>
-						<a href="/static/doc/病人基本資料.xlsx" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-						class="fas fa-download fa-sm text-white-50"></i> Sample Download</a> <a href="https://www.hl7.org/fhir/patient.html" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Patient Release 4B</a>
+						<h3>資料批次上傳 <span class="badge badge-secondary">Data batch {{ FuncResult }}</span></h3>						
 					</div>					
 					<form method="post" action="{% url 'PatientUpload' %}" enctype="multipart/form-data">
 					{% csrf_token %}
@@ -60,7 +58,7 @@
 					{{data.diagnostics}}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Patient batch</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data batch</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

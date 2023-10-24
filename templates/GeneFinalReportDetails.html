@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<link rel="icon" href="data:,">
-    <title>FinalReport</title>	
+    <title>Gene Report</title>	
 	{% include 'utilities-css.html' %}	
 </head>
 
@@ -244,178 +244,60 @@
                         </div>
                     </div>
 
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">samples</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">bait_set</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.samples.sample.bait_set }}
-								</div>
-								<div class="form-group col-md-2">
-								<div class="font-weight-bold text-success">mean_exon_depth</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.samples.sample.mean_exon_depth }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">name</div>
-									
-								</div>
-								<div class="form-group col-md-2">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.samples.sample.name }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">nucleic_acid_type</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.samples.sample.nucleic_acid_type }}
-								</div>
-								<div class="form-group col-md-2">
-								<div class="font-weight-bold text-success">non_human_content</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.non_human_content }}
-								</div>
-							</div>
-							
-                        </div>
-                    </div>
 
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">biomarkers</h4>
+							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme6">rearrangements</button>
                         </div>
                         <div class="card-body">
-                            <div class="form-row">
-								<div class="form-group col-md-2">
-								<div class="font-weight-bold text-success">microsatellite_instability</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.biomarkers.microsatellite_instability.status }}
-								</div>
-								<div class="form-group col-md-2">
-								<div class="font-weight-bold text-success">tumor_mutation_burden_score</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.biomarkers.tumor_mutation_burden.score }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">status</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.biomarkers.tumor_mutation_burden.status }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">unit</div>
-									
-								</div>
-								<div class="form-group col-md-2">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.biomarkers.tumor_mutation_burden.unit }}
-								</div>
-							</div>
-							
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped collapse" id="collapseme6" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">description</th>
+											<th class="col-sm-1">type</th>
+											<th class="col-sm-1">targeted_gene</th>
+    										<th class="col-sm-1">other_gene</th>
+											<th class="col-sm-1">pos1</th>
+											<th class="col-sm-1">pos2</th>
+											<th class="col-sm-1">in_frame</th>
+											<th class="col-sm-1">supporting_read_pairs</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">description</th>
+											<th class="col-sm-1">type</th>
+											<th class="col-sm-1">targeted_gene</th>
+											<th class="col-sm-1">other_gene</th>
+											<th class="col-sm-1">pos1</th>
+											<th class="col-sm-1">pos2</th>
+											<th class="col-sm-1">in_frame</th>
+											<th class="col-sm-1">supporting_read_pairs</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										<tr>										
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}</td>
+											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}</td>											
+										</tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">rearrangements</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">description</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">equivocal</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">in_frame</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">other_gene</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">pos1</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">pos2</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">status</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">supporting_read_pairs</div>
-									
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">targeted_gene</div>	
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">type</div>	
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}
-								</div>
-								<div class="form-group col-md-1">
-								<div class="font-weight-bold text-success">dna_evidence</div>				
-								</div>
-								<div class="form-group col-md-1">
-									{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.dna_evidence.sample }}
-								</div>
-							</div>
-							
-                        </div>
-                    </div>
-					
-
-						
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme1">Genomic Findings</button>
@@ -446,7 +328,7 @@
                                     <tbody>
 										{% for Gene in data.1.ResultsReport.ResultsPayload.FinalReport.Genes.Gene %}
 										<tr>										
-											<td><div class="collapse out" id="collapseme1">{{ Gene.Name }}</div></td>
+											<td><div class="collapse out" id="collapseme1"><a href="https://www.oncokb.org/gene/{{ Gene.Name }}" target="_blank" >{{ Gene.Name }}</a></div></td>
 											<td><div class="collapse out" id="collapseme1">{{ Gene.Alterations.Alteration.Name }}</div></td>
 											<td>
 												<div class="collapse out" id="collapseme1">
@@ -571,22 +453,19 @@
                                 <table class="table table-bordered table-striped collapse" id="collapseme3" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-											<th class="col-sm-1">identifier</th>
-                                            <th class="col-sm-1">key</th>
+                                            <th class="col-sm-1">item</th>
 											<th class="col-sm-1">value</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th class="col-sm-1">identifier</th>
-                                            <th class="col-sm-1">key</th>
+                                            <th class="col-sm-1">item</th>
 											<th class="col-sm-1">value</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 										{% for reportProperty in data.1.ResultsReport.ResultsPayload.FinalReport.reportProperties.reportProperty %}
 										<tr>										
-											<td><div class="collapse out" id="collapseme3">{{ reportProperty.identifier }}</div></td>
 											<td><div class="collapse out" id="collapseme3">{{ reportProperty.key }}</div></td>
 											<td><div class="collapse out" id="collapseme3">{{ reportProperty.value }}</div></td>
 										</tr>
@@ -712,46 +591,7 @@
                         </div>
                     </div>
 
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme6">References</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-											<th class="col-sm-1">number</th>
-                                            <th class="col-sm-1">ReferenceId</th>
-											<th class="col-sm-4">FullCitation</th>
-											<th class="col-sm-1">Include</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-											<th>number</th>
-                                            <th>ReferenceId</th>
-											<th>FullCitation</th>
-											<th>Include</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-										{% for Reference in data.1.ResultsReport.ResultsPayload.FinalReport.References.Reference %}
-										<tr>										
-											<td><div class="collapse out" id="collapseme6">{{ Reference.number }}</td>
-											<td><div class="collapse out" id="collapseme6"><a href="https://pubmed.ncbi.nlm.nih.gov/{{ Reference.ReferenceId }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ Reference.ReferenceId }}</a></div></td>
-											<td><div class="collapse out" id="collapseme6">{{ Reference.FullCitation }}</div></td>
-											<td><div class="collapse out" id="collapseme6">{{ Reference.Include }}</div></td>
-										</tr>
-										{% endfor %}	
-                                    </tbody>
-                                </table>
-                            </div>
-                    </div>					
-
-				</div>
-			</div>
-            <!-- Footer -->
+<!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">

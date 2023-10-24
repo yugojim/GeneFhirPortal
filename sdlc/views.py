@@ -29,274 +29,51 @@ risk = DocumentPath + 'risk.csv'
 riskdf = pd.read_csv(risk, encoding='utf8')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#apiurl='https://api.chimei.org.tw/webhooks/20010011'
-
-#LINE_CHANNEL_SECRET ='7829750de3e8f4acde69750e8fef58bc' 
-#LINE_CHANNEL_ACCESS_TOKEN ='jqllMrk8LltFwRLsG+01efujKZBcQ8wFcy7CsgY6/D70UFnj3FSF+gUIbysFfXsKYMn9oTDqPkUaTAIXeDNYanQXfub8JztcPLXr6OWTowk8C1q+8nLf8NLOMPNWVgOIAPU3O4qWvcuxMtGNlPQk6gdB04t89/1O/w1cDnyilFU='
-#NGROK='https://stemi.chimei.org.tw'
 fhir = 'http://192.168.211.9:8080/fhir/'#4600VM
 postgresip = "192.168.211.19"
 genepostgresip = "104.208.68.39"
-#postgresip = "203.145.222.60"
-
-#line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
-#parser = WebhookParser(LINE_CHANNEL_SECRET)
 
 jsonPath=str(pathlib.Path().absolute()) + "/static/template/Observation-Imaging-EKG.json"
 ObservationImagingEKGJson = json.load(open(jsonPath,encoding="utf-8"))
-'''
-@csrf_exempt
-def linebot(request):
-    if request.method == 'PUT':
-        body = request.body.decode('utf-8')
-        #print(type(request.body))
-        try:
-            url = fhir + "Observation"
-            headers = {'Content-Type': 'application/json'}
-            bodyjson=json.loads(body)
-            #print(bodyjson['identifier'][0]['assigner']['display'])
-            #print(bodyjson['identifier'][0]['value'])
-            #print(bodyjson['note'][0]['text'])
-            #print(bodyjson['note'][0]['authorString'])
-            try:
-                #line_bot_api.reply_message(bodyjson['identifier'][0]['value'], ImageSendMessage(bodyjson['note'][1]['text'],bodyjson['note'][1]['text']))
-                line_bot_api.reply_message(bodyjson['identifier'][0]['value'], TextSendMessage(text=bodyjson['effectiveDateTime'] + '\n' + bodyjson['note'][0]['text'] + ' : ' + bodyjson['note'][0]['authorString']))
-            except LineBotApiError as e:
-                None
-                #print(e)
-            #line_bot_api.push_message(bodyjson['identifier'][0]['assigner']['display'], TextSendMessage(text=bodyjson['note'][0]['text']))
-            line_bot_api.push_message(bodyjson['identifier'][0]['assigner']['display'], TextSendMessage(text=bodyjson['effectiveDateTime'] + '\n' + bodyjson['note'][0]['text'] + ' : ' + bodyjson['note'][0]['authorString']))
-            url = fhir + "Observation/" + bodyjson['id']
-            #print(url)            
-            getresponse = requests.request('GET', url, headers=headers, data='', verify=False)
-            getjson=json.loads(getresponse.text)
-            getjson['note'][0]['text'] = bodyjson['note'][0]['text'] 
-            getjson['note'][0]['authorString'] = bodyjson['note'][0]['authorString']
-            #print(type(body))
-            payload = json.dumps(getjson)
-            #print(type(payload))
-            response = requests.request('PUT', url, headers=headers, data=payload, verify=False)
-            #print(response.status_code)
-            return HttpResponse('PUT OK')
-        except :
-            return HttpResponse('PUT NG')
-    if request.method == 'POST':
-        signature = request.META['HTTP_X_LINE_SIGNATURE']
-        body = request.body.decode('utf-8')
-        try:
-            events = parser.parse(body, signature)
-        except InvalidSignatureError:
-            return HttpResponseForbidden()
-        except LineBotApiError:
-            return HttpResponseBadRequest()
-        
-        for event in events:
-            try:
-                user_id = event.source.user_id
-            except :
-                user_id = ''
-            try:
-                group_id = event.source.group_id
-            except :
-                group_id = ''
-            current_time = str(datetime.now().strftime("%Y %m %dT%H:%M:%S")).replace(' ','-')
-            
-            if (event.type == 'message'):
-                if (event.message.type == 'text'):
-                    try:
-                        profile = line_bot_api.get_profile(user_id)
-                        #print(profile.display_name)
-                        #print(profile.user_id)
-                        #print(profile.picture_url)
-                        #Sprint(profile.status_message)
-                    except :
-                        None
-                    #repleM=TextSendMessage(profile.user_id + ' ' + event.message.text + ' ' + current_time)
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.reply_message(event.reply_token, repleM)
-                        
-                elif (event.message.type == 'image'):#image,video,audio,file,location 
-                    #print(event.message.id)
-                    message_content = line_bot_api.get_message_content(event.message.id)
-                    with open(BASE_DIR+'/static/linebot/'+event.message.id+'.png', 'wb') as fd:
-                        for chunk in message_content.iter_content():
-                            fd.write(chunk)
-                        fd.close()
-                    with open(BASE_DIR+'/static/linebot/'+event.message.id+'.png', 'rb') as image_file:
-                        encoded_string = base64.b64encode(image_file.read())
-                        image_file.close()
-                    #print(1)
-                    ObservationImagingEKGJson['identifier'][0]['value']= event.reply_token
-                    ObservationImagingEKGJson['identifier'][0]['assigner']['display']= user_id
-                    ObservationImagingEKGJson['component'][0]['valueString'] = encoded_string.decode("utf-8")
-                    ObservationImagingEKGJson['category'][0]['coding'][0]['display']=NGROK + '/static/linebot/'+event.message.id+'.png'
-                    ObservationImagingEKGJson['effectiveDateTime'] = current_time
-                    payload = json.dumps(ObservationImagingEKGJson)
-                    url = fhir + "Observation"
-                    headers = {'Content-Type': 'application/json'}
-                    response = requests.request('POST', url, headers=headers, data=payload, verify=False)
-                    resultjson=json.loads(response.text)
-                    #print(response.text)
-                    apiresponse = requests.request('POST', apiurl, headers=headers, data=response.text, verify=False)
-                    #print(apiresponse.text)
-                   # with open(BASE_DIR+'/static/linebot/'+event.message.id+'.png'+ '.ImageBase64' ,'w+') as f:
-                        #f.write(encoded_string.decode("utf-8"))
-                    #imageurl = NGROK + '/static/linebot/'+event.message.id+'.png'
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.reply_message(event.reply_token,ImageSendMessage(imageurl,imageurl))
-                        #line_bot_api.reply_message(event.reply_token, TextSendMessage(url + '/' + str(resultjson['id'])))
-                        #line_bot_api.reply_message(event.reply_token, TextSendMessage('ICD-10 : '+ObservationImagingEKGJson['code']['coding'][0]['code']\
-                                                                            #+'\n'+'display : '+ObservationImagingEKGJson['code']['coding'][0]['display']))
-                                        #time.sleep(5)
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.push_message(user_id, TextSendMessage(url + '/' + str(resultjson['id'])))
-                        #line_bot_api.push_message(user_id, TextSendMessage('ICD-10 : '+ObservationImagingEKGJson['code']['coding'][0]['code']\
-                                                                            #+'\n'+'display : '+ObservationImagingEKGJson['code']['coding'][0]['display']))
-                    
-                elif (event.message.type == 'video'):#image,video,audio,file,location
-                    #print(event.message)
-                    message_content = line_bot_api.get_message_content(event.message.id)
-                    with open(BASE_DIR+'/static/linebot/sample.mp4', 'wb') as fd:
-                        for chunk in message_content.iter_content():
-                            fd.write(chunk)
-                    videoOriginalContentUrlUrl = NGROK + '/static/linebot/sample.mp4'
-                    videoReviewImageUrl = NGROK + '/static/linebot/sample.png'
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.reply_message(event.reply_token,\
-                                                   #VideoSendMessage(videoOriginalContentUrlUrl,\
-                                                                    #videoReviewImageUrl))
-                    
-                elif (event.message.type == 'audio'):#image,video,audio,file,location 
-                    #print(event.message)
-                    audioDuration=event.message.duration
-                    message_content = line_bot_api.get_message_content(event.message.id)
-                    with open(BASE_DIR+'/static/linebot/sample.mp4a', 'wb') as fd:
-                        for chunk in message_content.iter_content():
-                            fd.write(chunk)
-                    audioOriginal_content_url = NGROK + '/static/linebot/sample.m4a'
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.reply_message(event.reply_token,\
-                                                   #AudioSendMessage(audioOriginal_content_url,\
-                                                                  #audioDuration))
-                    
-                elif (event.message.type == 'file'):#image,video,audio,file,location
-                    #print(event.message.file_size)
-                    #print(event.message.type)
-                    #print(event.message.file_name)
-                    #print(event.message.id)
-                    message_content = line_bot_api.get_message_content(event.message.id)
-                    #print('get_message_content')
-                    pdffile=BASE_DIR+'/static/linebot/'  + event.message.id #pdf檔路徑及檔名
-                    #print(pdffile)
-                    with open(pdffile + '.pdf', 'wb') as fd:
-                        for chunk in message_content.iter_content():
-                            fd.write(chunk) 
-                        fd.close()
-                    file = open(pdffile + '.pdf', 'rb')
-                    reader = PyPDF2.PdfReader(file)   
-                    page = reader.pages[0]                    
-                    for image_file_object in page.images:
-                        with open(pdffile + '.jpg', "wb") as fp:
-                            ImageByte=image_file_object.data
-                            fp.write(ImageByte)
-                            fp.close()
-                        #print('close')
-                        encoded_string = base64.b64encode(image_file_object.data)
-                        #print('encoded_string')
-                        ObservationImagingEKGJson['identifier'][0]['value']= event.reply_token
-                        ObservationImagingEKGJson['identifier'][0]['assigner']['display']= user_id
-                        ObservationImagingEKGJson['component'][0]['valueString'] = encoded_string.decode("utf-8")
-                        ObservationImagingEKGJson['category'][0]['coding'][0]['display']=NGROK + '/static/linebot/'+event.message.id+'.png'
-                        ObservationImagingEKGJson['effectiveDateTime'] = current_time
-                        #print('ObservationImagingEKGJson')
-                        payload = json.dumps(ObservationImagingEKGJson)
-                        url = fhir + "Observation"
-                        headers = {'Content-Type': 'application/json'}
-                        #print(url)
-                        response = requests.request('POST', url, headers=headers, data=payload, verify=False)
-                        #print(response.status_code)
-                        #print(apiurl)
-                        apiresponse = requests.request('POST', apiurl, headers=headers, data=response.text, verify=False)
-                        #print(apiresponse.status_code)
-                        resultjson=json.loads(response.text)
-                        #with open( pdffile + '.jpgBase64' ,'w+') as f:
-                            #f.write(encoded_string.decode("utf-8"))
-                        #fp.close()
-                    if isinstance(event, MessageEvent):
-                        if (ImageByte==''):
-                            line_bot_api.reply_message(event.reply_token,TextSendMessage('unknow file'))
-                        else:
-                            imageOoriginalContentUrl = NGROK + '/static/linebot/' + event.message.id + '.jpg'
-                            imagePreviewImageUrl = NGROK + '/static/linebot/' + event.message.id + '.jpg'
-                            #line_bot_api.reply_message(event.reply_token,ImageSendMessage(imageOoriginalContentUrl,imagePreviewImageUrl))
-                            #time.sleep(5)
-                            if isinstance(event, MessageEvent):
-                                line_bot_api.push_message(user_id, ImageSendMessage(imageOoriginalContentUrl,imagePreviewImageUrl))
-                                #line_bot_api.push_message(user_id, TextSendMessage(url + '/' + str(resultjson['id'])))
-                                #line_bot_api.push_message(user_id, TextSendMessage('ICD-10 : '+ObservationImagingEKGJson['code']['coding'][0]['code']\
-                                                                                     #+'\n'+'display : '+ObservationImagingEKGJson['code']['coding'][0]['display']))
-                                    
-                elif (event.message.type == 'location'):#image,video,audio,file,location
-                    #print(event.message)
-                    title='my location'
-                    address=event.message.address
-                    latitude=event.message.latitude
-                    longitude=event.message.longitude
-                    #if isinstance(event, MessageEvent):
-                        #line_bot_api.reply_message(event.reply_token,\
-                                                   #LocationSendMessage(title,address,latitude,longitude))                
-                    
-                elif (event.message.type == 'sticker'):#image,video,audio,file,location
-                    #print(event.message)                
-                    import random
-                    package_id = 1
-                    sticker_id = random.randint(1,17)
-                    #line_bot_api.reply_message(
-                        #event.reply_token,
-                        #StickerSendMessage(package_id=package_id, sticker_id=sticker_id))
-                else:
-                    if isinstance(event, MessageEvent):
-                        line_bot_api.reply_message(event.reply_token, TextSendMessage('unknow type'))     
-
-        return HttpResponse()
-    else:
-        #return HttpResponse()
-        return HttpResponseBadRequest()
-'''    
+ 
 @csrf_exempt 
 def index(request):
     user = request.user
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
-        cur = conn.cursor()
-        consentsql = 'SELECT * FROM public.reportxml;'
-        cur.execute(consentsql)
-        rows = cur.fetchall()
-        SELECTint=len(rows)
-        conn.close()
         context = {
                 'right' : right,
-                'FuncResult' : SELECTint,
-                'rows' : rows
+                'FuncResult' : 'Function'
                 }
-        return render(request, 'GeneReport.html', context)
+        return render(request, 'index.html', context)
     except:
         context = {
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
-        return render(request, 'GeneReport.html', context)
+        return render(request, 'index.html', context)
     
 def GeneReport(request):
     user = request.user
     right=models.Permission.objects.filter(user__username__startswith=user.username)
+    
+    
+    #MPNo=request.POST['MPNo']
+    #GeneName=request.POST['GeneName']
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
-        consentsql = 'SELECT * FROM public.reportxml;'
+        consentsql = 'SELECT * FROM public.reportxml '
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        print(consentsql)
         cur.execute(consentsql)
         rows = cur.fetchall()
+        print(type(rows))
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -622,19 +399,19 @@ def PatientUpload(request):
         return render(request, 'PatientUpload.html' , context)
 
 def DataUpload(request):
-    if request.method == "POST":
-        method=request.POST['method']
-        fileTitle = request.POST["fileTitle"]
-        uploadedFile = request.FILES["uploadedFile"]
-        df = pd.read_excel(uploadedFile)
-        document = models.Document(
-            title = fileTitle,
-            uploadedFile = uploadedFile
-        )
-        document.save()
-    status_codelist=[]
-    diagnosticslist=[]
     try:
+        if request.method == "POST":
+            method=request.POST['method']
+            fileTitle = request.POST["fileTitle"]
+            uploadedFile = request.FILES["uploadedFile"]
+            df = pd.read_excel(uploadedFile)
+            document = models.Document(
+                title = fileTitle,
+                uploadedFile = uploadedFile
+            )
+            document.save()
+        status_codelist=[]
+        diagnosticslist=[]
         for i in range(len(df)):
             try:
                 Result,data,status_code,diagnostics = Function.PatientUpload(df.iloc[i],method)
@@ -660,6 +437,9 @@ def DataUpload(request):
                 }
         return render(request, 'DataUpload.html', context)
     except:
+        context = {
+                'FuncResult' : 'FuncResult'
+                }
         return render(request, 'DataUpload.html', context )
 
 def AllergyIntolerance(request):

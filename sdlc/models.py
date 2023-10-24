@@ -6,6 +6,15 @@ Created on Mon Jun 13 11:33:36 2022
 """
 from django.db import models
 from django.contrib.auth.models import User
+
+class Document(models.Model):
+    title = models.CharField(max_length=200)
+    uploadedFile = models.FileField(upload_to="Uploaded Files/")
+    dateTimeOfUpload = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        #return self.user 
+        return f'{self.id} {self.title} {self.uploadedFile} \
+             {self.dateTimeOfUpload}'
     
 class Permission(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

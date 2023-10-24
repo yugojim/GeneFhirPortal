@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<link rel="icon" href="data:,">
-    <title>Gene Report</title>	
+    <title>Patient</title>	
 	{% include 'utilities-css.html' %}	
 </head>
 
@@ -24,76 +25,70 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>						
-					</div>
-					
-					<form method="post" action="{% url 'GeneReport' %}">
+						<h3>資料批次上傳 <span class="badge badge-secondary">Patient batch {{ FuncResult }}</span></h3>
+						<a href="/static/doc/病人基本資料.xlsx" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+						class="fas fa-download fa-sm text-white-50"></i> Sample Download</a> <a href="https://www.hl7.org/fhir/patient.html" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Patient Release 4B</a>
+					</div>					
+					<form method="post" action="{% url 'PatientUpload' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="form-group">
 						<div class="form-row">
+							<div class="form-group col-md-2">
+							  <select name="method" class="form-control">
+								<option value="POST" >新增 POST</option>
+								<option value="PUT" >修改 PUT</option>
+							  </select>
+							</div>
 							<div class="form-group col-md-1">
-								<label><h5>ReportNo</h5></label>
+								<label>檔案說明</label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+								<input type="text" class="form-control" name="fileTitle" placeholder="Enter a title">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>MPNo</h5></label>
+								<label>檔案選擇</label>
 							</div>
-							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MPNo" name="MPNo">
+							<div class="form-group col-md-3">								
+								<input class="form-control" type="file" id="uploadedFile" name="uploadedFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
 							</div>							
-							<div class="form-group col-md-1">
-								<label><h5>GeneName</h5></label>
-							</div>
-							<div class="form-group col-md-1">
-								<input type="text" class="form-control" id="GeneName" name="GeneName">
-							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
-						</div>					  
+						</div>							
 					</div>
 					</form>
 					{{data.diagnostics}}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">GeneReport</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Patient batch</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-											<th>id</th>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
-											<th>Report</th>
-											<th>Report PDF</th>																	
+										{% for column in data.columns %}
+										<th>{{column}}</th>
+										{% endfor %}
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th>id</th>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
-											<th>Report</th>
-											<th>Report PDF</th>
+										{% for column in data.columns %}
+										<th>{{column}}</th>
+										{% endfor %}
                                         </tr>
                                     </tfoot>
                                     <tbody>
-										{% for row in rows %}
-										<tr>											
-											<td>{{row.0}}</td>
-											<td>{{row.2}}</td>
-											<td>{{row.3}}</td>
-											<td>{{row.1.ResultsReport.CustomerInformation.MRN}}</td>
-											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
-											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
-										</tr>
-										{% endfor %}										 
+										{% for index, row in data.iterrows %}
+										  <tr>
+											{% for cell in row %}
+											  <td>
+												{{cell}}
+											  </td>
+											{% endfor %}
+										  </tr>
+										{% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -109,10 +104,16 @@
                     </div>
                 </div>
             </footer>
+            <!-- End of Footer -->
+			<!-- /.container-fluid -->
 		</div>
+		<!-- End of Main Content -->
+		
 	</div>
+        <!-- End of Content Wrapper -->
     </div>
-{% include 'utilities-js.html' %}    
+    <!-- End of Page Wrapper -->
+{% include 'utilities-js.html' %}
 </body>
 
 </html>
