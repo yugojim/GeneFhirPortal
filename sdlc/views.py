@@ -68,12 +68,14 @@ def GeneReport(request):
             consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
         elif request.POST['MPNo'] != '':
             consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['GeneName'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'VariantProperties' ->> 'VariantProperty' LIKE '%" + request.POST['GeneName']+ "%';"
         else:
             consentsql = consentsql + ' LIMIT 200;'
-        print(consentsql)
+        #print(consentsql)
         cur.execute(consentsql)
         rows = cur.fetchall()
-        print(type(rows))
+        #print(type(rows[2]))
         SELECTint=len(rows)
         conn.close()
         context = {
