@@ -56,10 +56,6 @@ def index(request):
 def GeneReport(request):
     user = request.user
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    
-    
-    #MPNo=request.POST['MPNo']
-    #GeneName=request.POST['GeneName']
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
