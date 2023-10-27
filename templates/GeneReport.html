@@ -24,7 +24,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>						
+						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
+						<a href="/static/doc/datalist.csv" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+								class="fas fa-download fa-sm text-white-50"></i>download report</a>
 					</div>
 					
 					<form method="post" action="{% url 'GeneReport' %}">
@@ -48,6 +50,26 @@
 							</div>
 							<div class="form-group col-md-1">
 								<input type="text" class="form-control" id="GeneName" name="GeneName">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<label><h5>PatientName</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="PatientName" name="PatientName">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>OrderingMD</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="OrderingMD" name="OrderingMD">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>Diagnosis</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="Diagnosis" name="Diagnosis">
 							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>

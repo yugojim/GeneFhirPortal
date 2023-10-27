@@ -17,7 +17,7 @@ import PyPDF2
 import base64
 import requests
 import psycopg2
-
+import csv
 from . import Function
 from . import models
 
@@ -60,18 +60,35 @@ def GeneReport(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml '
+        #consentsql = 'SELECT * FROM public.reportxml WHERE "ReportNo" = \'M111-10001\''
+
         if request.POST['ReportNo'] != '':
             consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
         elif request.POST['MPNo'] != '':
             consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
         elif request.POST['GeneName'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'VariantProperties' ->> 'VariantProperty' LIKE '%" + request.POST['GeneName']+ "%';"
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'VariantProperties' ->> 'VariantProperty' LIKE '%" + request.POST['GeneName'] + "%';"
+        elif request.POST['PatientName'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'FullName' LIKE '%" + request.POST['PatientName'] + "%';"
+        elif request.POST['OrderingMD'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%';"
+        elif request.POST['Diagnosis'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%';"
         else:
             consentsql = consentsql + ' LIMIT 200;'
-        #print(consentsql)
+        
         cur.execute(consentsql)
         rows = cur.fetchall()
-        #print(type(rows[2]))
+        #print(type(rows))
+        #datadict=dict(zip(rows))
+        #with open('datalist.csv', 'w', newline='') as f:
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        #with open("studentgrades.csv", "w", newline="") as file:
+        #    writer = csv.writer(file, quoting=csv.QUOTE_ALL, delimiter=";")
+        #    writer.writerows(rows)     
+        #print(len(rows))
         SELECTint=len(rows)
         conn.close()
         context = {
