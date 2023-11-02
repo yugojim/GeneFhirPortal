@@ -73,35 +73,10 @@
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.ReportId }}</div>
 								</div>
-							</div>
-                        </div>
-                    </div>
-					
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-							<div class="form-row">
-								<div class="form-group col-md-1">
-									<div class="h5 font-weight-bold text-primary">PATIENT</div>
-								</div>
-							</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">DISEASE</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SubmittedDiagnosis}}</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">NAME</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.FullName}}</div>
-								</div>
 								<div class="font-weight-bold form-group col-md-1">
 									<div class="font-weight-bold text-success">DATE OF BIRTH</div>
 								</div>
+								<!-- -->
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist}}</div>
 								</div>
@@ -117,20 +92,7 @@
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID }}</div>
 								</div>
-							</div>
-                        </div>
-                    </div>
-					
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-							<div class="form-row">
-								<div class="form-group col-md-1">
-									<div class="h5 font-weight-bold text-primary">PHYSICIAN</div>
-								</div>
-							</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
+
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">ORDERING PHYSICIAN</div>
 								</div>
@@ -143,27 +105,104 @@
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilName}}</div>
 								</div>
-								<div class="font-weight-bold form-group col-md-1">
-									<div class="font-weight-bold text-success">ADDITIONAL RECIPIENT</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.CopiedPhysician1}}</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">MEDICAL FACILITY ID</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID}}</div>
-								</div>
 								<div class="form-group col-md-2">
 									<div class="font-weight-bold text-success">PATHOLOGIST</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist }}</div>
 								</div>
+								<!-- -->
 							</div>
                         </div>
                     </div>
+					
+<!--					<div class="card shadow mb-4">-->
+<!--                        <div class="card-header py-3">-->
+<!--							<div class="form-row">-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="h5 font-weight-bold text-primary">PATIENT</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="form-row">-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">DISEASE</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SubmittedDiagnosis}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">NAME</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.FullName}}</div>-->
+<!--								</div>-->
+<!--								<div class="font-weight-bold form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">DATE OF BIRTH</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">SEX</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Gender}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-2">-->
+<!--									<div class="font-weight-bold text-success">MEDICAL RECORD #</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID }}</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+					
+<!--					<div class="card shadow mb-4">-->
+<!--                        <div class="card-header py-3">-->
+<!--							<div class="form-row">-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="h5 font-weight-bold text-primary">PHYSICIAN</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="form-row">-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">ORDERING PHYSICIAN</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMD}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">MEDICAL FACILITY</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilName}}</div>-->
+<!--								</div>-->
+<!--								<div class="font-weight-bold form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">ADDITIONAL RECIPIENT</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.CopiedPhysician1}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="font-weight-bold text-success">MEDICAL FACILITY ID</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID}}</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-2">-->
+<!--									<div class="font-weight-bold text-success">PATHOLOGIST</div>-->
+<!--								</div>-->
+<!--								<div class="form-group col-md-1">-->
+<!--									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist }}</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
