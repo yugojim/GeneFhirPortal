@@ -36,21 +36,39 @@
             </li>
 			{% endif %}
 			{% if right.0.gene %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'GeneReport' %}">
+                    <i class="fas fa-fw fa fa-file-pdf"></i>
+                    <span>報告瀏覽</span></a>
+            </li>
 			<li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                    <i class="fas fa-fw fa-hospital-user"></i>
-                    <span>基因資料</span>
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>資料查詢與統計</span>
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="{% url 'GeneReport' %}">報告查詢</a>
-						<a class="collapse-item" href="http://40.76.186.200:8080/">Cbioportal</a>
-						<a class="collapse-item" href="">統計分析</a>
-						<a class="collapse-item" href="{% url 'PatientUpload' %}">資料匯入</a>
-                    </div>
+					<div class="bg-white py-2 collapse-inner rounded">
+					<a class="collapse-item" href="{% url 'PMI' %}">PMI</a>
+					<a class="collapse-item" href="{% url 'Biomarker' %}">Biomarker</a>
+					<a class="collapse-item" href="{% url 'ShortVariants' %}">Short variants</a>
+					<a class="collapse-item" href="{% url 'CopyNumberAlterations' %}">Copy number alterations</a>
+					<a class="collapse-item" href="{% url 'Rearrangement' %}">Rearrangement</a>					
+				</div>
                 </div>
             </li>
+			<li class="nav-item">
+                <a class="nav-link" href="{% url 'PatientUpload' %}">
+                    <i class="fas fa-fw fa fa-file"></i>
+                    <span>資料上傳匯入</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" target="_blank" href="http://40.76.186.200:8080/">
+                    <i class="fas fa-fw fa-solid fa-dna"></i>
+                    <span>cBioPortal</span></a>
+            </li>
+			<!--
+-->
 			{% endif %}
 			
 			{% if right.0.emergency %}

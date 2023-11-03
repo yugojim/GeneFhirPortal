@@ -66,14 +66,14 @@ def GeneReport(request):
             consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
         elif request.POST['MPNo'] != '':
             consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
-        elif request.POST['GeneName'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'VariantProperties' ->> 'VariantProperty' LIKE '%" + request.POST['GeneName'] + "%';"
-        elif request.POST['PatientName'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'FullName' LIKE '%" + request.POST['PatientName'] + "%';"
-        elif request.POST['OrderingMD'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%';"
-        elif request.POST['Diagnosis'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%';"
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%';"
+        #elif request.POST['PatientName'] != '':
+        #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'FullName' LIKE '%" + request.POST['PatientName'] + "%';"
+        #elif request.POST['OrderingMD'] != '':
+        #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%';"
+        #elif request.POST['Diagnosis'] != '':
+        #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%';"
         else:
             consentsql = consentsql + ' LIMIT 200;'
         
@@ -104,6 +104,189 @@ def GeneReport(request):
                 }
         return render(request, 'GeneReport.html', context)
 
+def PMI(request):
+    user = request.user
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml '        
+
+        if request.POST['Diagnosis'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['Diagnosis'] + '\''
+        elif request.POST['TestType'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['TestType'] + '\''
+        elif request.POST['OrderingMD'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['OrderingMD'] + "%';"
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        SELECTint=len(rows)
+        conn.close()
+        context = {
+                'right' : right,
+                'FuncResult' : SELECTint,
+                'rows' : rows
+                }
+        return render(request, 'PMI.html', context)
+    except:
+        context = {
+                'right' : right,
+                'FuncResult' : 'Function'
+                }
+        return render(request, 'PMI.html', context)
+
+def Biomarker(request):
+    user = request.user
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml '       
+
+        if request.POST['status'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['status'] + '\''
+        elif request.POST['score'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['score'] + '\''
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        SELECTint=len(rows)
+        conn.close()
+        context = {
+                'right' : right,
+                'FuncResult' : SELECTint,
+                'rows' : rows
+                }
+        return render(request, 'Biomarker.html', context)
+    except:
+        context = {
+                'right' : right,
+                'FuncResult' : 'Function'
+                }
+        return render(request, 'Biomarker.html', context)
+    
+def ShortVariants(request):
+    user = request.user
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml '        
+
+        if request.POST['gene'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['gene'] + '\''
+        elif request.POST['Protein_change'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['Protein_change'] + '\''
+        elif request.POST['cds_effect'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['cds_effect'] + '\''
+        elif request.POST['functional_effect'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['functional_effect'] + "%';"
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        SELECTint=len(rows)
+        conn.close()
+        context = {
+                'right' : right,
+                'FuncResult' : SELECTint,
+                'rows' : rows
+                }
+        return render(request, 'ShortVariants.html', context)
+    except:
+        context = {
+                'right' : right,
+                'FuncResult' : 'Function'
+                }
+        return render(request, 'ShortVariants.html', context)
+
+def CopyNumberAlterations(request):
+    user = request.user
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml '        
+
+        if request.POST['gene'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['gene'] + '\''
+        elif request.POST['type'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['type'] + '\''
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        SELECTint=len(rows)
+        conn.close()
+        context = {
+                'right' : right,
+                'FuncResult' : SELECTint,
+                'rows' : rows
+                }
+        return render(request, 'CopyNumberAlterations.html', context)
+    except:
+        context = {
+                'right' : right,
+                'FuncResult' : 'Function'
+                }
+        return render(request, 'CopyNumberAlterations.html', context)
+
+def Rearrangement(request):
+    user = request.user
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    try:
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        cur = conn.cursor()
+        consentsql = 'SELECT * FROM public.reportxml '        
+
+        if request.POST['description'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['description'] + '\''
+        elif request.POST['targeted_gene'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['targeted_gene'] + '\''
+        elif request.POST['other_gene'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['other_gene'] + "%';"
+        else:
+            consentsql = consentsql + ' LIMIT 200;'
+        
+        cur.execute(consentsql)
+        rows = cur.fetchall()
+        df = pd.DataFrame(rows)
+        #print(consentsql)
+        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        SELECTint=len(rows)
+        conn.close()
+        context = {
+                'right' : right,
+                'FuncResult' : SELECTint,
+                'rows' : rows
+                }
+        return render(request, 'Rearrangement.html', context)
+    except:
+        context = {
+                'right' : right,
+                'FuncResult' : 'Function'
+                }
+        return render(request, 'Rearrangement.html', context)
+    
 def GeneFinalReportDetails(request):
     user = request.user
     #print(user.username)

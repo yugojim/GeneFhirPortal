@@ -42,7 +42,14 @@ urlpatterns = [
     path('ClinvarVariant/', views.ClinvarVariant, name='ClinvarVariant'),
     path('ObservationImaging/', views.ObservationImaging, name='ObservationImaging'),
     #path('linebot', views.linebot, name='linebot'),
+    
     path('GeneReport/', views.GeneReport, name='GeneReport'),
+    path('PMI/', views.PMI, name='PMI'),
+    path('Biomarker/', views.Biomarker, name='Biomarker'),
+    path('ShortVariants/', views.ShortVariants, name='ShortVariants'),
+    path('CopyNumberAlterations/', views.CopyNumberAlterations, name='CopyNumberAlterations'),
+    path('Rearrangement/', views.Rearrangement, name='Rearrangement'),
+    
     path('GeneFinalReportDetails/', views.GeneFinalReportDetails, name='GeneFinalReportDetails'),
     path('GeneVariantReportDetails/', views.GeneVariantReportDetails, name='GeneVariantReportDetails'),
     

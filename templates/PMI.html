@@ -25,7 +25,7 @@
                 <div class="container-fluid">
 				
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
+						<h3><span class="badge badge-secondary">Gene Report PMI Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
 						{% if FuncResult  > 0 %}
 								<a href="/static/doc/datalist.csv" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 								class="fas fa-download fa-sm text-white-50"></i>download report</a>
@@ -38,22 +38,22 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
-								<label><h5>ReportNo</h5></label>
+								<label><h5>Diagnosis</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+								<input type="text" class="form-control" id="Diagnosis" name="Diagnosis">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>MPNo</h5></label>
+								<label><h5>NGS Assay</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MPNo" name="MPNo">
+								<input type="text" class="form-control" id="TestType" name="TestType">
 							</div>							
 							<div class="form-group col-md-">
-								<label><h5>ChartNo(MRN)</h5></label>
+								<label><h5>OrderingMD</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MRN" name="MRN">
+								<input type="text" class="form-control" id="OrderingMD" name="OrderingMD">
 							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
@@ -90,7 +90,6 @@
                                     <tbody>
 										{% for row in rows %}
 										<tr>											
-											<!--<td>{{row.0}}</td><th>id</th>-->
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN}}</td>
