@@ -33,9 +33,29 @@
 						
 					</div>
 					
-					<form method="post" action="{% url 'GeneReport' %}">
+					<form method="post" action="{% url 'PMI' %}">
 					{% csrf_token %}
 					<div class="form-group">
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<label><h5>ReportNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>MPNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MPNo" name="MPNo">
+							</div>							
+							<div class="form-group col-md-1">
+								<label><h5>ChartNo(MRN)</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MRN" name="MRN">
+							</div>
+						</div>
 						<div class="form-row">
 							<div class="form-group col-md-1">
 								<label><h5>Diagnosis</h5></label>
@@ -49,7 +69,7 @@
 							<div class="form-group col-md-2">
 								<input type="text" class="form-control" id="TestType" name="TestType">
 							</div>							
-							<div class="form-group col-md-">
+							<div class="form-group col-md-1">
 								<label><h5>OrderingMD</h5></label>
 							</div>
 							<div class="form-group col-md-2">
@@ -74,8 +94,11 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>Diagnosis</th>
+											<th>NGS Assay</th>
+											<th>OrderingMD</th>
 											<th>Report</th>
-											<th>Report PDF</th>																	
+											<th>Report PDF</th>															
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -83,6 +106,9 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>Diagnosis</th>
+											<th>NGS Assay</th>
+											<th>OrderingMD</th>
 											<th>Report</th>
 											<th>Report PDF</th>
                                         </tr>
@@ -93,6 +119,9 @@
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN}}</td>
+											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.SubmittedDiagnosis}}</td>
+											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.Sample.TestType}}</td>
+											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMD}}</td>
 											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
 											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
 										</tr>

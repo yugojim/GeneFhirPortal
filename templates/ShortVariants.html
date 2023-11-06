@@ -38,23 +38,51 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
-								<label><h5>gene</h5></label>
+								<label><h5>ReportNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
 							</div>
 							<div class="form-group col-md-1">
+								<label><h5>MPNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MPNo" name="MPNo">
+							</div>							
+							<div class="form-group col-md-1">
+								<label><h5>ChartNo(MRN)</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MRN" name="MRN">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<label><h5>gene</h5></label>
+							</div>
+							<div class="form-group col-md-2">
 								<input type="text" class="form-control" id="gene" name="gene">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>Protein_change</h5></label>
+								<label><h5>Protein change</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="Protein_change" name="Protein_change">
+								<input type="text" class="form-control" id="protein_effect" name="protein_effect">
 							</div>							
 							<div class="form-group col-md-1">
 								<label><h5>Amino acid change</h5></label>
 							</div>
 							<div class="form-group col-md-2">
 								<input type="text" class="form-control" id="cds_effect" name="cds_effect">
-														</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<label><h5>Allele fraction</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="allele_fraction" name="allele_fraction">								 
+							</div>
 							<div class="form-group col-md-1">
 								<label><h5>Functional effect</h5></label>
 							</div>
@@ -80,6 +108,11 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>gene</th>
+											<th>Protein change</th>
+											<th>Amino acid change</th>
+											<th>Allele fraction</th>
+											<th>Functional effect</th>
 											<th>Report</th>
 											<th>Report PDF</th>																	
                                         </tr>
@@ -89,8 +122,13 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>gene</th>
+											<th>Protein change</th>
+											<th>Amino acid change</th>
+											<th>Allele fraction</th>
+											<th>Functional effect</th>
 											<th>Report</th>
-											<th>Report PDF</th>
+											<th>Report PDF</th>	
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -99,6 +137,23 @@
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN}}</td>
+											
+											<td>{% for short_variant in row.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+												<a href="https://www.oncokb.org/gene/{{ short_variant.gene}}" target="_blank">{{ short_variant.gene}}</a></p>
+											{% endfor %}</td>
+											<td>{% for short_variant in row.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+												{{ short_variant.protein_effect}}</p>
+											{% endfor %}</td>
+											<td>{% for short_variant in row.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+												{{ short_variant.cds_effect}}</p>
+											{% endfor %}</td>
+											<td>{% for short_variant in row.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+												{{ short_variant.allele_fraction}}</p>
+											{% endfor %}</td>
+											<td>{% for short_variant in row.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+												{{ short_variant.functional_effect}}</p>
+											{% endfor %}</td>
+											
 											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
 											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
 										</tr>

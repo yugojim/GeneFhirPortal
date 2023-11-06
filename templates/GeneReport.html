@@ -26,11 +26,6 @@
 				
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h3><span class="badge badge-secondary">Gene Report Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
-						{% if FuncResult  > 0 %}
-								<a href="/static/doc/datalist.csv" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-								class="fas fa-download fa-sm text-white-50"></i>download report</a>
-						{% endif %}
-						
 					</div>
 					
 					<form method="post" action="{% url 'GeneReport' %}">

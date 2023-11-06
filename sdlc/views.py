@@ -67,7 +67,7 @@ def GeneReport(request):
         elif request.POST['MPNo'] != '':
             consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
         elif request.POST['MRN'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%';"
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         #elif request.POST['PatientName'] != '':
         #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'FullName' LIKE '%" + request.POST['PatientName'] + "%';"
         #elif request.POST['OrderingMD'] != '':
@@ -80,14 +80,9 @@ def GeneReport(request):
         cur.execute(consentsql)
         rows = cur.fetchall()
         #print(type(rows))
-        #datadict=dict(zip(rows))
-        #with open('datalist.csv', 'w', newline='') as f:
         df = pd.DataFrame(rows)
         #print(consentsql)
         df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
-        #with open("studentgrades.csv", "w", newline="") as file:
-        #    writer = csv.writer(file, quoting=csv.QUOTE_ALL, delimiter=";")
-        #    writer.writerows(rows)     
         #print(len(rows))
         SELECTint=len(rows)
         conn.close()
@@ -110,16 +105,21 @@ def PMI(request):
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
-        consentsql = 'SELECT * FROM public.reportxml '        
-
-        if request.POST['Diagnosis'] != '':
-            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['Diagnosis'] + '\''
+        consentsql = 'SELECT * FROM public.reportxml '
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        elif request.POST['Diagnosis'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%'" 
         elif request.POST['TestType'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['TestType'] + '\''
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'Sample' ->> 'TestType' LIKE '%" + request.POST['TestType'] + "%'"
         elif request.POST['OrderingMD'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['OrderingMD'] + "%';"
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%'" 
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 200'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
@@ -149,12 +149,18 @@ def Biomarker(request):
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml '       
 
-        if request.POST['status'] != '':
-            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['status'] + '\''
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        elif request.POST['status'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' LIKE '%" + request.POST['status'] + "%'"
         elif request.POST['score'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['score'] + '\''
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'tumor_mutation_burden' ->> 'score' LIKE '%" + request.POST['score'] + "%'" 
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 200'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
@@ -182,18 +188,27 @@ def ShortVariants(request):
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
-        consentsql = 'SELECT * FROM public.reportxml '        
+        consentsql = 'SELECT * FROM public.reportxml '
 
-        if request.POST['gene'] != '':
-            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['gene'] + '\''
-        elif request.POST['Protein_change'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['Protein_change'] + '\''
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+            
+        elif request.POST['gene'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['gene'] + "%'" 
+        elif request.POST['protein_effect'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['protein_effect'] + "%'"
         elif request.POST['cds_effect'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['cds_effect'] + '\''
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['cds_effect'] + "%'"        
+        elif request.POST['allele_fraction'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['allele_fraction'] + "%'" 
         elif request.POST['functional_effect'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['functional_effect'] + "%';"
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['functional_effect'] + "%'"
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 200'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
@@ -223,10 +238,18 @@ def CopyNumberAlterations(request):
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml '        
 
-        if request.POST['gene'] != '':
-            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['gene'] + '\''
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        elif request.POST['gene'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['gene'] + "%'"
         elif request.POST['type'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['type'] + '\''
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['type'] + "%'"
+        elif request.POST['copy_number'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['copy_number'] + "%'"
         else:
             consentsql = consentsql + ' LIMIT 200;'
         
@@ -258,14 +281,22 @@ def Rearrangement(request):
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml '        
 
-        if request.POST['description'] != '':
-            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['description'] + '\''
+        if request.POST['ReportNo'] != '':
+            consentsql = consentsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+
+        elif request.POST['description'] != '':
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['description'] + "%'"
         elif request.POST['targeted_gene'] != '':
-            consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['targeted_gene'] + '\''
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['targeted_gene'] + "%'"
         elif request.POST['other_gene'] != '':
-            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['other_gene'] + "%';"
+            consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['other_gene'] + "%'"
+
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 200'
         
         cur.execute(consentsql)
         rows = cur.fetchall()

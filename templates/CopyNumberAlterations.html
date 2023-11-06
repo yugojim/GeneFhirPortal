@@ -38,16 +38,42 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
+								<label><h5>ReportNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>MPNo</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MPNo" name="MPNo">
+							</div>							
+							<div class="form-group col-md-1">
+								<label><h5>ChartNo(MRN)</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="MRN" name="MRN">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-1">
 								<label><h5>gene</h5></label>
 							</div>
 							<div class="form-group col-md-2">
 								<input type="text" class="form-control" id="gene" name="gene">
 							</div>
-							<div class="form-group col-md-2">
-								<label><h5>type (loss/amplification)</h5></label>
+							<div class="form-group col-md-1">
+								<label><h5>type</h5></label>
 							</div>
 							<div class="form-group col-md-2">
 								<input type="text" class="form-control" id="type" name="type">
+							</div>
+							<div class="form-group col-md-1">
+								<label><h5>copy_number</h5></label>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="text" class="form-control" id="copy_number" name="copy_number">
 							</div>							
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
@@ -68,6 +94,9 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>gene</th>
+											<th>type</th>
+											<th>copy_number</th>
 											<th>Report</th>
 											<th>Report PDF</th>																	
                                         </tr>
@@ -77,8 +106,11 @@
 											<th>ReportNo</th>
 											<th>MPNo</th>
 											<th>MRN</th>
+											<th>gene</th>
+											<th>type</th>
+											<th>copy_number</th>
 											<th>Report</th>
-											<th>Report PDF</th>
+											<th>Report PDF</th>		
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -87,6 +119,15 @@
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN}}</td>
+											<td>{% for copy_number_alteration in row.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
+													<a href="https://www.oncokb.org/gene/{{copy_number_alteration.gene}}" target="_blank">{{copy_number_alteration.gene}}</a></p>
+											{% endfor %}</td>
+											<td>{% for copy_number_alteration in row.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
+													{{copy_number_alteration.type}}</p>
+											{% endfor %}</td>
+											<td>{% for copy_number_alteration in row.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
+													{{copy_number_alteration.copy_number}}</p>
+											{% endfor %}</td>
 											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
 											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
 										</tr>
