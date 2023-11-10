@@ -25,73 +25,174 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3>資料批次上傳 <span class="badge badge-secondary">Data batch {{ FuncResult }}</span></h3>						
+						<h3>基因報告PDF 或 XML 上傳 <span class="badge badge-secondary">Gene Data upload {{ FuncResult }}</span></h3>						
 					</div>					
 					<form method="post" action="{% url 'PatientUpload' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="form-group">
 						<div class="form-row">
-							<div class="form-group col-md-2">
-							  <select name="method" class="form-control">
-								<option value="POST" >新增 POST</option>
-								<option value="PUT" >修改 PUT</option>
-							  </select>
+							<div class="form-group col-md-12">
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="ACTOncoV1">
+								  <label class="form-check-label" for="inlineRadio1">ACTOnco V1</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="ACTOncoV2" disabled>
+								  <label class="form-check-label" for="inlineRadio2">ACTOnco V2</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="ArcherLung" disabled>
+								  <label class="form-check-label" for="inlineRadio3">Archer Lung</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="ArcherSarcoma" disabled>
+								  <label class="form-check-label" for="inlineRadio4">Archer Sarcoma</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="BRCAAssay" disabled>
+								  <label class="form-check-label" for="inlineRadio5">BRCA Assay</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="FocusAssay">
+								  <label class="form-check-label" for="inlineRadio6">Focus Assay</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="FoundationOne">
+								  <label class="form-check-label" for="inlineRadio7">Foundation One(xml)</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="Guardant360" disabled>
+								  <label class="form-check-label" for="inlineRadio8">Guardant 360</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="MyeloidAssay" disabled>
+								  <label class="form-check-label" for="inlineRadio9">Myeloid Assay</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="TumorMutationLoadAssay" disabled>
+								  <label class="form-check-label" for="inlineRadio10">Tumor Mutation Load Assay</label>
+								</div>
 							</div>
+						</div>
+						<div class="form-row">
 							<div class="form-group col-md-1">
-								<label>檔案說明</label>
+								<label><h5>檔案說明</h5></label>
 							</div>
 							<div class="form-group col-md-2">
 								<input type="text" class="form-control" name="fileTitle" placeholder="Enter a title">
 							</div>
 							<div class="form-group col-md-1">
-								<label>檔案選擇</label>
+								<label><h5>檔案選擇</h5></label>
 							</div>
 							<div class="form-group col-md-3">								
-								<input class="form-control" type="file" id="uploadedFile" name="uploadedFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-							</div>							
+								<input class="form-control" type="file" name="uploadedFile" accept=".pdf,.xml">
+							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>	
+
+						</div>
+	
+						<div class="card shadow mb-2">
+							<div class="card-header py-1">
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<div class="h5 font-weight-bold text-primary">metadata</div>
+									</div>
+								</div>
 							</div>
-						</div>							
+							<div class="card-body">
+								<div class="form-row">
+									<div class="form-group col-md-1">
+										<label><h5>報告號碼 ReportNo</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="ReportNo">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>分生號碼 分子生物號碼MPNo</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="MPNo">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>病患姓名 FullName</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="FullName">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>病歷號 MRN</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="MRN">
+									</div>									
+									<div class="form-group col-md-1">
+										<label><h5>檢體類別 SpecFormat</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="SpecFormat">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-1">
+										<label><h5>蠟塊號 BlockId</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="BlockId">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>Tumor purity %</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="purity">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>Tumor type</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="Tumortype">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>Diagnosis pmi-SubmittedDiagnosis</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="SubmittedDiagnosis">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>檢測項目 Sample-TestType</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="TestType">
+									</div>
+								</div>
+								<div class="form-row">
+
+									<div class="form-group col-md-1">
+										<label><h5>臨床主治醫師 pmi-OrderingMD</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="OrderingMD">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>病理醫師 pmi-Pathologist</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="Pathologist">
+									</div>
+									<div class="form-group col-md-1">
+										<label><h5>報告日期 pmi-ReceivedDate</h5></label>
+									</div>
+									<div class="form-group col-md-1">
+										<input type="text" class="form-control" name="ReceivedDate">
+									</div>									
+								</div>
+							</div>
+						</div>
+
 					</div>
 					</form>
 					{{data.diagnostics}}
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data batch</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-										{% for column in data.columns %}
-										<th>{{column}}</th>
-										{% endfor %}
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-										{% for column in data.columns %}
-										<th>{{column}}</th>
-										{% endfor %}
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-										{% for index, row in data.iterrows %}
-										  <tr>
-											{% for cell in row %}
-											  <td>
-												{{cell}}
-											  </td>
-											{% endfor %}
-										  </tr>
-										{% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 				</div>
 			</div>
             <!-- Footer -->

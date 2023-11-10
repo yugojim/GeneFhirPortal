@@ -75,7 +75,7 @@ def GeneReport(request):
         #elif request.POST['Diagnosis'] != '':
         #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%';"
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 200'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
@@ -119,13 +119,40 @@ def PMI(request):
         elif request.POST['OrderingMD'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%'" 
         else:
-            consentsql = consentsql + ' LIMIT 200'
+            consentsql = consentsql + ' LIMIT 100'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        df = pd.DataFrame(rows)
+        
+        datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
+            resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
+                resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' as \"Diagnosis\", \
+                    resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'Sample' ->> 'TestType' as \"NGS Assay\", \
+                        resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' as \"OrderingMD\" \
+                            FROM public.reportxml "
+        if request.POST['ReportNo'] != '':
+            datalistsql = datalistsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            datalistsql = datalistsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        elif request.POST['Diagnosis'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%'" 
+        elif request.POST['TestType'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'Sample' ->> 'TestType' LIKE '%" + request.POST['TestType'] + "%'"
+        elif request.POST['OrderingMD'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%'" 
+        else:
+            datalistsql = datalistsql + ' LIMIT 100'
+            
+        cur.execute(datalistsql)
+        datalist = cur.fetchall()
+        df = pd.DataFrame(datalist)
         #print(consentsql)
-        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "Diagnosis", "檢測項目", "臨床主治醫師"]  
+        df.columns=column_list
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8' ,index=False)
+        
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -160,13 +187,37 @@ def Biomarker(request):
         elif request.POST['score'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'tumor_mutation_burden' ->> 'score' LIKE '%" + request.POST['score'] + "%'" 
         else:
-            consentsql = consentsql + ' LIMIT 200'
+            consentsql = consentsql + ' LIMIT 100'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        df = pd.DataFrame(rows)
+        
+        datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
+            resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
+                resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' as \"Microsatellite Status\", \
+                    resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'tumor_mutation_burden' ->> 'score' as \"Tumor Mutational Burden score\" \
+                        FROM public.reportxml "
+        if request.POST['ReportNo'] != '':
+            datalistsql = datalistsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            datalistsql = datalistsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        elif request.POST['status'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' LIKE '%" + request.POST['status'] + "%'"
+        elif request.POST['score'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'tumor_mutation_burden' ->> 'score' LIKE '%" + request.POST['score'] + "%'" 
+        else:
+            datalistsql = datalistsql + ' LIMIT 100'
+            
+        cur.execute(datalistsql)
+        datalist = cur.fetchall()
+        df = pd.DataFrame(datalist)
         #print(consentsql)
-        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "Microsatellite Status", "Tumor Mutational Burden score"]  
+        df.columns=column_list
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
+        
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -208,13 +259,43 @@ def ShortVariants(request):
         elif request.POST['functional_effect'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['functional_effect'] + "%'"
         else:
-            consentsql = consentsql + ' LIMIT 200'
+            consentsql = consentsql + ' LIMIT 100'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        df = pd.DataFrame(rows)
+        
+        datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
+            resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
+                resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' as \"short variants\" \
+                    FROM public.reportxml "
+        if request.POST['ReportNo'] != '':
+            datalistsql = datalistsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            datalistsql = datalistsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        
+        elif request.POST['gene'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['gene'] + "%'" 
+        elif request.POST['protein_effect'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['protein_effect'] + "%'"
+        elif request.POST['cds_effect'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['cds_effect'] + "%'"        
+        elif request.POST['allele_fraction'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['allele_fraction'] + "%'" 
+        elif request.POST['functional_effect'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['functional_effect'] + "%'"
+        else:
+            datalistsql = datalistsql + ' LIMIT 100'
+            
+        cur.execute(datalistsql)
+        datalist = cur.fetchall()
+        df = pd.DataFrame(datalist)
         #print(consentsql)
-        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "short variants"]  
+        df.columns=column_list
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
+        
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -244,6 +325,7 @@ def CopyNumberAlterations(request):
             consentsql = consentsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
         elif request.POST['MRN'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        
         elif request.POST['gene'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['gene'] + "%'"
         elif request.POST['type'] != '':
@@ -251,13 +333,39 @@ def CopyNumberAlterations(request):
         elif request.POST['copy_number'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['copy_number'] + "%'"
         else:
-            consentsql = consentsql + ' LIMIT 200;'
+            consentsql = consentsql + ' LIMIT 100'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        df = pd.DataFrame(rows)
+        
+        datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
+            resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
+                resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' as \"copy number alterations\" \
+                    FROM public.reportxml "
+        if request.POST['ReportNo'] != '':
+            datalistsql = datalistsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            datalistsql = datalistsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        
+        elif request.POST['gene'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['gene'] + "%'"
+        elif request.POST['type'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['type'] + "%'"
+        elif request.POST['copy_number'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['copy_number'] + "%'"
+        else:
+            datalistsql = datalistsql + ' LIMIT 100'
+            
+        cur.execute(datalistsql)
+        datalist = cur.fetchall()
+        df = pd.DataFrame(datalist)
         #print(consentsql)
-        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "copy number alterations"]  
+        df.columns=column_list
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
+
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -294,15 +402,40 @@ def Rearrangement(request):
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['targeted_gene'] + "%'"
         elif request.POST['other_gene'] != '':
             consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['other_gene'] + "%'"
-
         else:
-            consentsql = consentsql + ' LIMIT 200'
+            consentsql = consentsql + ' LIMIT 100'
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        df = pd.DataFrame(rows)
+        
+        datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
+            resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
+                resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' as \"rearrangements\" \
+                    FROM public.reportxml "
+        if request.POST['ReportNo'] != '':
+            datalistsql = datalistsql + 'WHERE "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        elif request.POST['MPNo'] != '':
+            datalistsql = datalistsql + 'WHERE "MPNo" = \'' + request.POST['MPNo'] + '\''
+        elif request.POST['MRN'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        
+        elif request.POST['description'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['description'] + "%'"
+        elif request.POST['targeted_gene'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['targeted_gene'] + "%'"
+        elif request.POST['other_gene'] != '':
+            datalistsql = datalistsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['other_gene'] + "%'"
+        else:
+            datalistsql = datalistsql + ' LIMIT 100'
+            
+        cur.execute(datalistsql)
+        datalist = cur.fetchall()
+        df = pd.DataFrame(datalist)
         #print(consentsql)
-        df.to_csv('static/doc/datalist.csv', sep='\t', encoding='utf-8')
+        column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "rearrangements"]  
+        df.columns=column_list
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)        
+        
         SELECTint=len(rows)
         conn.close()
         context = {
@@ -564,66 +697,145 @@ def PatientUpload(request):
     user = request.user
     #print(user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    if request.method == "POST":
-        # Fetching the form data
-        method=request.POST['method']
-        fileTitle = request.POST["fileTitle"]
-        uploadedFile = request.FILES["uploadedFile"]
-        #print(fileTitle,uploadedFile)
-        df = pd.read_excel(uploadedFile)
-        # Saving the information in the database
-        document = models.Document(
-            title = fileTitle,
-            uploadedFile = uploadedFile
-        )
-        document.save()
-    #documents = models.Document.objects.all()
+
+    #df = pd.read_excel(uploadedFile)
     #print(method)
-    status_codelist=[]
-    diagnosticslist=[]
+
     try:
-        for i in range(len(df)):
-            #print(i)
-            #print(df.iloc[i])              
-            try:
-                Result,data,status_code,diagnostics = Function.PatientUpload(df.iloc[i],method)
-                status_codelist.append(status_code)
-                diagnosticslist.append(diagnostics)
-                context = {
-                        'right' : right,
-                        'FuncResult' : Result,
-                        'data' : data,
-                        }
-                #print(statuscode)             
-                #return render(request, 'PatientUpload.html', context)
-            except:
-                context = {
-                        'right' : right,
-                        'FuncResult' : 'Function'
-                        } 
-                #return render(request, 'PatientUpload.html', context)
-        errordict = {
-            'right' : right,
-            "status_code": status_codelist,
-            "diagnosticslist": diagnosticslist
-            }
-        errordf = pd.DataFrame(errordict)
-        #print(type(errordf))
-        #print(errordf)
-        #print(df)
-        data=df.merge(errordf, how='outer', left_index=True, right_index=True)
-        #print(df.merge(errordf, how='outer', left_index=True, right_index=True))
-        #print(pd.merge(df, errordf))
+        try:
+            inlineRadioOptions = request.POST["inlineRadioOptions"]
+        except:
+            inlineRadioOptions = ''
+        
+        if request.POST["fileTitle"] !='':
+            fileTitle = request.POST["fileTitle"]
+        else:
+            fileTitle = '' 
+       
+        try:
+            uploadedFile = request.FILES["uploadedFile"]
+        except:
+            uploadedFile = ''
+
+        if request.POST["ReportNo"] !='':
+            ReportNo = request.POST["ReportNo"]
+        else:
+            ReportNo = ''
+            
+        if request.POST["MPNo"] !='':
+            MPNo = request.POST["MPNo"]
+        else:
+            MPNo = ''
+       
+        if request.POST["FullName"] !='':
+            FullName = request.POST["FullName"]
+        else: 
+            FullName = ''
+           
+        if request.POST["MRN"] !='':
+            MRN = request.POST["MRN"]
+        else:
+            MRN = ''
+          
+        if request.POST["SpecFormat"] !='':
+            SpecFormat = request.POST["SpecFormat"]
+        else:
+            SpecFormat = ''
+       
+        if request.POST["BlockId"] !='':
+            BlockId = request.POST["BlockId"]
+        else:
+            BlockId = ''
+      
+        if request.POST["purity"] !='':
+            purity = request.POST["purity"]
+        else:
+            purity = ''
+          
+        if request.POST["Tumortype"] !='':
+            Tumortype = request.POST["Tumortype"]
+        else:
+            Tumortype = ''
+      
+        if request.POST["SubmittedDiagnosis"] !='':
+            SubmittedDiagnosis = request.POST["SubmittedDiagnosis"]
+        else:
+            SubmittedDiagnosis = ''
+
+        if request.POST["TestType"] !='':
+            TestType = request.POST["TestType"]
+        else:
+            TestType = ''        
+     
+        if request.POST["OrderingMD"] !='':
+            OrderingMD = request.POST["OrderingMD"]
+        else:
+            OrderingMD = ''
+      
+        if request.POST["Pathologist"] !='':
+            Pathologist = request.POST["Pathologist"]
+        else:
+            Pathologist = ''
+      
+        if request.POST["ReceivedDate"] !='':
+            ReceivedDate = request.POST["ReceivedDate"]
+        else:
+            ReceivedDate = ''
+        '''
+        print(inlineRadioOptions,
+              fileTitle,              
+              uploadedFile,
+              ReportNo,
+              MPNo,
+              FullName,
+              MRN,
+              SpecFormat,
+              BlockId,
+              purity,
+              Tumortype,
+              SubmittedDiagnosis,
+              TestType,
+              OrderingMD,
+              Pathologist,
+              ReceivedDate
+              )
+        '''         
+        # Saving the information in the database
+
+        document = models.Document(
+            inlineRadioOptions=inlineRadioOptions,
+            fileTitle = fileTitle,
+            uploadedFile = uploadedFile,
+            
+            ReportNo = ReportNo,
+            MPNo = MPNo,
+            FullName = FullName,
+            MRN = MRN,
+            SpecFormat = SpecFormat,
+            BlockId = BlockId,
+            purity=purity,
+            Tumortype=Tumortype,
+            SubmittedDiagnosis=SubmittedDiagnosis,
+            TestType=TestType,
+            OrderingMD = OrderingMD,
+            Pathologist=Pathologist,
+            ReceivedDate=ReceivedDate
+        )
+
+        document.save()        
+        #documents = models.Document.objects.all()
+        
         context = {
                 'right' : right,
-                'FuncResult' : Result,
-                'data' : data,
+                'FuncResult' : 'FuncResult'
+#                'FuncResult' : Result,
+#                'data' : data,
                 }
         return render(request, 'PatientUpload.html', context)
     except:
         context = {
                 'right' : right,
-                'Projects' : 'Projects'
+                'FuncResult' : 'Up Fail '
                 }
         return render(request, 'PatientUpload.html' , context)
 
