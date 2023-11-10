@@ -151,7 +151,7 @@ def PMI(request):
         #print(consentsql)
         column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "Diagnosis", "檢測項目", "臨床主治醫師"]  
         df.columns=column_list
-        df.to_csv('static/doc/datalist.csv', encoding='utf-8' ,index=False)
+        df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
         
         SELECTint=len(rows)
         conn.close()
