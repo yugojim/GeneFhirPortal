@@ -34,13 +34,13 @@
                         <div class="card-header py-3">
 							<div class="form-row">
 								<div class="form-group col-md-1">
-									<div class="h5 font-weight-bold text-primary">Report No</div>
+									<div class="h5 font-weight-bold text-primary">報告號碼</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="h5 font-weight-bold">{{ data.2}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="h5 font-weight-bold text-primary">MP No</div>
+									<div class="h5 font-weight-bold text-primary">分生號碼</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="h5 font-weight-bold">{{ data.3}}</div>
@@ -50,13 +50,13 @@
                         <div class="card-body">
 							<div class="form-row">
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">PATIENT</div>
+									<div class="font-weight-bold text-success">FullName 病患姓名</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.FullName}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">TUMOR TYPE</div>
+									<div class="font-weight-bold text-success">Diagnosis</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SubmittedDiagnosis}}</div>
@@ -68,17 +68,24 @@
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.CountryOfOrigin}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">REPORT DATE</div>
+									<div class="font-weight-bold text-success">ReceivedDate 報告日期</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.ReceivedDate}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">ORDERED TEST #</div>
+									<div class="font-weight-bold text-success">ReportId</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.ReportId }}</div>
 								</div>
+								<div class="form-group col-md-1">
+									<div class="font-weight-bold text-success">TestType 檢測項目</div>
+								</div>
+								<div class="form-group col-md-1">
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.TestType}}</div>
+								</div>
+								
 							</div>
 							<div class="form-row">							
 								<div class="font-weight-bold form-group col-md-1">
@@ -94,14 +101,14 @@
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Gender}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">MEDICAL RECORD #</div>
+									<div class="font-weight-bold text-success">MRN 病歷號</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilID }}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN }}</div>
 								</div>
 
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">ORDERING PHYSICIAN</div>
+									<div class="font-weight-bold text-success">OrderingMD 臨床主治醫師</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMD}}</div>
@@ -113,7 +120,7 @@
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilName}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">PATHOLOGIST</div>
+									<div class="font-weight-bold text-success">Pathologist 病理醫師</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist }}</div>
@@ -132,19 +139,19 @@
                         <div class="card-body">
                             <div class="form-row">
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">SPECIMEN SITE</div>
+									<div class="font-weight-bold text-success">SpecSite檢體位置</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SpecSite}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">SPECIMEN ID</div>
+									<div class="font-weight-bold text-success">BlockId 蠟塊號</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.BlockId}}</div>
 								</div>
 								<div class="font-weight-bold form-group col-md-1">
-									<div class="font-weight-bold text-success">SPECIMEN TYPE</div>
+									<div class="font-weight-bold text-success">SpecFormat 檢體類別</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.SpecFormat}}</div>
@@ -237,18 +244,37 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-										<tr>										
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}</td>
-											<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}</td>											
-										</tr>
+										
+										{% if "description" not in data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+											{% for rearrangement in  data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement%}
+											<tr>
+												<td>{{ rearrangement.description }}</td>
+												<td>{{ rearrangement.type }}</td>
+												<td>{{ rearrangement.targeted_gene }}</td>
+												<td>{{ rearrangement.other_gene }}</td>
+												<td>{{ rearrangement.pos1 }}</td>
+												<td>{{ rearrangement.pos2 }}</td>
+												<td>{{ rearrangement.in_frame }}</td>
+												<td>{{ rearrangement.supporting_read_pairs }}</td>
+												<td>{{ rearrangement.status }}</td>
+												<td>{{ rearrangement.equivocal }}</td>
+											</tr>
+											{% endfor %}
+										{% else %}
+											<tr>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}</td>
+											</tr>											
+										{% endif %}
+										
                                     </tbody>
                                 </table>
                             </div>
@@ -266,9 +292,9 @@
 											<th class="col-sm-1">GeneName</th>
 											<th class="col-sm-1">Alteration</th>
 											<th class="col-sm-1">Therapies</th>
-											<th class="col-sm-1">ClinicalTrialNote</th>
+											<th class="col-sm-2">ClinicalTrialNote</th>
 											<th class="col-sm-1">ClinicalTrialLinks</th>
-											<th class="col-sm-7">Interpretation</th>
+											<th class="col-sm-6">Interpretation</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -276,32 +302,79 @@
 											<th class="col-sm-1">GeneName</th>
 											<th class="col-sm-1">Alteration</th>
 											<th class="col-sm-1">Therapies</th>
-											<th class="col-sm-1">ClinicalTrialNote</th>
+											<th class="col-sm-2">ClinicalTrialNote</th>
 											<th class="col-sm-1">ClinicalTrialLinks</th>
-											<th class="col-sm-7">Interpretation</th>
+											<th class="col-sm-6">Interpretation</th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot>									
                                     <tbody>
 										{% for Gene in data.1.ResultsReport.ResultsPayload.FinalReport.Genes.Gene %}
-										<tr>										
-											<td><div class="collapse out" id="collapseme1"><a href="https://www.oncokb.org/gene/{{ Gene.Name }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ Gene.Name }}</a></div></td>	
-											<td><div class="collapse out" id="collapseme1">{{ Gene.Alterations.Alteration.Name }}</div></td>
-											<td>
-												<div class="collapse out" id="collapseme1">
-													{% for Therapy in Gene.Alterations.Alteration.Therapies.Therapy %}
-														<p><a href="https://en.wikipedia.org/wiki/{{ Therapy.GenericName }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ Therapy.GenericName }}</a>
+										<tr>
+											<td><div class="collapse out" id="collapseme1"><a href="https://www.oncokb.org/gene/{{ Gene.Name }}" target="_blank">{{ Gene.Name }}</a></div></td>
+											{% if "Name" not in Gene.Alterations.Alteration %}
+												<td><div class="collapse out" id="collapseme1">
+												{% for Alteration in Gene.Alterations.Alteration %}
+													{{ Alteration.Name }}</p>
+												{% endfor %}
+												</div></td>
+											{% else %}
+												<td><div class="collapse out" id="collapseme1">{{ Gene.Alterations.Alteration.Name }}</div></td>
+											{% endif %}
+											
+											{% if "GenericName" not in Gene.Alterations.Alteration.Therapies.Therapy %}
+												<td><div class="collapse out" id="collapseme1">
+												{% for Therapy in Gene.Alterations.Alteration.Therapies.Therapy %}
+													<a href="https://en.wikipedia.org/wiki/{{ Therapy.GenericName }}" target="_blank">{{ Therapy.GenericName }}</a>
+												{% endfor %}
+												</div></td>
+											{% else %}												
+												<td><div class="collapse out" id="collapseme1">
+													{% if Gene.Alterations.Alteration.Therapies == None %}
+														{{ Gene.Alterations.Alteration.Therapies }}
+													{% endif %}
+													{% for Alteration in Gene.Alterations.Alteration %}
+														{% for Therapy in Alteration.Therapies.Therapy %}
+															<a href="https://en.wikipedia.org/wiki/{{ Therapy.GenericName }}" target="_blank">{{ Therapy.GenericName }}</a>
+														{% endfor %}
+														</p>
 													{% endfor %}
-												</div>
-											</td>
-											<td><div class="collapse out" id="collapseme1">{{ Gene.Alterations.Alteration.ClinicalTrialNote }}</div></td>
-											<td>
-												<div class="collapse out" id="collapseme1">
+
+												</div></td>
+											{% endif %}
+											
+											<td><div class="collapse out" id="collapseme1">
+												{% if "ClinicalTrialNote" in Gene.Alterations.Alteration %}
+													{{ Gene.Alterations.Alteration.ClinicalTrialNote }}
+												{% else %}
+													{% for Alteration in Gene.Alterations.Alteration %}
+														{{ Alteration.ClinicalTrialNote }}</p>
+													{% endfor %}
+												{% endif %}
+											</div></td>
+											<td><div class="collapse out" id="collapseme1">
+												{% if "ClinicalTrialLink" in Gene.Alterations.Alteration.ClinicalTrialLinks %}
 													{% for ClinicalTrialLink in Gene.Alterations.Alteration.ClinicalTrialLinks.ClinicalTrialLink %}
-														<p><a href="https://classic.clinicaltrials.gov/ct2/show/{{ ClinicalTrialLink.nctId }}" target="_blank" >{{ ClinicalTrialLink.nctId }}</a>
+														<a href="https://classic.clinicaltrials.gov/ct2/show/{{ ClinicalTrialLink.nctId }}" target="_blank" >
+														{{ ClinicalTrialLink.nctId }}</a>
 													{% endfor %}
-												</div>
-											</td>
-											<td><div class="collapse out" id="collapseme1">{{ Gene.Alterations.Alteration.Interpretation }}</div></td>								
+												{% else %}
+													{% for Alteration in Gene.Alterations.Alteration %}
+														{% for ClinicalTrialLink in Alteration.ClinicalTrialLinks.ClinicalTrialLink %}
+															<a href="https://classic.clinicaltrials.gov/ct2/show/{{ ClinicalTrialLink.nctId }}" target="_blank" >
+															{{ ClinicalTrialLink.nctId }}</a>
+														{% endfor %}</p>
+													{% endfor %}
+												{% endif %}
+											</td></div>
+											<td><div class="collapse out" id="collapseme1">
+												{% if "Interpretation" in Gene.Alterations.Alteration %}
+													{{ Gene.Alterations.Alteration.Interpretation }}
+												{% else %}
+													{% for Alteration in Gene.Alterations.Alteration %}
+														{{ Alteration.Interpretation }}</p>
+													{% endfor %}
+												{% endif %}
+											</div></td>
 										</tr>
 										{% endfor %}	
                                     </tbody>
@@ -334,7 +407,7 @@
                                     <tbody>
 										{% for VariantProperty in data.1.ResultsReport.ResultsPayload.FinalReport.VariantProperties.VariantProperty %}
 										<tr>
-											<td><div class="collapse out" id="collapseme"><a href="https://www.oncokb.org/gene/{{ VariantProperty.geneName }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ VariantProperty.geneName }}</a></div></td>
+											<td><div class="collapse out" id="collapseme"><a href="https://www.oncokb.org/gene/{{ VariantProperty.geneName }}" target="_blank">{{ VariantProperty.geneName }}</a></div></td>
 											<td><div class="collapse out" id="collapseme">{{ VariantProperty.isVUS }}</div></td>
 											<td><div class="collapse out" id="collapseme">{{ VariantProperty.variantName }}</div></td>										
 										</tr>
@@ -466,7 +539,7 @@
                                     <tbody>
 										{% for copy_number_alteration in data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
 										<tr>
-											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ copy_number_alteration.gene }}</a></div></td>				
+											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank">{{ copy_number_alteration.gene }}</a></div></td>				
 											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.type }}</div></td>												
 											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.copy_number }}</div></td>
 											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.ratio }}</div></td>
@@ -520,7 +593,7 @@
                                     <tbody>
 										{% for short_variant in data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
 										<tr>
-											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{ short_variant.gene }}</a></div></td>
+											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank">{{ short_variant.gene }}</a></div></td>
 											<td><div class="collapse out" id="collapseme5">{{ short_variant.protein_effect }}</div></td>											
 											<td><div class="collapse out" id="collapseme5">{{ short_variant.cds_effect }}</div></td>
 											<td><div class="collapse out" id="collapseme5">{{ short_variant.position }}</div></td>

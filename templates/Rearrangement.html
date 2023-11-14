@@ -121,19 +121,26 @@
 											<td>{{row.2}}</td>
 											<td>{{row.3}}</td>
 											<td>{{row.1.ResultsReport.ResultsPayload.FinalReport.PMI.MRN}}</td>
-											
-											<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
-													{{rearrangement.description}}</p>
-											{% endfor %}</td>
-											<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
-													{{rearrangement.targeted_gene}}</p>
-											{% endfor %}</td>
-											<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
-													{{rearrangement.other_gene}}</p>
-											{% endfor %}</td>										
-											<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
-													{{rearrangement.in_frame}}</p>
-											{% endfor %}</td>
+																					
+											{% if "description" not in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+												<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+														{{rearrangement.description}}</p>
+												{% endfor %}</td>
+												<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+														{{rearrangement.targeted_gene}}</p>
+												{% endfor %}</td>
+												<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+														{{rearrangement.other_gene}}</p>
+												{% endfor %}</td>										
+												<td>{% for rearrangement in row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+														{{rearrangement.in_frame}}</p>
+												{% endfor %}</td>
+											{% else %}
+												<td>{{row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description}}</td>
+												<td>{{row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene}}</td>
+												<td>{{row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene}}</td>
+												<td>{{row.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame}}</td>
+											{% endif %}
 											
 											<td><a href="/GeneFinalReportDetails?id={{ row.0}}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Report</a></td>
 											<td><a href="/static/doc/gene/{{row.2.split|join:"_"}}_({{row.3.split|join:"_"}}).pdf" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">{{row.3}}</a></td>
