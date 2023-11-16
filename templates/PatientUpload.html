@@ -25,7 +25,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3>基因報告PDF 或 XML 上傳 <span class="badge badge-secondary">Gene Data upload {{ FuncResult }}</span></h3>						
+						<h3>基因報告PDF或XML上傳 <span class="badge badge-secondary">Gene Metadata Upload</span>{{ FuncResult }}</h3>						
 					</div>					
 					<form method="post" action="{% url 'PatientUpload' %}" enctype="multipart/form-data">
 					{% csrf_token %}
@@ -102,33 +102,34 @@
 								</div>
 							</div>
 							<div class="card-body">
+							<!--報告號碼 ReportNo 分生號碼 分子生物號碼MPNo 病患姓名 FullName 病歷號 MRN 檢體類別 SpecFormat 蠟塊號 BlockId Diagnosis pmi-SubmittedDiagnosis 檢測項目 Sample-TestType 臨床主治醫師 pmi-OrderingMD 病理醫師 pmi-Pathologist 報告日期 pmi-ReceivedDate-->
 								<div class="form-row">
 									<div class="form-group col-md-1">
-										<label><h5>報告號碼 ReportNo</h5></label>
+										<label><h5>報告號碼</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="ReportNo">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>分生號碼 分子生物號碼MPNo</h5></label>
+										<label><h5>分生號碼</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="MPNo">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>病患姓名 FullName</h5></label>
+										<label><h5>病患姓名</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="FullName">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>病歷號 MRN</h5></label>
+										<label><h5>病歷號</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="MRN">
 									</div>									
 									<div class="form-group col-md-1">
-										<label><h5>檢體類別 SpecFormat</h5></label>
+										<label><h5>檢體類別</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="SpecFormat">
@@ -136,7 +137,7 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-1">
-										<label><h5>蠟塊號 BlockId</h5></label>
+										<label><h5>蠟塊號</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="BlockId">
@@ -154,13 +155,13 @@
 										<input type="text" class="form-control" name="Tumortype">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>Diagnosis pmi-SubmittedDiagnosis</h5></label>
+										<label><h5>Diagnosis</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="SubmittedDiagnosis">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>檢測項目 Sample-TestType</h5></label>
+										<label><h5>檢測項目</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="TestType">
@@ -169,19 +170,19 @@
 								<div class="form-row">
 
 									<div class="form-group col-md-1">
-										<label><h5>臨床主治醫師 pmi-OrderingMD</h5></label>
+										<label><h5>臨床主治醫師</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="OrderingMD">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>病理醫師 pmi-Pathologist</h5></label>
+										<label><h5>病理醫師</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="Pathologist">
 									</div>
 									<div class="form-group col-md-1">
-										<label><h5>報告日期 pmi-ReceivedDate</h5></label>
+										<label><h5>報告日期</h5></label>
 									</div>
 									<div class="form-group col-md-1">
 										<input type="text" class="form-control" name="ReceivedDate">

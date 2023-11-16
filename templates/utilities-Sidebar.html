@@ -49,18 +49,41 @@
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
+					{% if Generight.0.pmi %}
 					<a class="collapse-item" href="{% url 'PMI' %}">PMI</a>
+					{% endif %}
+					{% if Generight.0.biomarker %}
 					<a class="collapse-item" href="{% url 'Biomarker' %}">Biomarker</a>
+					{% endif %}
+					{% if Generight.0.short_variants %}
 					<a class="collapse-item" href="{% url 'ShortVariants' %}">Short variants</a>
+					{% endif %}
+					{% if Generight.0.copy_number_alterations %}
 					<a class="collapse-item" href="{% url 'CopyNumberAlterations' %}">Copy number alterations</a>
-					<a class="collapse-item" href="{% url 'Rearrangement' %}">Rearrangement</a>					
+					{% endif %}
+					{% if Generight.0.rearrangements %}
+					<a class="collapse-item" href="{% url 'Rearrangement' %}">Rearrangement</a>	
+					{% endif %}				
 				</div>
                 </div>
             </li>
 			<li class="nav-item">
-                <a class="nav-link" href="{% url 'PatientUpload' %}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne1"
+                    aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-fw fa fa-file"></i>
-                    <span>資料上傳匯入</span></a>
+                    <span>資料上傳</span>
+                </a>
+                <div id="collapseOne1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+					{% if user.is_staff %}
+					<a class="collapse-item" href="{% url 'PatientUpload' %}">基因單筆報告上傳</a>
+					<a class="collapse-item" href="">Metadata多筆資料上傳</a>
+					{% endif %}
+					{% if user.is_superuser %}
+						<a class="collapse-item" href="">使用者權限多筆資料上傳</a>
+					{% endif %}
+				</div>
+                </div>
             </li>
 			<li class="nav-item">
                 <a class="nav-link" target="_blank" href="http://40.76.186.200:8080/">

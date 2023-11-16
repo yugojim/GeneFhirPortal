@@ -25,7 +25,7 @@
                 <div class="container-fluid">
 				
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report PMI Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
+						<h3><span class="badge badge-secondary">PMI Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
 						{% if FuncResult  > 0 %}
 								<a href="/static/doc/datalist.csv" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 								class="fas fa-download fa-sm text-white-50"></i>download report</a>
@@ -38,22 +38,22 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
-								<label><h5>ReportNo</h5></label>
+								<label><h5>報告號碼</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo" value="{{search.ReportNo}}">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>MPNo</h5></label>
+								<label><h5>分生號碼</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MPNo" name="MPNo">
+								<input type="text" class="form-control" id="MPNo" name="MPNo" value="{{search.MPNo}}">
 							</div>							
 							<div class="form-group col-md-1">
-								<label><h5>ChartNo(MRN)</h5></label>
+								<label><h5>病歷號</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MRN" name="MRN">
+								<input type="text" class="form-control" id="MRN" name="MRN" value="{{search.MRN}}">
 							</div>
 						</div>
 						<div class="form-row">
@@ -61,19 +61,19 @@
 								<label><h5>Diagnosis</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="Diagnosis" name="Diagnosis">
+								<input type="text" class="form-control" id="Diagnosis" name="Diagnosis" value="{{search.Diagnosis}}">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>NGS Assay</h5></label>
+								<label><h5>檢測項目</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="TestType" name="TestType">
+								<input type="text" class="form-control" id="TestType" name="TestType" value="{{search.TestType}}">
 							</div>							
 							<div class="form-group col-md-1">
-								<label><h5>OrderingMD</h5></label>
+								<label><h5>臨床主治醫師</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="OrderingMD" name="OrderingMD">
+								<input type="text" class="form-control" id="OrderingMD" name="OrderingMD" value="{{search.OrderingMD}}">
 							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
@@ -91,26 +91,26 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
+											<th>報告號碼</th>
+											<th>分生號碼</th>
+											<th>病歷號</th>
 											<th>Diagnosis</th>
-											<th>NGS Assay</th>
-											<th>OrderingMD</th>
+											<th>檢測項目</th>
+											<th>臨床主治醫師</th>
 											<th>Report</th>
 											<th>Report PDF</th>															
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
+											<th>報告號碼</th>
+											<th>分生號碼</th>
+											<th>病歷號</th>
 											<th>Diagnosis</th>
-											<th>NGS Assay</th>
-											<th>OrderingMD</th>
+											<th>檢測項目</th>
+											<th>臨床主治醫師</th>
 											<th>Report</th>
-											<th>Report PDF</th>
+											<th>Report PDF</th>		
                                         </tr>
                                     </tfoot>
                                     <tbody>

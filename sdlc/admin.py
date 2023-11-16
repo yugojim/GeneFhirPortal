@@ -7,9 +7,9 @@ UserAdmin.list_display = ('username', 'email', 'is_staff', 'is_active', 'is_supe
 @admin.register(Genepermission)
 class GenepermissionAdmin(admin.ModelAdmin):
     #list display
-    list_display = ['User', 'pmi', 'specimen', 'biomarker', 'rearrangements','GenomicFindings','VariantProperties','Trials','reportProperties','copy_number_alterations','short_variants']
+    list_display = ['user', 'pmi', 'specimen', 'biomarker', 'rearrangements','GenomicFindings','VariantProperties','Trials','reportProperties','copy_number_alterations','short_variants']
     #list Filter
-    list_filter = ('User','dateTimeOfUpload')
+    list_filter = ('user','dateTimeOfUpload')
     # search list
     #search_fields = ['User']
 

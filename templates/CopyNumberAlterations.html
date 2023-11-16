@@ -25,7 +25,7 @@
                 <div class="container-fluid">
 				
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3><span class="badge badge-secondary">Gene Report Copy number alterations Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
+						<h3><span class="badge badge-secondary">Copy number alterations Count</span><span class="badge badge-Success">{{ FuncResult }}</span></h3>
 						{% if FuncResult  > 0 %}
 								<a href="/static/doc/datalist.csv" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 								class="fas fa-download fa-sm text-white-50"></i>download report</a>
@@ -38,22 +38,22 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="form-group col-md-1">
-								<label><h5>ReportNo</h5></label>
+								<label><h5>報告號碼</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="ReportNo" name="ReportNo">
+								<input type="text" class="form-control" id="ReportNo" name="ReportNo" value="{{search.ReportNo}}">
 							</div>
 							<div class="form-group col-md-1">
-								<label><h5>MPNo</h5></label>
+								<label><h5>分生號碼</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MPNo" name="MPNo">
+								<input type="text" class="form-control" id="MPNo" name="MPNo" value="{{search.MPNo}}">
 							</div>							
 							<div class="form-group col-md-1">
-								<label><h5>ChartNo(MRN)</h5></label>
+								<label><h5>病歷號</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="MRN" name="MRN">
+								<input type="text" class="form-control" id="MRN" name="MRN" value="{{search.MRN}}">
 							</div>
 						</div>
 						<div class="form-row">
@@ -61,19 +61,19 @@
 								<label><h5>gene</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="gene" name="gene">
+								<input type="text" class="form-control" id="gene" name="gene" value="{{search.gene}}">
 							</div>
 							<div class="form-group col-md-1">
 								<label><h5>type</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="type" name="type">
+								<input type="text" class="form-control" id="type" name="type" value="{{search.type}}">
 							</div>
 							<div class="form-group col-md-1">
 								<label><h5>copy_number</h5></label>
 							</div>
 							<div class="form-group col-md-2">
-								<input type="text" class="form-control" id="copy_number" name="copy_number">
+								<input type="text" class="form-control" id="copy_number" name="copy_number" value="{{search.copy_number}}">
 							</div>							
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
@@ -91,9 +91,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
+											<th>報告號碼</th>
+											<th>分生號碼</th>
+											<th>病歷號</th>
 											<th>gene</th>
 											<th>type</th>
 											<th>copy_number</th>
@@ -103,9 +103,9 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th>ReportNo</th>
-											<th>MPNo</th>
-											<th>MRN</th>
+											<th>報告號碼</th>
+											<th>分生號碼</th>
+											<th>病歷號</th>
 											<th>gene</th>
 											<th>type</th>
 											<th>copy_number</th>

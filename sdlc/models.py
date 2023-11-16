@@ -32,7 +32,7 @@ class Document(models.Model):
              {self.dateTimeOfUpload}'
     '''         
 class Genepermission(models.Model):
-    User = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length = 20)
     OrderingMD=models.TextField()
     MRN=models.TextField()
