@@ -1,6 +1,6 @@
 from django.shortcuts import render#, get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden#, HttpResponseRedirect
-#from django.urls import reverse
+#from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
@@ -38,6 +38,10 @@ ObservationImagingEKGJson = json.load(open(jsonPath,encoding="utf-8"))
  
 @csrf_exempt 
 def index(request):
+    #User = get_user_model()
+    #usersdf = User.objects.all().values()
+    #print(type([{i.title: i.specs} for i in User.objects.all()]))
+    #print([{i.title: i.specs} for i in User.objects.all()])
     user = request.user
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
@@ -50,6 +54,7 @@ def index(request):
         return render(request, 'index.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -60,6 +65,7 @@ def GeneReport(request):
     MPNo=''
     MRN=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -97,6 +103,7 @@ def GeneReport(request):
         SELECTint=len(rows)
         conn.close()
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -105,6 +112,7 @@ def GeneReport(request):
         return render(request, 'GeneReport.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -118,6 +126,7 @@ def PMI(request):
     TestType=''
     OrderingMD=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -182,6 +191,7 @@ def PMI(request):
                 'OrderingMD' : OrderingMD
                 } 
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -190,6 +200,7 @@ def PMI(request):
         return render(request, 'PMI.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -202,6 +213,7 @@ def Biomarker(request):
     status=''
     score=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -258,6 +270,7 @@ def Biomarker(request):
                 'score' : score
                 } 
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -266,6 +279,7 @@ def Biomarker(request):
         return render(request, 'Biomarker.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -281,6 +295,7 @@ def ShortVariants(request):
     allele_fraction=''
     functional_effect=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -357,6 +372,7 @@ def ShortVariants(request):
                 'functional_effect':functional_effect
                 } 
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -365,6 +381,7 @@ def ShortVariants(request):
         return render(request, 'ShortVariants.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -378,6 +395,7 @@ def CopyNumberAlterations(request):
     type=''
     copy_number=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -442,6 +460,7 @@ def CopyNumberAlterations(request):
                 'copy_number':copy_number,
                 } 
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -450,6 +469,7 @@ def CopyNumberAlterations(request):
         return render(request, 'CopyNumberAlterations.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -463,6 +483,7 @@ def Rearrangement(request):
     targeted_gene=''
     other_gene=''
     user = request.user
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
@@ -527,6 +548,7 @@ def Rearrangement(request):
                 'other_gene':other_gene,
                 } 
         context = {
+                'Generight' : Generight,
                 'search' : search,
                 'right' : right,
                 'FuncResult' : SELECTint,
@@ -535,6 +557,7 @@ def Rearrangement(request):
         return render(request, 'Rearrangement.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
                 'FuncResult' : 'Function'
                 }
@@ -789,11 +812,10 @@ def Practitioner(request):
 def PatientUpload(request):
     user = request.user
     #print(user.username)
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-
     #df = pd.read_excel(uploadedFile)
     #print(method)
-
     try:
         try:
             inlineRadioOptions = request.POST["inlineRadioOptions"]
@@ -895,7 +917,7 @@ def PatientUpload(request):
         '''         
         # Saving the information in the database
 
-        document = models.Document(
+        Genedata = models.Genedata(
             inlineRadioOptions=inlineRadioOptions,
             fileTitle = fileTitle,
             uploadedFile = uploadedFile,
@@ -915,22 +937,100 @@ def PatientUpload(request):
             ReceivedDate=ReceivedDate
         )
 
-        document.save()        
-        #documents = models.Document.objects.all()
-        
+        Genedata.save()        
+        #documents = models.Document.objects.all()        
         context = {
+                'Generight' : Generight,
                 'right' : right,
-                'FuncResult' : 'FuncResult'
+                'FuncResult' : 'Up finsh'
 #                'FuncResult' : Result,
 #                'data' : data,
                 }
         return render(request, 'PatientUpload.html', context)
     except:
         context = {
+                'Generight' : Generight,
                 'right' : right,
-                'FuncResult' : 'Up Fail '
+                'FuncResult' : 'Up Fail'
                 }
         return render(request, 'PatientUpload.html' , context)
+
+def Userright(request):
+    user = request.user
+    #print(user.username)
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    #df = pd.read_excel(uploadedFile)
+    #print(method)
+    try:
+        if request.POST["fileTitle"] !='':
+            fileTitle = request.POST["fileTitle"]
+        else:
+            fileTitle = '' 
+        try:
+            uploadedFile = request.FILES["uploadedFile"]
+        except:
+            uploadedFile = ''
+        # Saving the information in the database
+        Userright = models.Userright(
+            fileTitle = fileTitle,
+            uploadedFile = uploadedFile,
+        )
+        
+        Userright.save()        
+        #documents = models.Document.objects.all()        
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'FuncResult' : 'Up finsh'
+                }
+        return render(request, 'UsrUpload.html', context)
+    except:
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'FuncResult' : 'Up Fail'
+                }
+        return render(request, 'UsrUpload.html' , context)
+    
+def Metaxlsx(request):
+    user = request.user
+    #print(user.username)
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    #df = pd.read_excel(uploadedFile)
+    #print(method)
+    try:
+        if request.POST["fileTitle"] !='':
+            fileTitle = request.POST["fileTitle"]
+        else:
+            fileTitle = '' 
+        try:
+            uploadedFile = request.FILES["uploadedFile"]
+        except:
+            uploadedFile = ''
+        # Saving the information in the database
+        Metaxlsx = models.Metaxlsx(
+            fileTitle = fileTitle,
+            uploadedFile = uploadedFile,
+        )
+        
+        Metaxlsx.save()        
+        #documents = models.Document.objects.all()
+        
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'FuncResult' : 'Up finsh'
+                }
+        return render(request, 'MetaUpload.html', context)
+    except:
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'FuncResult' : 'Up Fail'
+                }
+        return render(request, 'MetaUpload.html' , context)
 
 def DataUpload(request):
     try:

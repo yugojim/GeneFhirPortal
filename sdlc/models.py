@@ -7,10 +7,20 @@ Created on Mon Jun 13 11:33:36 2022
 from django.db import models
 from django.contrib.auth.models import User
 
-class Document(models.Model):
+class Metaxlsx(models.Model):
+    fileTitle = models.CharField(max_length=200)
+    uploadedFile = models.FileField(upload_to="Metaxlsx/")
+    dateTimeOfUpload = models.DateTimeField(auto_now=True)
+
+class Userright(models.Model):
+    fileTitle = models.CharField(max_length=200)
+    uploadedFile = models.FileField(upload_to="Userright/")
+    dateTimeOfUpload = models.DateTimeField(auto_now=True)
+
+class Genedata(models.Model):
     inlineRadioOptions= models.CharField(max_length=200)
     fileTitle = models.CharField(max_length=200)
-    uploadedFile = models.FileField(upload_to="Uploaded Files/")
+    uploadedFile = models.FileField(upload_to="UploadedFiles/")
     ReportNo = models.CharField(max_length=200)
     MPNo = models.CharField(max_length=200)
     FullName = models.CharField(max_length=200)

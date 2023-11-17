@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Permission,Document,Genepermission
+from .models import Permission,Genedata,Genepermission,Metaxlsx,Userright
 from django.contrib.auth.admin import UserAdmin
 
 UserAdmin.list_display = ('username', 'email', 'is_staff', 'is_active', 'is_superuser', 'last_login','date_joined')
@@ -22,10 +22,28 @@ class PermissionAdmin(admin.ModelAdmin):
     # search list
     #search_fields = ['User']
 
-@admin.register(Document)
-class DocumentAdmin(admin.ModelAdmin):
+@admin.register(Genedata)
+class GenedataAdmin(admin.ModelAdmin):
     #list display
     list_display = ['inlineRadioOptions', 'fileTitle', 'uploadedFile', 'ReportNo', 'MPNo', 'MRN', 'SubmittedDiagnosis', 'TestType', 'OrderingMD']
+    #list Filter
+    list_filter = ('fileTitle','dateTimeOfUpload')
+    # search list
+    #search_fields = ['User']
+    
+@admin.register(Metaxlsx)
+class MetaxlsxAdmin(admin.ModelAdmin):
+    #list display
+    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload']
+    #list Filter
+    list_filter = ('fileTitle','dateTimeOfUpload')
+    # search list
+    #search_fields = ['User']
+
+@admin.register(Userright)
+class UserrightAdmin(admin.ModelAdmin):
+    #list display
+    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload']
     #list Filter
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list

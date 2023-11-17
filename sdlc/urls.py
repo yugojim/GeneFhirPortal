@@ -62,6 +62,8 @@ urlpatterns = [
     path('patient_medical_records', views.patient_medical_records, name='patient_medical_records'),
     
     path('PatientUpload/', views.PatientUpload, name='PatientUpload'),
+    path('Metaxlsx/', views.Metaxlsx, name='Metaxlsx'),
+    path('Userright/', views.Userright, name='Userright'),
     path('DataUpload/', views.DataUpload, name='DataUpload'),
         
     path('admin/',admin.site.urls),
