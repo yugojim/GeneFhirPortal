@@ -17,7 +17,6 @@
 		}
 	</style>	
 </head>
-
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -28,10 +27,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="card-header py-3">
-                        <center><h3 class="m-0 font-weight-bold text-primary">Gene Report</h3></center>
-                    </div>
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <center>							
 							<div class="form-row">
 								<div class="form-group col-md-1">
 									<div class="h5 font-weight-bold text-primary">報告號碼</div>
@@ -44,6 +40,15 @@
 								</div>
 								<div class="form-group col-md-1">
 									<div class="h5 font-weight-bold">{{ data.3}}</div>
+								</div>
+							</div>
+						</center>
+                    </div>
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+							<div class="form-row">
+								<div class="form-group col-md-1">
+									<div class="h5 font-weight-bold text-primary">PMI</div>
 								</div>
 							</div>
                         </div>
@@ -73,12 +78,6 @@
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.ReceivedDate}}</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">ReportId</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.ReportId }}</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">檢測項目</div>
@@ -113,12 +112,6 @@
 								</div>
 								<div class="form-group col-md-1">
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.OrderingMD}}</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">MEDICAL FACILITY</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.MedFacilName}}</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">病理醫師</div>
@@ -218,12 +211,120 @@
                         </div>
 						{% endif %}
 					</div>
-					
+
+					{% if Generight.0.short_variants %}
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme5">short_variants</button>
+                        </div>						
+                        <div class="card-body">
+                            <div class="table-responsive table-striped">
+                                <table class="table table-bordered collapse" id="collapseme5" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">gene</th>
+											<th class="col-sm-1">protein_effect</th>
+                                            <th class="col-sm-1">cds_effect</th>
+											<th class="col-sm-1">position</th>
+											<th class="col-sm-1">allele_fraction</th>
+											<th class="col-sm-1">depth</th>
+											<th class="col-sm-1">functional_effect</th>
+											<th class="col-sm-1">transcript</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">gene</th>
+											<th class="col-sm-1">protein_effect</th>
+                                            <th class="col-sm-1">cds_effect</th>
+											<th class="col-sm-1">position</th>
+											<th class="col-sm-1">allele_fraction</th>
+											<th class="col-sm-1">depth</th>
+											<th class="col-sm-1">functional_effect</th>
+											<th class="col-sm-1">transcript</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for short_variant in data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
+										<tr>
+											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank">{{ short_variant.gene }}</a></div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.protein_effect }}</div></td>											
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.cds_effect }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.position }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.allele_fraction }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.depth }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.functional_effect }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.transcript }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.status }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ short_variant.equivocal }}</div></td>
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>						
+					</div>
+					{% endif %}
+					{% if Generight.0.copy_number_alterations %}
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme4">copy_number_alterations</button>
+                        </div>						
+                        <div class="card-body">
+                            <div class="table-responsive table-striped">
+                                <table class="table table-bordered collapse" id="collapseme4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th class="col-sm-1">gene</th>
+											<th class="col-sm-1">type</th>
+											<th class="col-sm-1">copy_number</th>
+											<th class="col-sm-1">ratio</th>
+											<th class="col-sm-1">number_of_exons</th>
+											<th class="col-sm-1">position</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th class="col-sm-1">gene</th>
+											<th class="col-sm-1">type</th>
+											<th class="col-sm-1">copy_number</th>
+											<th class="col-sm-1">ratio</th>
+											<th class="col-sm-1">number_of_exons</th>
+											<th class="col-sm-1">position</th>
+											<th class="col-sm-1">status</th>
+											<th class="col-sm-1">equivocal</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for copy_number_alteration in data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
+										<tr>
+											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank">{{ copy_number_alteration.gene }}</a></div></td>				
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.type }}</div></td>												
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.copy_number }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.ratio }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.number_of_exons }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.position }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.status }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.equivocal }}</div></td>
+										</tr>
+										{% endfor %}	
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>						
+					</div>
+					{% endif %}	
+					{% if Generight.0.rearrangements %}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme6">rearrangements</button>
                         </div>
-						{% if Generight.0.rearrangements %}
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped collapse" id="collapseme6" width="100%" cellspacing="0">
@@ -291,14 +392,17 @@
                                 </table>
                             </div>
                         </div>
-						{% endif %}
+
 					</div>
+					{% endif %}
+					<!--
 					
+					{% if Generight.0.GenomicFindings %}					
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme1">Genomic Findings</button>
                         </div>
-						{% if Generight.0.GenomicFindings %}
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped collapse tbl-scroll" id="collapseme1" width="100%" cellspacing="0">
@@ -395,14 +499,14 @@
                                 </table>
                             </div>
                         </div>
-						{% endif %}
+
                     </div>
-					
+					{% endif %}
+					{% if Generight.0.VariantProperties %}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme">VariantProperties</button>
-                        </div>
-						{% if Generight.0.VariantProperties %}
+                        </div>						
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped collapse" id="collapseme" width="100%" cellspacing="0">
@@ -431,17 +535,15 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-						{% endif %}
+                        </div>						
                     </div>
+					{% endif %}
 					
-					
-
+					{% if Generight.0.Trials %}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme2">Trials</button>
-                        </div>
-						{% if Generight.0.Trials %}
+                        </div>						
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped collapse" id="collapseme2" width="100%" cellspacing="0">
@@ -488,15 +590,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-						{% endif %}
+                        </div>						
 					</div>
-
+					{% endif %}
+					{% if Generight.0.reportProperties %}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme3">reportProperties</button>
-                        </div>
-						{% if Generight.0.reportProperties %}
+                        </div>						
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped collapse" id="collapseme3" width="100%" cellspacing="0">
@@ -522,120 +623,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-						{% endif %}
+                        </div>						
 					</div>
-					
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme4">copy_number_alterations</button>
-                        </div>
-						{% if Generight.0.copy_number_alterations %}
-                        <div class="card-body">
-                            <div class="table-responsive table-striped">
-                                <table class="table table-bordered collapse" id="collapseme4" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-											<th class="col-sm-1">gene</th>
-											<th class="col-sm-1">type</th>
-											<th class="col-sm-1">copy_number</th>
-											<th class="col-sm-1">ratio</th>
-											<th class="col-sm-1">number_of_exons</th>
-											<th class="col-sm-1">position</th>
-											<th class="col-sm-1">status</th>
-											<th class="col-sm-1">equivocal</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-											<th class="col-sm-1">gene</th>
-											<th class="col-sm-1">type</th>
-											<th class="col-sm-1">copy_number</th>
-											<th class="col-sm-1">ratio</th>
-											<th class="col-sm-1">number_of_exons</th>
-											<th class="col-sm-1">position</th>
-											<th class="col-sm-1">status</th>
-											<th class="col-sm-1">equivocal</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-										{% for copy_number_alteration in data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
-										<tr>
-											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank">{{ copy_number_alteration.gene }}</a></div></td>				
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.type }}</div></td>												
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.copy_number }}</div></td>
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.ratio }}</div></td>
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.number_of_exons }}</div></td>
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.position }}</div></td>
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.status }}</div></td>
-											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.equivocal }}</div></td>
-										</tr>
-										{% endfor %}	
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-						{% endif %}
-					</div>
-						
-					<div class="card shadow mb-4">
-                        <div class="card-header py-3">
-							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme5">short_variants</button>
-                        </div>
-						{% if Generight.0.short_variants %}
-                        <div class="card-body">
-                            <div class="table-responsive table-striped">
-                                <table class="table table-bordered collapse" id="collapseme5" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-											<th class="col-sm-1">gene</th>
-											<th class="col-sm-1">protein_effect</th>
-                                            <th class="col-sm-1">cds_effect</th>
-											<th class="col-sm-1">position</th>
-											<th class="col-sm-1">allele_fraction</th>
-											<th class="col-sm-1">depth</th>
-											<th class="col-sm-1">functional_effect</th>
-											<th class="col-sm-1">transcript</th>
-											<th class="col-sm-1">status</th>
-											<th class="col-sm-1">equivocal</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-											<th class="col-sm-1">gene</th>
-											<th class="col-sm-1">protein_effect</th>
-                                            <th class="col-sm-1">cds_effect</th>
-											<th class="col-sm-1">position</th>
-											<th class="col-sm-1">allele_fraction</th>
-											<th class="col-sm-1">depth</th>
-											<th class="col-sm-1">functional_effect</th>
-											<th class="col-sm-1">transcript</th>
-											<th class="col-sm-1">status</th>
-											<th class="col-sm-1">equivocal</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-										{% for short_variant in data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
-										<tr>
-											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank">{{ short_variant.gene }}</a></div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.protein_effect }}</div></td>											
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.cds_effect }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.position }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.allele_fraction }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.depth }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.functional_effect }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.transcript }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.status }}</div></td>
-											<td><div class="collapse out" id="collapseme5">{{ short_variant.equivocal }}</div></td>
-										</tr>
-										{% endfor %}	
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-						{% endif %}
-					</div>
-					<!--
+					{% endif %}
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme6">References</button>
@@ -669,8 +659,7 @@
                                 </table>
                             </div>
                     </div>-->
-
-<!-- Footer -->
+			<!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -681,13 +670,11 @@
             <!-- End of Footer -->
 			<!-- /.container-fluid -->
 		</div>
-		<!-- End of Main Content -->
-		
+		<!-- End of Main Content -->		
 	</div>
-        <!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 {% include 'utilities-js.html' %}    
 </body>
-
 </html>

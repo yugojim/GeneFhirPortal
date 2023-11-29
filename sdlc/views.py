@@ -88,7 +88,7 @@ def GeneReport(request):
         #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' LIKE '%" + request.POST['OrderingMD'] + "%';"
         #elif request.POST['Diagnosis'] != '':
         #    consentsql = consentsql + "WHERE  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%';"
-        consentsql = consentsql + ' LIMIT 200'
+        #consentsql = consentsql + ' LIMIT 200'
         search={'ReportNo' : ReportNo,
                 'MPNo' : MPNo,
                 'MRN' : MRN
@@ -119,9 +119,9 @@ def GeneReport(request):
         return render(request, 'GeneReport.html', context)
 
 def PMI(request):
-    ReportNo=''
-    MPNo=''
-    MRN=''
+    #ReportNo=''
+    #MPNo=''
+    #MRN=''
     Diagnosis=''
     TestType=''
     OrderingMD=''
@@ -132,15 +132,15 @@ def PMI(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '
-        if request.POST['ReportNo'] != '':
-            ReportNo = request.POST['ReportNo']
-            consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
-        if request.POST['MPNo'] != '':
-            MPNo = request.POST['MPNo']
-            consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
-        if request.POST['MRN'] != '':
-            MRN = request.POST['MRN']
-            consentsql = consentsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%' "
+        #if request.POST['ReportNo'] != '':
+        #    ReportNo = request.POST['ReportNo']
+        #    consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
+        #if request.POST['MPNo'] != '':
+        #    MPNo = request.POST['MPNo']
+        #    consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
+        #if request.POST['MRN'] != '':
+        #    MRN = request.POST['MRN']
+        #    consentsql = consentsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%' "
         if request.POST['Diagnosis'] != '':
             Diagnosis = request.POST['Diagnosis']
             consentsql = consentsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%' " 
@@ -160,12 +160,12 @@ def PMI(request):
                     resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'Sample' ->> 'TestType' as \"NGS Assay\", \
                         resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'OrderingMD' as \"OrderingMD\" \
                             FROM public.reportxml where true "
-        if request.POST['ReportNo'] != '':            
-            datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
-        if request.POST['MPNo'] != '':            
-            datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
-        if request.POST['MRN'] != '':           
-            datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':            
+        #    datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        #if request.POST['MPNo'] != '':            
+        #    datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
+        #if request.POST['MRN'] != '':           
+        #    datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         if request.POST['Diagnosis'] != '':
             datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'SubmittedDiagnosis' LIKE '%" + request.POST['Diagnosis'] + "%'" 
         if request.POST['TestType'] != '':
@@ -183,9 +183,9 @@ def PMI(request):
         
         SELECTint=len(rows)
         conn.close()
-        search={'ReportNo' : ReportNo,
-                'MPNo' : MPNo,
-                'MRN' : MRN,
+        search={#'ReportNo' : ReportNo,
+                #'MPNo' : MPNo,
+                #'MRN' : MRN,
                 'Diagnosis' : Diagnosis,
                 'TestType' : TestType,
                 'OrderingMD' : OrderingMD
@@ -207,9 +207,9 @@ def PMI(request):
         return render(request, 'PMI.html', context)
 
 def Biomarker(request):
-    ReportNo=''
-    MPNo=''
-    MRN=''
+    #ReportNo=''
+    #MPNo=''
+    #MRN=''
     status=''
     score=''
     user = request.user
@@ -219,15 +219,15 @@ def Biomarker(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
-        if request.POST['ReportNo'] != '':
-            ReportNo = request.POST['ReportNo']
-            consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
-        if request.POST['MPNo'] != '':
-            MPNo = request.POST['MPNo']
-            consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
-        if request.POST['MRN'] != '':
-            MRN = request.POST['MRN']
-            consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%' "
+        #if request.POST['ReportNo'] != '':
+        #    ReportNo = request.POST['ReportNo']
+        #    consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
+        #if request.POST['MPNo'] != '':
+        #    MPNo = request.POST['MPNo']
+        #    consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
+        #if request.POST['MRN'] != '':
+        #    MRN = request.POST['MRN']
+        #    consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%' "
         if request.POST['status'] != '':
             status = request.POST['status']
             consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' LIKE '%" + request.POST['status'] + "%'"
@@ -243,12 +243,12 @@ def Biomarker(request):
                 resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' as \"Microsatellite Status\", \
                     resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'tumor_mutation_burden' ->> 'score' as \"Tumor Mutational Burden score\" \
                         FROM public.reportxml where true "
-        if request.POST['ReportNo'] != '':
-            datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
-        if request.POST['MPNo'] != '':
-            datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
-        if request.POST['MRN'] != '':
-            datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        #if request.POST['MPNo'] != '':
+        #    datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
+        #if request.POST['MRN'] != '':
+        #    datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         if request.POST['status'] != '':
             datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'biomarkers' -> 'microsatellite_instability' ->> 'status' LIKE '%" + request.POST['status'] + "%'"
         if request.POST['score'] != '':
@@ -263,9 +263,9 @@ def Biomarker(request):
         
         SELECTint=len(rows)
         conn.close()
-        search={'ReportNo' : ReportNo,
-                'MPNo' : MPNo,
-                'MRN' : MRN,
+        search={#'ReportNo' : ReportNo,
+                #'MPNo' : MPNo,
+                #'MRN' : MRN,
                 'status' : status,
                 'score' : score
                 } 
@@ -286,9 +286,9 @@ def Biomarker(request):
         return render(request, 'Biomarker.html', context)
     
 def ShortVariants(request):
-    ReportNo=''
-    MPNo=''
-    MRN=''
+    #ReportNo=''
+    #MPNo=''
+    #MRN=''
     gene=''
     protein_effect=''
     cds_effect=''
@@ -301,15 +301,15 @@ def ShortVariants(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
-        if request.POST['ReportNo'] != '':
-            ReportNo = request.POST['ReportNo']
-            consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
-        if request.POST['MPNo'] != '':
-            MPNo = request.POST['MPNo']
-            consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
-        if request.POST['MRN'] != '':
-            MRN = request.POST['MRN']
-            consentsql = consentsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    ReportNo = request.POST['ReportNo']
+        #    consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
+        #if request.POST['MPNo'] != '':
+        #    MPNo = request.POST['MPNo']
+        #    consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
+        #if request.POST['MRN'] != '':
+        #    MRN = request.POST['MRN']
+        #    consentsql = consentsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
             
         if request.POST['gene'] != '':
             gene = request.POST['gene']
@@ -329,17 +329,17 @@ def ShortVariants(request):
         #print(consentsql)
         cur.execute(consentsql)
         rows = cur.fetchall()
-        
+        '''
         datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
             resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
                 resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' as \"short variants\" \
                     FROM public.reportxml where true "
-        if request.POST['ReportNo'] != '':
-            datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
-        if request.POST['MPNo'] != '':
-            datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
-        if request.POST['MRN'] != '':
-            datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        #if request.POST['MPNo'] != '':
+        #    datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
+        #if request.POST['MRN'] != '':
+        #    datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         
         if request.POST['gene'] != '':
             datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'short_variants' ->> 'short_variant' LIKE '%" + request.POST['gene'] + "%'" 
@@ -359,12 +359,12 @@ def ShortVariants(request):
         column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "short variants"]  
         df.columns=column_list
         df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
-        
+        '''
         SELECTint=len(rows)
         conn.close()
-        search={'ReportNo' : ReportNo,
-                'MPNo' : MPNo,
-                'MRN' : MRN,
+        search={#'ReportNo' : ReportNo,
+                #'MPNo' : MPNo,
+                #'MRN' : MRN,
                 'gene':gene,
                 'protein_effect':protein_effect,
                 'cds_effect':cds_effect,
@@ -388,9 +388,9 @@ def ShortVariants(request):
         return render(request, 'ShortVariants.html', context)
 
 def CopyNumberAlterations(request):
-    ReportNo=''
-    MPNo=''
-    MRN=''
+    #ReportNo=''
+    #MPNo=''
+    #MRN=''
     gene=''
     type=''
     copy_number=''
@@ -401,15 +401,15 @@ def CopyNumberAlterations(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
-        if request.POST['ReportNo'] != '':
-            ReportNo = request.POST['ReportNo']
-            consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
-        if request.POST['MPNo'] != '':
-            MPNo = request.POST['MPNo']
-            consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
-        if request.POST['MRN'] != '':
-            MRN = request.POST['MRN']
-            consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    ReportNo = request.POST['ReportNo']
+        #    consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
+        #if request.POST['MPNo'] != '':
+        #    MPNo = request.POST['MPNo']
+        #    consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
+        #if request.POST['MRN'] != '':
+        #    MRN = request.POST['MRN']
+        #    consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         
         if request.POST['gene'] != '':
             gene = request.POST['gene']
@@ -423,17 +423,17 @@ def CopyNumberAlterations(request):
         #print(consentsql)
         cur.execute(consentsql)
         rows = cur.fetchall()
-        
+        '''
         datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
             resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
                 resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' as \"copy number alterations\" \
                     FROM public.reportxml where true "
-        if request.POST['ReportNo'] != '':
-            datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
-        if request.POST['MPNo'] != '':
-            datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
-        if request.POST['MRN'] != '':
-            datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        #if request.POST['MPNo'] != '':
+        #    datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
+        #if request.POST['MRN'] != '':
+        #    datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         
         if request.POST['gene'] != '':
             datalistsql = datalistsql + " and  resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'copy_number_alterations' ->> 'copy_number_alteration' LIKE '%" + request.POST['gene'] + "%'"
@@ -449,12 +449,12 @@ def CopyNumberAlterations(request):
         column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "copy number alterations"]  
         df.columns=column_list
         df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)
-
+        '''
         SELECTint=len(rows)
         conn.close()
-        search={'ReportNo' : ReportNo,
-                'MPNo' : MPNo,
-                'MRN' : MRN,
+        search={#'ReportNo' : ReportNo,
+                #'MPNo' : MPNo,
+                #'MRN' : MRN,
                 'gene':gene,
                 'type':type,
                 'copy_number':copy_number,
@@ -476,9 +476,9 @@ def CopyNumberAlterations(request):
         return render(request, 'CopyNumberAlterations.html', context)
 
 def Rearrangement(request):
-    ReportNo=''
-    MPNo=''
-    MRN=''
+    #ReportNo=''
+    #MPNo=''
+    #MRN=''
     description=''
     targeted_gene=''
     other_gene=''
@@ -489,15 +489,15 @@ def Rearrangement(request):
         conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
-        if request.POST['ReportNo'] != '':
-            ReportNo = request.POST['ReportNo']
-            consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
-        if request.POST['MPNo'] != '':
-            MPNo = request.POST['MPNo']
-            consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
-        if request.POST['MRN'] != '':
-            MRN = request.POST['MRN']
-            consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    ReportNo = request.POST['ReportNo']
+        #    consentsql = consentsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\' '
+        #if request.POST['MPNo'] != '':
+        #    MPNo = request.POST['MPNo']
+        #    consentsql = consentsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\' '
+        #if request.POST['MRN'] != '':
+        #    MRN = request.POST['MRN']
+        #    consentsql = consentsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
 
         if request.POST['description'] != '':
             description = request.POST['description']
@@ -511,17 +511,17 @@ def Rearrangement(request):
         
         cur.execute(consentsql)
         rows = cur.fetchall()
-        
+        '''
         datalistsql = "SELECT id, \"ReportNo\",\"MPNo\", \
             resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' as \"MRN\", \
                 resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' as \"rearrangements\" \
                     FROM public.reportxml where true "
-        if request.POST['ReportNo'] != '':
-            datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
-        if request.POST['MPNo'] != '':
-            datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
-        if request.POST['MRN'] != '':
-            datalistsql = datalistsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
+        #if request.POST['ReportNo'] != '':
+        #    datalistsql = datalistsql + ' and "ReportNo" = \'' + request.POST['ReportNo'] + '\''
+        #if request.POST['MPNo'] != '':
+        #    datalistsql = datalistsql + ' and "MPNo" = \'' + request.POST['MPNo'] + '\''
+        #if request.POST['MRN'] != '':
+        #    datalistsql = datalistsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'FinalReport' -> 'PMI' ->> 'MRN' LIKE '%" + request.POST['MRN'] + "%'"
         
         if request.POST['description'] != '':
             datalistsql = datalistsql + " and resultsreport -> 'ResultsReport' -> 'ResultsPayload' -> 'variant_report' -> 'rearrangements' ->> 'rearrangement' LIKE '%" + request.POST['description'] + "%'"
@@ -537,12 +537,12 @@ def Rearrangement(request):
         column_list = ["Id", "報告號碼", "分生號碼", "病歷號", "rearrangements"]  
         df.columns=column_list
         df.to_csv('static/doc/datalist.csv', encoding='utf-8-sig' ,index=False)        
-        
+        '''
         SELECTint=len(rows)
         conn.close()
-        search={'ReportNo' : ReportNo,
-                'MPNo' : MPNo,
-                'MRN' : MRN,
+        search={#'ReportNo' : ReportNo,
+                #'MPNo' : MPNo,
+                #'MRN' : MRN,
                 'description':description,
                 'targeted_gene':targeted_gene,
                 'other_gene':other_gene,
@@ -831,7 +831,7 @@ def PatientUpload(request):
             uploadedFile = request.FILES["uploadedFile"]
         except:
             uploadedFile = ''
-
+        '''    
         if request.POST["ReportNo"] !='':
             ReportNo = request.POST["ReportNo"]
         else:
@@ -896,47 +896,49 @@ def PatientUpload(request):
             ReceivedDate = request.POST["ReceivedDate"]
         else:
             ReceivedDate = ''
-        '''
+
         print(inlineRadioOptions,
               fileTitle,              
-              uploadedFile,
-              ReportNo,
-              MPNo,
-              FullName,
-              MRN,
-              SpecFormat,
-              BlockId,
-              purity,
-              Tumortype,
-              SubmittedDiagnosis,
-              TestType,
-              OrderingMD,
-              Pathologist,
-              ReceivedDate
+              uploadedFile
               )
-        '''         
+        ,
+        ReportNo,
+        MPNo,
+        FullName,
+        MRN,
+        SpecFormat,
+        BlockId,
+        purity,
+        Tumortype,
+        SubmittedDiagnosis,
+        TestType,
+        OrderingMD,
+        Pathologist,
+        ReceivedDate
+        '''
+                
         # Saving the information in the database
 
         Genedata = models.Genedata(
             inlineRadioOptions=inlineRadioOptions,
             fileTitle = fileTitle,
-            uploadedFile = uploadedFile,
-            
-            ReportNo = ReportNo,
-            MPNo = MPNo,
-            FullName = FullName,
-            MRN = MRN,
-            SpecFormat = SpecFormat,
-            BlockId = BlockId,
-            purity=purity,
-            Tumortype=Tumortype,
-            SubmittedDiagnosis=SubmittedDiagnosis,
-            TestType=TestType,
-            OrderingMD = OrderingMD,
-            Pathologist=Pathologist,
-            ReceivedDate=ReceivedDate
+            uploadedFile = uploadedFile
         )
-
+        '''
+        ReportNo = ReportNo,
+        MPNo = MPNo,
+        FullName = FullName,
+        MRN = MRN,
+        SpecFormat = SpecFormat,
+        BlockId = BlockId,
+        purity=purity,
+        Tumortype=Tumortype,
+        SubmittedDiagnosis=SubmittedDiagnosis,
+        TestType=TestType,
+        OrderingMD = OrderingMD,
+        Pathologist=Pathologist,
+        ReceivedDate=ReceivedDate
+        '''
         Genedata.save()        
         #documents = models.Document.objects.all()        
         context = {

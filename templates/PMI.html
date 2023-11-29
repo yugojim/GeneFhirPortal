@@ -36,6 +36,7 @@
 					<form method="post" action="{% url 'PMI' %}">
 					{% csrf_token %}
 					<div class="form-group">
+					<!--
 						<div class="form-row">
 							<div class="form-group col-md-1">
 								<label><h5>報告號碼</h5></label>
@@ -56,6 +57,7 @@
 								<input type="text" class="form-control" id="MRN" name="MRN" value="{{search.MRN}}">
 							</div>
 						</div>
+					-->
 						<div class="form-row">
 							<div class="form-group col-md-1">
 								<label><h5>Diagnosis</h5></label>
@@ -76,7 +78,7 @@
 								<input type="text" class="form-control" id="OrderingMD" name="OrderingMD" value="{{search.OrderingMD}}">
 							</div>
 							<div class="form-group col-md-1">
-								<button type="submit" class="btn btn-primary">Submit</button>
+								<button type="submit" class="btn btn-primary">Search</button>
 							</div>
 						</div>				  
 					</div>
@@ -88,7 +90,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="Table" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
 											<th>報告號碼</th>

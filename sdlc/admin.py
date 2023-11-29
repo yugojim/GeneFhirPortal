@@ -25,7 +25,7 @@ class PermissionAdmin(admin.ModelAdmin):
 @admin.register(Genedata)
 class GenedataAdmin(admin.ModelAdmin):
     #list display
-    list_display = ['inlineRadioOptions', 'fileTitle', 'uploadedFile', 'ReportNo', 'MPNo', 'MRN', 'SubmittedDiagnosis', 'TestType', 'OrderingMD']
+    list_display = ['inlineRadioOptions', 'fileTitle', 'uploadedFile']
     #list Filter
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list
