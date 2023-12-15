@@ -31,7 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 fhir = 'http://192.168.211.9:8080/fhir/'#4600VM
 postgresip = "192.168.211.19"
-genepostgresip = "104.208.68.39"
+#genepostgresip = "104.208.68.39"
+genepostgresip = "10.97.242.13"
 
 jsonPath=str(pathlib.Path().absolute()) + "/static/template/Observation-Imaging-EKG.json"
 ObservationImagingEKGJson = json.load(open(jsonPath,encoding="utf-8"))
