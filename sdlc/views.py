@@ -1050,6 +1050,8 @@ class NpEncoder(json.JSONEncoder):
         if isinstance(obj, np.ndarray):
             return obj.tolist()
         return super(NpEncoder, self).default(obj)
+    
+
 
 def Metaxlsx(request):
     user = request.user
@@ -1067,12 +1069,13 @@ def Metaxlsx(request):
                 #print(dirname)
             dfpath=os.getcwd()+'/media/'+str(meta.uploadedFile)
             #print(dfpath)
-            df = pd.read_excel(dfpath)
-            #print(df)
+
             conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="104.208.68.39", port="8081")
             #print('Opened database successfully')
             cur = conn.cursor()
-
+            
+            df = pd.read_excel(dfpath)
+            #print(df)
             df = df.assign(update='')
             #print("Columns")
             #print(df.columns)
@@ -1106,11 +1109,11 @@ def Metaxlsx(request):
                             if not np.isnan(df['標本組織部位來源'][i]):
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
                             sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
-                            #if i ==1:
-                            datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
-                            #print(type(datajson))
-                            with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
-                                f.write(datajson)
+                            if i ==1:
+                                datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
+                                #print(type(datajson))
+                                with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
+                                    f.write(datajson)
                             #print(sql)
                             cur.execute(sql)
                             #print(cur.rowcount)
