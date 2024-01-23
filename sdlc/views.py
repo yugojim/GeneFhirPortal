@@ -1080,45 +1080,45 @@ def Metaxlsx(request):
                 #if i % 10 ==0:
                     #print(i)
                     #print(df['分生號碼'][i] + ' ' + df['報告號碼'][i])
-                try:
-                    ReportNo=df['報告號碼'][i]
-                    MPNo=df['分生號碼'][i]
-                    query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
-                    df1 = pd.read_sql(query, conn)
-                    for j in range(len(df1)):
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['FullName']=str(df['病患姓名'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis']=str(df['Diagnosis'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['OrderingMD']=str(df['臨床主治醫師'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['Pathologist']=str(df['病理醫師'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReceivedDate']=str(df['報告日期'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['TumorType']=str(df['Tumor type'][i])
-                            
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['BlockId']=str(df['蠟塊號'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TestType']=str(df['檢測項目'][i])
-                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
-                            try:
-                                if not np.isnan(df['Tumor purity %'][i]):
-                                    df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=df['Tumor purity %'][i]
-                            except:
-                                None
-                            if not np.isnan(df['標本組織部位來源'][i]):
-                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
-                            sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
-                            #if i ==1:
-                            datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
-                            #print(type(datajson))
-                            with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
-                                f.write(datajson)
-                            #print(sql)
-                            cur.execute(sql)
-                            #print(cur.rowcount)
-                            if cur.rowcount > -1:
-                                df['update'][i]='OK'
-                            conn.commit()
-                except:
-                    df['update'][i]='NG'
+                #try:
+                ReportNo=df['報告號碼'][i]
+                MPNo=df['分生號碼'][i]
+                query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
+                df1 = pd.read_sql(query, conn)
+                for j in range(len(df1)):
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['FullName']=str(df['病患姓名'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis']=str(df['Diagnosis'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['OrderingMD']=str(df['臨床主治醫師'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['Pathologist']=str(df['病理醫師'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReceivedDate']=str(df['報告日期'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['TumorType']=str(df['Tumor type'][i])
+                        
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['BlockId']=str(df['蠟塊號'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TestType']=str(df['檢測項目'][i])
+                        df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
+                        try:
+                            if not np.isnan(df['Tumor purity %'][i]):
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=df['Tumor purity %'][i]
+                        except:
+                            None
+                        if not np.isnan(df['標本組織部位來源'][i]):
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
+                        sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
+                        #if i ==1:
+                        datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
+                        #print(type(datajson))
+                        with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
+                            f.write(datajson)
+                        #print(sql)
+                        cur.execute(sql)
+                        #print(cur.rowcount)
+                        if cur.rowcount > -1:
+                            df['update'][i]='OK'
+                        conn.commit()
+                #except:
+                    #df['update'][i]='NG'
             df.to_excel(dfpath,index=False)
 
             #print(os.path.abspath(os.getcwd()))
