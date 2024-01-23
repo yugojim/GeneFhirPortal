@@ -1067,7 +1067,8 @@ def Metaxlsx(request):
             #print(meta.uploadedFile)
             #for dirname in os.listdir(os.getcwd()+'/media/'):
                 #print(dirname)
-            dfpath=os.getcwd()+'/media/'+str(meta.uploadedFile)
+            dfpath=os.getcwd().replace('\\','/')+'/media/'+str(meta.uploadedFile)
+            #dfpath='/media/'+str(meta.uploadedFile)
             #print(dfpath)
 
             conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="104.208.68.39", port="8081")
