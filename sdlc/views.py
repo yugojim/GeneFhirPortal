@@ -8,7 +8,7 @@ from linebot.models import MessageEvent, TextSendMessage, ImageSendMessage \
     #,VideoSendMessage, AudioSendMessage, LocationSendMessage, StickerSendMessage\
         #, ButtonsTemplate, TemplateSendMessage, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
 from datetime import datetime
-
+import numpy as np
 import pandas as pd
 import pathlib
 import os
@@ -24,6 +24,9 @@ from . import models
 from django.core.servers.basehttp import WSGIServer
 WSGIServer.handle_error = lambda *args, **kwargs: None
 
+import warnings
+warnings.filterwarnings('ignore')
+
 DocumentPath = str(pathlib.Path().absolute()) + "/static/doc/"
 risk = DocumentPath + 'risk.csv'
 riskdf = pd.read_csv(risk, encoding='utf8')
@@ -31,8 +34,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 fhir = 'http://192.168.211.9:8080/fhir/'#4600VM
 postgresip = "192.168.211.19"
-#genepostgresip = "104.208.68.39"
-genepostgresip = "10.97.242.13"
+genepostgresip = "104.208.68.39"
+#genepostgresip = "10.97.242.13"
 
 jsonPath=str(pathlib.Path().absolute()) + "/static/template/Observation-Imaging-EKG.json"
 ObservationImagingEKGJson = json.load(open(jsonPath,encoding="utf-8"))
@@ -996,44 +999,144 @@ def Userright(request):
                 }
         return render(request, 'UsrUpload.html' , context)
     
-def Metaxlsx(request):
+def UpdateMeta(request):
     user = request.user
     #print(user.username)
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
+    Metaxlsxall=models.Metaxlsx.objects.all().order_by('-id')
     #df = pd.read_excel(uploadedFile)
     #print(method)
+    
     try:
-        if request.POST["fileTitle"] !='':
-            fileTitle = request.POST["fileTitle"]
-        else:
-            fileTitle = '' 
-        try:
-            uploadedFile = request.FILES["uploadedFile"]
-        except:
-            uploadedFile = ''
-        # Saving the information in the database
-        Metaxlsx = models.Metaxlsx(
-            fileTitle = fileTitle,
-            uploadedFile = uploadedFile,
-        )
-        
-        Metaxlsx.save()        
-        #documents = models.Document.objects.all()
-        
+        if request.POST["fileTitle"] !='' and request.FILES["uploadedFile"]!='':
+            if request.POST["fileTitle"] !='':
+                fileTitle = request.POST["fileTitle"]
+            else:
+                fileTitle = '' 
+            try:
+                uploadedFile = request.FILES["uploadedFile"]
+            except:
+                uploadedFile = ''
+            # Saving the information in the database
+            Metaxlsx = models.Metaxlsx(
+                fileTitle = fileTitle,
+                uploadedFile = uploadedFile,
+            )            
+            Metaxlsx.save()        
+            #documents = models.Document.objects.all()        
         context = {
                 'Generight' : Generight,
                 'right' : right,
-                'FuncResult' : 'Up finsh'
+                'Metaxlsx' : Metaxlsxall,
+                'FuncResult' : 'Upload finsh'
                 }
         return render(request, 'MetaUpload.html', context)
     except:
         context = {
                 'Generight' : Generight,
                 'right' : right,
-                'FuncResult' : 'Up Fail'
+                'Metaxlsx' : Metaxlsxall,
+                'FuncResult' : 'No file upload'
                 }
         return render(request, 'MetaUpload.html' , context)
+    
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super(NpEncoder, self).default(obj)
+
+def Metaxlsx(request):
+    user = request.user
+    #print(user.username)
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    
+    try:
+        rid=request.GET["id"]
+        #print(rid)
+        Metaxlsx=models.Metaxlsx.objects.filter(id=rid)
+        for meta in Metaxlsx:
+            #print(meta.uploadedFile)
+            #for dirname in os.listdir(os.getcwd()+'/media/'):
+                #print(dirname)
+            dfpath=os.getcwd()+'/media/'+str(meta.uploadedFile)
+            #print(dfpath)
+            df = pd.read_excel(dfpath)
+            #print(df)
+            conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="104.208.68.39", port="8081")
+            #print('Opened database successfully')
+            cur = conn.cursor()
+
+            df = df.assign(update='')
+            #print("Columns")
+            #print(df.columns)
+            for i in range(len(df)):
+                #if i % 10 ==0:
+                    #print(i)
+                    #print(df['分生號碼'][i] + ' ' + df['報告號碼'][i])
+                try:
+                    ReportNo=df['報告號碼'][i]
+                    MPNo=df['分生號碼'][i]
+                    query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
+                    df1 = pd.read_sql(query, conn)
+                    for j in range(len(df1)):
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['FullName']=str(df['病患姓名'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis']=str(df['Diagnosis'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['OrderingMD']=str(df['臨床主治醫師'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['Pathologist']=str(df['病理醫師'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReceivedDate']=str(df['報告日期'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['TumorType']=str(df['Tumor type'][i])
+                            
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['BlockId']=str(df['蠟塊號'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TestType']=str(df['檢測項目'][i])
+                            df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
+                            try:
+                                if not np.isnan(df['Tumor purity %'][i]):
+                                    df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=df['Tumor purity %'][i]
+                            except:
+                                None
+                            if not np.isnan(df['標本組織部位來源'][i]):
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
+                            sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
+                            #if i ==1:
+                            datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
+                            #print(type(datajson))
+                            with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
+                                f.write(datajson)
+                            #print(sql)
+                            cur.execute(sql)
+                            #print(cur.rowcount)
+                            if cur.rowcount > -1:
+                                df['update'][i]='OK'
+                            conn.commit()
+                except:
+                    df['update'][i]='NG'
+            df.to_excel(dfpath,index=False)
+
+            #print(os.path.abspath(os.getcwd()))
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'Metaxlsx' : Metaxlsx,
+                'FuncResult' : 'Updata finsh'
+                }
+        return render(request, 'Update.html', context)
+    except:
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'Metaxlsx' : '',
+                'FuncResult' : 'Updata Fail'
+                }
+        return render(request, 'Update.html' , context)
 
 def DataUpload(request):
     try:

@@ -77,7 +77,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 					{% if user.is_staff %}
 					<a class="collapse-item" href="{% url 'PatientUpload' %}">基因單筆報告上傳</a>
-					<a class="collapse-item" href="{% url 'Metaxlsx' %}">Metadata多筆資料上傳</a>
+					<a class="collapse-item" href="{% url 'UpdateMeta' %}">Metadata多筆資料上傳</a>
 					{% endif %}
 					{% if user.is_superuser %}
 						<a class="collapse-item" href="{% url 'Userright' %}">使用者權限多筆資料上傳</a>

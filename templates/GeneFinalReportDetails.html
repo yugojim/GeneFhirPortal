@@ -71,7 +71,7 @@
 									<div class="font-weight-bold text-success">Tumor type</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Tumortype}}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.TumorType}}</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">報告日期</div>
@@ -80,19 +80,18 @@
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.ReceivedDate}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">檢測項目</div>
+									<div class="font-weight-bold text-success">SpecSite</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.TestType}}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SpecSite}}</div>
 								</div>
-								
 							</div>
 							<div class="form-row">							
 								<div class="font-weight-bold form-group col-md-1">
 									<div class="font-weight-bold text-success">DATE OF BIRTH</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.Pathologist}}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.DOB}}</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">SEX</div>
@@ -135,10 +134,10 @@
                         <div class="card-body">
                             <div class="form-row">
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">檢體位置</div>
+									<div class="font-weight-bold text-success">檢測項目</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.SpecSite}}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.TestType}}</div>
 								</div>
 								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">蠟塊號</div>
@@ -153,22 +152,16 @@
 									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.SpecFormat}}</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">CollDate</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.PMI.CollDate}}</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="font-weight-bold text-success">ReceivedDate</div>
-								</div>
-								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.ReceivedDate }}</div>
-								</div>
-								<div class="form-group col-md-1">
 									<div class="font-weight-bold text-success">Tumor purity %</div>
 								</div>
 								<div class="form-group col-md-1">
-									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.Tumorpurity }}</div>
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.TumorPurity }}</div>
+								</div>
+								<div class="form-group col-md-1">
+									<div class="font-weight-bold text-success">標本組織部位來源</div>
+								</div>
+								<div class="form-group col-md-1">
+									<div class="">{{ data.1.ResultsReport.ResultsPayload.FinalReport.Sample.SpecimenLocation}}</div>
 								</div>
 							</div>
                         </div>
