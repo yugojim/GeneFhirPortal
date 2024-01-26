@@ -34,9 +34,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 fhir = 'http://192.168.211.9:8080/fhir/'#4600VM
 postgresip = "192.168.211.19"
-genepostgresip = "104.208.68.39"
+genepostgresip = "172.174.201.121"
+#genepostgresip = "104.208.68.39"
 #genepostgresip = "10.97.242.13"
-
+#genepostgresport="8081"
+genepostgresport="5432"
 jsonPath=str(pathlib.Path().absolute()) + "/static/template/Observation-Imaging-EKG.json"
 ObservationImagingEKGJson = json.load(open(jsonPath,encoding="utf-8"))
  
@@ -72,7 +74,7 @@ def GeneReport(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '
         #consentsql = 'SELECT * FROM public.reportxml WHERE "ReportNo" = \'M111-10001\''
@@ -133,7 +135,7 @@ def PMI(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '
         #if request.POST['ReportNo'] != '':
@@ -220,7 +222,7 @@ def Biomarker(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
         #if request.POST['ReportNo'] != '':
@@ -302,7 +304,7 @@ def ShortVariants(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
         #if request.POST['ReportNo'] != '':
@@ -402,7 +404,7 @@ def CopyNumberAlterations(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
         #if request.POST['ReportNo'] != '':
@@ -490,7 +492,7 @@ def Rearrangement(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     try:
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml where true '       
         #if request.POST['ReportNo'] != '':
@@ -577,7 +579,7 @@ def GeneFinalReportDetails(request):
     try:
         rid=request.GET['id']
         #print(rid)
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml WHERE id = \'' + rid + '\';'
         #print(consentsql)
@@ -608,7 +610,7 @@ def GeneVariantReportDetails(request):
     try:
         rid=request.GET['id']
         #print(rid)
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port="8081")
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
         cur = conn.cursor()
         consentsql = 'SELECT * FROM public.reportxml WHERE id = \'' + rid + '\';'
         #print(consentsql)
@@ -1110,11 +1112,11 @@ def Metaxlsx(request):
                             if not np.isnan(df['標本組織部位來源'][i]):
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
                             sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
-                            if i ==1:
-                                datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
-                                #print(type(datajson))
-                                with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
-                                    f.write(datajson)
+                            #if i ==1:
+                            datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
+                            #print(type(datajson))
+                            with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
+                                f.write(datajson)
                             #print(sql)
                             cur.execute(sql)
                             #print(cur.rowcount)
