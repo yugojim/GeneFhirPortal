@@ -1126,6 +1126,18 @@ def Metaxlsx(request):
                 except:
                     df['update'][i]='NG'
             df.to_excel(dfpath,index=False)
+            
+            import paramiko
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            target_host = '172.174.201.121'
+            #target_port = 22
+            pwd = 'sdfWER234SDF'
+            un = 'sdfWER234'
+            ssh.connect( hostname = target_host , username = un, password = pwd )
+            stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh')
+            #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
+            ssh.close()
 
             #print(os.path.abspath(os.getcwd()))
         context = {
