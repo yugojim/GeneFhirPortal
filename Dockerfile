@@ -4,7 +4,7 @@ FROM python:3.8
 RUN apt-get update
 
 RUN apt-get install -y --no-install-recommends \
-        libatlas-base-dev gfortran nginx supervisor nano sshpass
+        libatlas-base-dev gfortran nginx supervisor nano
 
 ADD . /server
 WORKDIR /server
