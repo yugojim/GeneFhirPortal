@@ -1083,7 +1083,7 @@ def Metaxlsx(request):
             #print("Columns")
             #print(df.columns)
             for i in range(len(df)):
-                #if i % 10 ==0:
+                #if i % 10 ==0:11111
                     #print(i)
                     #print(df['分生號碼'][i] + ' ' + df['報告號碼'][i])
                 try:
@@ -1135,7 +1135,7 @@ def Metaxlsx(request):
             pwd = 'sdfWER234SDF'
             un = 'sdfWER234'
             ssh.connect( hostname = target_host , username = un, password = pwd )
-            stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh')
+            stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
             #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
             ssh.close()
 
