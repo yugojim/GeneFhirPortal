@@ -242,6 +242,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+									{% if data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.gene %}
+										<tr>
+											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.gene }}</a></div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.protein_effect }}</div></td>											
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.cds_effect }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.position }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.allele_fraction }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.depth }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.functional_effect }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.transcript }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.status }}</div></td>
+											<td><div class="collapse out" id="collapseme5">{{ data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant.equivocal }}</div></td>
+										</tr>
+									{% else %}
 										{% for short_variant in data.1.ResultsReport.ResultsPayload.variant_report.short_variants.short_variant %}
 										<tr>
 											<td><div class="collapse out" id="collapseme5"><a href="https://www.oncokb.org/gene/{{ short_variant.gene }}" target="_blank">{{ short_variant.gene }}</a></div></td>
@@ -255,7 +269,8 @@
 											<td><div class="collapse out" id="collapseme5">{{ short_variant.status }}</div></td>
 											<td><div class="collapse out" id="collapseme5">{{ short_variant.equivocal }}</div></td>
 										</tr>
-										{% endfor %}	
+										{% endfor %}
+									{% endif %}
                                     </tbody>
                                 </table>
                             </div>
@@ -263,6 +278,7 @@
 					</div>
 					{% endif %}
 					{% if Generight.0.copy_number_alterations %}
+					
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseme4">copy_number_alterations</button>
@@ -293,8 +309,20 @@
 											<th class="col-sm-1">status</th>
 											<th class="col-sm-1">equivocal</th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot>									
                                     <tbody>
+									{% if data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.gene %}
+										<tr>
+											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.gene }}</a></div></td>				
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.type }}</div></td>												
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.copy_number }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.ratio }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.number_of_exons }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.position }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.status }}</div></td>
+											<td><div class="collapse out" id="collapseme4">{{ data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration.equivocal }}</div></td>
+										</tr>
+									{% else %}
 										{% for copy_number_alteration in data.1.ResultsReport.ResultsPayload.variant_report.copy_number_alterations.copy_number_alteration %}
 										<tr>
 											<td><div class="collapse out" id="collapseme4"><a href="https://www.oncokb.org/gene/{{ copy_number_alteration.gene }}" target="_blank">{{ copy_number_alteration.gene }}</a></div></td>				
@@ -306,12 +334,14 @@
 											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.status }}</div></td>
 											<td><div class="collapse out" id="collapseme4">{{ copy_number_alteration.equivocal }}</div></td>
 										</tr>
-										{% endfor %}	
+										{% endfor %}
+									{% endif %}										
                                     </tbody>
                                 </table>
                             </div>
                         </div>						
 					</div>
+					
 					{% endif %}	
 					{% if Generight.0.rearrangements %}
 					<div class="card shadow mb-4">
@@ -350,8 +380,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-										
-										{% if "description" not in data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement %}
+										{% if "description" not in data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description %}
+											<tr>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}</td>
+												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}</td>
+											</tr>	
+										{% else %}
 											{% for rearrangement in  data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement%}
 											<tr>
 												<td>{{ rearrangement.description }}</td>
@@ -365,27 +407,12 @@
 												<td>{{ rearrangement.status }}</td>
 												<td>{{ rearrangement.equivocal }}</td>
 											</tr>
-											{% endfor %}
-										{% else %}
-											<tr>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.description }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.type }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.targeted_gene }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.other_gene }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos1 }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.pos2 }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.in_frame }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.supporting_read_pairs }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.status }}</td>
-												<td>{{ data.1.ResultsReport.ResultsPayload.variant_report.rearrangements.rearrangement.equivocal }}</td>
-											</tr>											
-										{% endif %}
-										
+											{% endfor %}										
+										{% endif %}										
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
 					</div>
 					{% endif %}
 					<!--
