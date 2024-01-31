@@ -1106,7 +1106,7 @@ def Metaxlsx(request):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
                             #if not np.isnan(df['Tumor purity %'][i]):
                             try:
-                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=int(df['Tumor purity %'][i])
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=int(df['Tumor purity %'][i].replace('%',''))
                             except:
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
                             if not np.isnan(df['標本組織部位來源'][i]):
