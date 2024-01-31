@@ -1106,10 +1106,9 @@ def Metaxlsx(request):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
                             #if not np.isnan(df['Tumor purity %'][i]):
                             try:
-                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=df['Tumor purity %'][i]
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=int(df['Tumor purity %'][i])
                             except:
-                                None
-                                #df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
                             if not np.isnan(df['標本組織部位來源'][i]):
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
                             sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
@@ -1137,8 +1136,8 @@ def Metaxlsx(request):
                 un = 'sdfWER234'
                 ssh.connect( hostname = target_host , username = un, password = pwd )
                 stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
-                #with open("stdout.txt", "w") as text_file:
-                    #text_file.write(stdout.read())
+                with open("stdout.txt", "w") as text_file:
+                    text_file.write(stdout.read())
                 #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
                 ssh.close()
                 #print(os.path.abspath(os.getcwd()))
