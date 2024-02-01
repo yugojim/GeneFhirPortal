@@ -1090,7 +1090,9 @@ def Metaxlsx(request):
                     ReportNo=df['報告號碼'][i]
                     MPNo=df['分生號碼'][i]
                     query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
+                    
                     df1 = pd.read_sql(query, conn)
+                    
                     for j in range(len(df1)):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
@@ -1104,18 +1106,17 @@ def Metaxlsx(request):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['BlockId']=str(df['蠟塊號'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TestType']=str(df['檢測項目'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
+                            #print(df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity'])
                             try:
-                                if not np.isnan(df['Tumor purity %'][i]):
-                                    df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=df['Tumor purity %'][i].replace('%','')                               
+                                #print(int(str(df['Tumor purity %'][i]).replace('%','')))
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=str(df['Tumor purity %'][i]).replace('%','')
                             except:
-                                None
-                                #print(reportNo=df['報告號碼'][i])
-                                #print(df['Tumor purity %'][i])
-                                #df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
                             if not np.isnan(df['標本組織部位來源'][i]):
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
                             sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
                             #if i ==1:
+                            #print(df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity'])
                             datajson=json.dumps(df1['resultsreport'][j], cls=NpEncoder)
                             #print(type(datajson))
                             with open('media/json/'+ReportNo+'_('+MPNo+').json', 'w') as f:
@@ -1138,7 +1139,8 @@ def Metaxlsx(request):
                 pwd = 'sdfWER234SDF'
                 un = 'sdfWER234'
                 ssh.connect( hostname = target_host , username = un, password = pwd )
-                stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
+                ssh.exec_command('bash automate_etl_process.sh &')
+                #stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
                 #with open("stdout.txt", "w") as text_file:
                     #text_file.write(stdout.read())
                 #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
