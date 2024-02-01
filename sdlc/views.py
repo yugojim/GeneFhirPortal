@@ -1108,8 +1108,8 @@ def Metaxlsx(request):
                             try:
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=int(df['Tumor purity %'][i].replace('%',''))                                
                             except:
-                                print(reportNo=df['報告號碼'][i])
-                                print(df['Tumor purity %'][i])
+                                #print(reportNo=df['報告號碼'][i])
+                                #print(df['Tumor purity %'][i])
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
                             if not np.isnan(df['標本組織部位來源'][i]):
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
@@ -1137,9 +1137,9 @@ def Metaxlsx(request):
                 pwd = 'sdfWER234SDF'
                 un = 'sdfWER234'
                 ssh.connect( hostname = target_host , username = un, password = pwd )
-                stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh')
-                with open("stdout.txt", "w") as text_file:
-                    text_file.write(stdout.read())
+                stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
+                #with open("stdout.txt", "w") as text_file:
+                    #text_file.write(stdout.read())
                 #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
                 ssh.close()
                 #print(os.path.abspath(os.getcwd()))
