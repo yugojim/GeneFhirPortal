@@ -25,9 +25,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h3>使用者權限xlsx上傳 <span class="badge badge-secondary">User Right Upload</span>{{ FuncResult }}</h3>						
+						<h3>Gene Zip上傳 <span class="badge badge-secondary">Gene Upload</span>{{ FuncResult }}</h3>						
 					</div>					
-					<form method="post" action="{% url 'Userright' %}" enctype="multipart/form-data">
+					<form method="post" action="{% url 'UpGeneZip' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="form-group">
 						<div class="form-row">
@@ -41,17 +41,17 @@
 								<label><h5>檔案選擇</h5></label>
 							</div>
 							<div class="form-group col-md-3">								
-								<input class="form-control" type="file" name="uploadedFile" accept=".xlsx">
+								<input class="form-control" type="file" name="uploadedFile" accept=".zip">
 							</div>
 							<div class="form-group col-md-1">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>	
 						</div>
 					</div>
-					</form>					
+					</form>
 					<div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">使用者權限xlsx</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Gene Zip</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -75,20 +75,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-										{% for User in Userright %}
+										{% for Gene in Genezip %}
 										<tr>
-											<td>{{ User.id}}</td>										
-											<td>{{ User.fileTitle}}</td>
-											<td>{{ User.uploadedFile}}</td>
-											<td>{{ User.dateTimeOfUpload}}</td>
-											<td><a href="/Userright?id={{ User.id }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">update </a></td>	
+											<td>{{ Gene.id}}</td>										
+											<td>{{ Gene.fileTitle}}</td>
+											<td>{{ Gene.uploadedFile}}</td>
+											<td>{{ Gene.dateTimeOfUpload}}</td>
+											<td><a href="/Genezip?id={{ Gene.id }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">unzip & update </a></td>	
 										</tr>
 										{% endfor %}										 
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>	
+                    </div>				
 					{{data.diagnostics}}
 				</div>
 			</div>

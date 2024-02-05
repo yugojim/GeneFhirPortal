@@ -12,6 +12,11 @@ class Metaxlsx(models.Model):
     uploadedFile = models.FileField(upload_to="Metaxlsx/")
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
 
+class Genezip(models.Model):
+    fileTitle = models.CharField(max_length=200)
+    uploadedFile = models.FileField(upload_to="Genezip/")
+    dateTimeOfUpload = models.DateTimeField(auto_now=True)
+
 class Userright(models.Model):
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="Userright/")
@@ -21,19 +26,6 @@ class Genedata(models.Model):
     inlineRadioOptions= models.CharField(max_length=200)
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="UploadedFiles/")
-    #ReportNo = models.CharField(max_length=200)
-    #MPNo = models.CharField(max_length=200)
-    #FullName = models.CharField(max_length=200)
-    #MRN = models.CharField(max_length=200)
-    #SpecFormat = models.CharField(max_length=200)
-    #BlockId = models.CharField(max_length=200)
-    #purity = models.CharField(max_length=200)
-    #Tumortype = models.CharField(max_length=200)
-    #SubmittedDiagnosis = models.CharField(max_length=200)
-    #TestType= models.CharField(max_length=200)
-    #OrderingMD= models.CharField(max_length=200)
-    #Pathologist= models.CharField(max_length=200)
-    #ReceivedDate= models.CharField(max_length=200)
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
     '''
     def __str__(self):

@@ -77,6 +77,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 					{% if user.is_staff %}
 					<a class="collapse-item" href="{% url 'PatientUpload' %}">基因單筆報告上傳</a>
+					<a class="collapse-item" href="{% url 'UpGeneZip' %}">基因報告ZIP上傳</a>
 					<a class="collapse-item" href="{% url 'UpdateMeta' %}">Metadata多筆資料上傳</a>
 					{% endif %}
 					{% if user.is_superuser %}
@@ -86,7 +87,7 @@
                 </div>
             </li>
 			<li class="nav-item">
-                <a class="nav-link" target="_blank" href="http://10.97.242.13:8080/">
+                <a class="nav-link" target="_blank" href="http://localhost:8080/">
                     <i class="fas fa-fw fa-solid fa-dna"></i>
                     <span>cBioPortal</span></a>
             </li>

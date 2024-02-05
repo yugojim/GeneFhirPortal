@@ -63,6 +63,7 @@ urlpatterns = [
     
     path('PatientUpload/', views.PatientUpload, name='PatientUpload'),
     path('Metaxlsx/', views.Metaxlsx, name='Metaxlsx'),
+    path('UpGeneZip/', views.UpGeneZip, name='UpGeneZip'),
     path('UpdateMeta/', views.UpdateMeta, name='UpdateMeta'),
     path('Userright/', views.Userright, name='Userright'),
     path('DataUpload/', views.DataUpload, name='DataUpload'),

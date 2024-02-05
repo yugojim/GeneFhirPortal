@@ -820,6 +820,7 @@ def PatientUpload(request):
     #print(user.username)
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
+    Genedataall=models.Genedata.objects.all().order_by('-id')
     #df = pd.read_excel(uploadedFile)
     #print(method)
     try:
@@ -837,139 +838,35 @@ def PatientUpload(request):
             uploadedFile = request.FILES["uploadedFile"]
         except:
             uploadedFile = ''
-        '''    
-        if request.POST["ReportNo"] !='':
-            ReportNo = request.POST["ReportNo"]
-        else:
-            ReportNo = ''
-            
-        if request.POST["MPNo"] !='':
-            MPNo = request.POST["MPNo"]
-        else:
-            MPNo = ''
-       
-        if request.POST["FullName"] !='':
-            FullName = request.POST["FullName"]
-        else: 
-            FullName = ''
-           
-        if request.POST["MRN"] !='':
-            MRN = request.POST["MRN"]
-        else:
-            MRN = ''
-          
-        if request.POST["SpecFormat"] !='':
-            SpecFormat = request.POST["SpecFormat"]
-        else:
-            SpecFormat = ''
-       
-        if request.POST["BlockId"] !='':
-            BlockId = request.POST["BlockId"]
-        else:
-            BlockId = ''
-      
-        if request.POST["purity"] !='':
-            purity = request.POST["purity"]
-        else:
-            purity = ''
-          
-        if request.POST["Tumortype"] !='':
-            Tumortype = request.POST["Tumortype"]
-        else:
-            Tumortype = ''
-      
-        if request.POST["SubmittedDiagnosis"] !='':
-            SubmittedDiagnosis = request.POST["SubmittedDiagnosis"]
-        else:
-            SubmittedDiagnosis = ''
-
-        if request.POST["TestType"] !='':
-            TestType = request.POST["TestType"]
-        else:
-            TestType = ''        
-     
-        if request.POST["OrderingMD"] !='':
-            OrderingMD = request.POST["OrderingMD"]
-        else:
-            OrderingMD = ''
-      
-        if request.POST["Pathologist"] !='':
-            Pathologist = request.POST["Pathologist"]
-        else:
-            Pathologist = ''
-      
-        if request.POST["ReceivedDate"] !='':
-            ReceivedDate = request.POST["ReceivedDate"]
-        else:
-            ReceivedDate = ''
-
-        print(inlineRadioOptions,
-              fileTitle,              
-              uploadedFile
-              )
-        ,
-        ReportNo,
-        MPNo,
-        FullName,
-        MRN,
-        SpecFormat,
-        BlockId,
-        purity,
-        Tumortype,
-        SubmittedDiagnosis,
-        TestType,
-        OrderingMD,
-        Pathologist,
-        ReceivedDate
-        '''
-                
-        # Saving the information in the database
 
         Genedata = models.Genedata(
             inlineRadioOptions=inlineRadioOptions,
             fileTitle = fileTitle,
             uploadedFile = uploadedFile
         )
-        '''
-        ReportNo = ReportNo,
-        MPNo = MPNo,
-        FullName = FullName,
-        MRN = MRN,
-        SpecFormat = SpecFormat,
-        BlockId = BlockId,
-        purity=purity,
-        Tumortype=Tumortype,
-        SubmittedDiagnosis=SubmittedDiagnosis,
-        TestType=TestType,
-        OrderingMD = OrderingMD,
-        Pathologist=Pathologist,
-        ReceivedDate=ReceivedDate
-        '''
         Genedata.save()        
-        #documents = models.Document.objects.all()        
+ 
         context = {
                 'Generight' : Generight,
                 'right' : right,
+                'Genedata' : Genedataall,
                 'FuncResult' : 'Up finsh'
-#                'FuncResult' : Result,
-#                'data' : data,
                 }
         return render(request, 'PatientUpload.html', context)
     except:
         context = {
                 'Generight' : Generight,
                 'right' : right,
+                'Genedata' : Genedataall,
                 'FuncResult' : 'Up Fail'
                 }
         return render(request, 'PatientUpload.html' , context)
 
 def Userright(request):
     user = request.user
-    #print(user.username)
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
-    #df = pd.read_excel(uploadedFile)
-    #print(method)
+    Userrightall=models.Userright.objects.all().order_by('-id')
     try:
         if request.POST["fileTitle"] !='':
             fileTitle = request.POST["fileTitle"]
@@ -990,6 +887,7 @@ def Userright(request):
         context = {
                 'Generight' : Generight,
                 'right' : right,
+                'Userright' : Userrightall,
                 'FuncResult' : 'Up finsh'
                 }
         return render(request, 'UsrUpload.html', context)
@@ -997,9 +895,51 @@ def Userright(request):
         context = {
                 'Generight' : Generight,
                 'right' : right,
+                'Userright' : Userrightall,
                 'FuncResult' : 'Up Fail'
                 }
         return render(request, 'UsrUpload.html' , context)
+
+def UpGeneZip(request):
+    user = request.user    
+    Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
+    right=models.Permission.objects.filter(user__username__startswith=user.username)
+    Genezipall=models.Genezip.objects.all().order_by('-id')
+    #df = pd.read_excel(uploadedFile)
+    #print(method)
+    
+    try:
+        if request.POST["fileTitle"] !='' and request.FILES["uploadedFile"]!='':
+            if request.POST["fileTitle"] !='':
+                fileTitle = request.POST["fileTitle"]
+            else:
+                fileTitle = '' 
+            try:
+                uploadedFile = request.FILES["uploadedFile"]
+            except:
+                uploadedFile = ''
+            # Saving the information in the database
+            Genezip = models.Genezip(
+                fileTitle = fileTitle,
+                uploadedFile = uploadedFile,
+            )            
+            Genezip.save()        
+            #documents = models.Document.objects.all()        
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'Genezip' : Genezipall,
+                'FuncResult' : 'Upload finsh'
+                }
+        return render(request, 'Geneload.html', context)
+    except:
+        context = {
+                'Generight' : Generight,
+                'right' : right,
+                'Genezip' : Genezipall,
+                'FuncResult' : 'No file upload'
+                }
+        return render(request, 'Geneload.html' , context)
     
 def UpdateMeta(request):
     user = request.user
@@ -1052,8 +992,6 @@ class NpEncoder(json.JSONEncoder):
         if isinstance(obj, np.ndarray):
             return obj.tolist()
         return super(NpEncoder, self).default(obj)
-    
-
 
 def Metaxlsx(request):
     user = request.user
@@ -1130,6 +1068,7 @@ def Metaxlsx(request):
                 except:
                     df['update'][i]='NG'
             df.to_excel(dfpath,index=False)
+            '''
             try:
                 import paramiko
                 ssh = paramiko.SSHClient()
@@ -1148,6 +1087,7 @@ def Metaxlsx(request):
                 #print(os.path.abspath(os.getcwd()))
             except:
                 None
+                '''
         context = {
                 'Generight' : Generight,
                 'right' : right,
