@@ -17,7 +17,10 @@ import PyPDF2
 import base64
 import requests
 import psycopg2
+import shutil
 import csv
+import zipfile
+from . import gene2cbio
 from . import Function
 from . import models
 
@@ -822,7 +825,7 @@ def PatientUpload(request):
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     Genedataall=models.Genedata.objects.all().order_by('-id')
     #df = pd.read_excel(uploadedFile)
-    #print(method)
+    root=os.getcwd()
     try:
         try:
             inlineRadioOptions = request.POST["inlineRadioOptions"]
@@ -833,19 +836,66 @@ def PatientUpload(request):
             fileTitle = request.POST["fileTitle"]
         else:
             fileTitle = '' 
-       
         try:
             uploadedFile = request.FILES["uploadedFile"]
         except:
             uploadedFile = ''
-
+        
         Genedata = models.Genedata(
             inlineRadioOptions=inlineRadioOptions,
             fileTitle = fileTitle,
             uploadedFile = uploadedFile
         )
-        Genedata.save()        
- 
+        #Genedata.save() 
+        #print(inlineRadioOptions)
+        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="172.174.201.121", port="5432")
+        cur = conn.cursor()
+        #print('Opened database successfully')
+        #print(uploadedFile)
+        filename = root+'/media/UploadedFiles/'+str(uploadedFile).replace('(','').replace(')','')
+        #print(filename)
+        source = filename
+        destination = root+'/static/doc/'+str(uploadedFile)
+        #print(destination)
+        dest = shutil.copyfile(source, destination)                       
+        #print(dest)
+        with zipfile.ZipFile(dest,"r") as zip_ref:
+            zip_ref.extractall(root + '/static/doc/')
+        #print(os.listdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', '')))        
+        os.chdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', ''))
+        #print(os.getcwd())
+        #'ACTGV1', 'ACTGV2', 'Guardant360']
+        dirpath = 'Archer'
+        print(gene2cbio.Archer2xml(dirpath))
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        
+        dirpath = 'BRCA Assay'
+        print(gene2cbio.BRCAAssay2xml(dirpath))
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        
+        dirpath = 'Focus Assay'
+        print(gene2cbio.FocusAssay2xml(dirpath))
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        
+        dirpath = 'Foundation One'
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        
+        dirpath = 'Myeloid Assay'
+        print(gene2cbio.MyeloidAssay2xml(dirpath))
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        
+        dirpath = 'Tumor Mutation Load Assay'
+        print(gene2cbio.MutationLoadAssay2xml(dirpath))
+        #gene2cbio.xmlisql(dirpath, conn, cur)
+        gene2cbio.pdf2dir(dirpath, root)
+        #
+        #print(os.getcwd())
+        
         context = {
                 'Generight' : Generight,
                 'right' : right,
@@ -853,6 +903,7 @@ def PatientUpload(request):
                 'FuncResult' : 'Up finsh'
                 }
         return render(request, 'PatientUpload.html', context)
+  
     except:
         context = {
                 'Generight' : Generight,
@@ -867,6 +918,9 @@ def Userright(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     Userrightall=models.Userright.objects.all().order_by('-id')
+    #conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
+    #cur = conn.cursor()
+    #print('Opened database successfully')
     try:
         if request.POST["fileTitle"] !='':
             fileTitle = request.POST["fileTitle"]
@@ -881,8 +935,8 @@ def Userright(request):
             fileTitle = fileTitle,
             uploadedFile = uploadedFile,
         )
-        
         Userright.save()        
+        #print(uploadedFile)
         #documents = models.Document.objects.all()        
         context = {
                 'Generight' : Generight,

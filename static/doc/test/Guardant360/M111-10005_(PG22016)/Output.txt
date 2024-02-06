@@ -1,0 +1,178 @@
+27424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 1 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+KRAS NTRK RET ERBB2 (HER2) MET BRAF ROS1 ALK EGFR (T790M and others)
+Therapy Finder Page
+REPORTING
+Report Date: NOV-15-2022
+Receipt Date: NOV-09-2022
+Collection Date: NOV-08-2022
+Specimen: Blood
+Status: FINALPHYSICIAN
+Chih-Hsueh Chen
+ Genconn Biotech Co., LTD Account:
+ F15., No 207-5 Sec 3, Beixin Rd, Xindian Address:
+Dist, New Taipei City, 23143, Taiwan
+ +886 963 820 633   N/A Ph: |Fax:
+ Additional Recipient: N/A
+Complete
+Tumor
+Response
+Map
+on
+page
+Summary of Detected Somatic Alterations, Immunotherapy Biomarkers & Associated Treatment Options
+   KEY
+ Approved in indication
+ Approved in other indication
+ Lack of response
+Detected Alteration(s) / 
+Biomarker(s)Associated FDA-approved 
+therapiesClinical trial availability
+(see page% cfDNA or 
+Amplification
+ G719AEGFR Yes 4.4%
+Variants of Uncertain Clinical Significance
+EGFR  N476D (8.1%)
+The functional consequences and/or clinical significance of alterations are unknown. Relevance of therapies targeting these alterations is uncertain.
+Additional Biomarkers
+Biomarker Additional Details
+MSI-High NOT DETECTED
+Alterations or biomarkers that were " " have been excluded from the summary table above. NOT DETECTED
+We evaluated this sample for 74 genes, including the following guideline-recommended genes for NSCLCAfatinib
+Dacomitinib, Erlotinib, 
+Erlotinib+ramucirumab, Gefitinib, 
+OsimertinibPatient MRN: N/A | DOB: OCT-25-1947 | Gender: Female
+Diagnosis: Lung adenocarcinoma | Test Number 1
+2
+3)27424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 2 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+Tumor Biology Page
+Guardant360 Tumor Response Map
+The Guardant360 Tumor Response Map illustrates the variant allele fraction (% cfDNA) of observed somatic variants at each sample submission. Amplifications are not 
+plotted, and only the first and last five test dates are plotted. Please see the Physician Portal ( ) for the Tumor Response Map with all test portal.guardanthealth.com
+dates.
+Detected Alteration(s) / Biomarker(s) % cfDNA or Amp  
+ N476DEGFR 8.1% Variants of Uncertain Clinical Significance §
+ G719AEGFR 4.4%  
+The table above annotates the variant allele fraction (% cfDNA) detected in this sample, listed in descending order.
+§ See definitions section for more detailDOB: OCT-25-1947 | Test Number 127424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 3 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+Clinical Trial Page
+Available Clinical Trials (within the same state as the ordering physician)
+There may be additional trials not listed here. Visit:  or email  with A0609834 in the subject line of the portal.guardanthealth.com clientservices@guardanthealth.com
+email, for additional trials.
+Alteration Trial ID / Contact Title Phase Site(s)
+EGFR
+G719ANCT02609776 
+Study Contact,Participate-In-This-
+Study@its.jnj.comStudy of Amivantamab, a Human Bispecific 
+EGFR and cMet Antibody, in Participants With 
+Advanced Non-Small Cell Lung CancerPhase 1 Kaohsiung, Taiwan
+Taipei City, Taiwan
+Taipei, Taiwan
+Taichung, Taiwan (3)
+NCT04077463 
+Study Contact,Participate-In-This-
+Study@its.jnj.com,844-434-4210A Study of Lazertinib as Monotherapy or in 
+Combination With Amivantamab in Participants 
+With Advanced Non-small Cell Lung CancerPhase 1 Kaohsiung, Taiwan
+Taipei City, Taiwan
+Tainan, Taiwan
+Taichung, Taiwan
+NCT04721015 
+ABBVIE CALL CENTER,
+abbvieclinicaltrials@abbvie.com,844-663-
+3742Study of Intravenous (IV) ABBV-637 Alone or in 
+Combination With IV Docetaxel/Osimertinib to 
+Assess Adverse Events and Change in Disease 
+Activity in Adult Participants With Relapsed
+/Refractory (R/R) Solid TumorsPhase 1 Kaohsiung, Taiwan
+Hsinchu City, Taiwan
+Tainan, Taiwan
+Taoyuan City, Taiwan
+NCT05099172 
+Bayer Clinical Trials Contact,clinical-trials-
+contact@bayer.com,(+)1-888-84 22937First in Human Study of BAY2927088 in 
+Participants Who Have Advanced Non-small 
+Cell Lung Cancer (NSCLC) With Mutations in 
+the Genes of Epidermal Growth Factor Receptor 
+(EGFR) and/or Human Epidermal Growth Factor 
+Receptor 2 (HER2)Phase 1 Taipei, Taiwan
+Taichung, Taiwan
+Visit  for trials not within the same state as the physician's office portal.guardanthealth.com
+More clinical trial options available at portal.guardanthealth.comDOB: OCT-25-1947 | Test Number 127424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 4 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+ 
+Definitions
+ The functional consequences and/or clinical significance of alterations are unknown. Relevance of Variants of Uncertain Clinical Significance:
+therapies targeting these alterations is uncertain.
+Interpretation
+Somatic alterations were detected in the circulating cell-free DNA isolated from this patient's blood specimen. These genomic alterations are 
+cancer-associated somatic variants, some of which have been associated with either increased or reduced clinical response to specific 
+treatments. The percentage of altered cell-free DNA circulating (% cfDNA) in blood is related to the unique tumor biology of each patient. 
+Factors that may affect the % cfDNA of detected somatic alterations include tumor growth, turn over, size, heterogeneity, vascularization, 
+disease progression, and treatment.DOB: OCT-25-1947 | Test Number 127424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 5 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+VHL TSC1TP53 TERT  STK11 SMO SMAD4 ROS1  RIT1 RHOA RHEBRET RB1 RAF1  PTPN11 PTEN PIK3CA  PDGFRA  NTRK3 NTRK1  NRAS NPM1 NOTCH1 NFE2L2 NF1 MYC  MTOR MPL MLH1MET MAPK3 MAPK1 MAP2K2 MAP2K1 KRAS  KIT JAK3 JAK2IDH2 IDH1 HRAS HNF1A GNAS GNAQ GNA11 GATA3 FGFR3  FGFR2   FGFR1  FBXW7 EZH2 ESR1 ERBB2  EGFR  DDR2 CTNNB1CDKN2A CDK6  CDK4  CDK12 CDH1 CCNE1  CCND2  CCND1  BRCA2BRCA1 BRAF  ATM ARID1A ARAF AR APC ALK AKT1 
+Method and Limitations
+Guardant360 sequences 74 cancer-associated genes to identify somatic alterations. Cell-free DNA (cfDNA) is extracted from plasma, enriched 
+for targeted regions, and sequenced using the Illumina platform and hg19 as the reference genome. All exons are sequenced in some genes; 
+only clinically significant exons are sequenced in other genes. The types of genomic alterations detected by Guardant360 include single 
+nucleotide variants, gene amplifications, fusions, short insertions/deletions (longest detected, 70 base pairs), and splice site disrupting events 
+(see Table 1). Microsatellite Instability (MSI) is assessed for all cancer types by evaluating somatic changes in the length of repetitive 
+sequences on the Guardant360 panel. A "Not Detected" result in samples where the highest % cfDNA is < 0.2% is an inconclusive result 
+because it does not preclude MSI-High status in tissue. MSI status is currently not reported for earlier panel versions. This version of the 
+Guardant360 test is not validated for the detection of other types of genomic alterations, such as complex rearrangements or gene deletions. 
+Certain sample or variant characteristics, such as low cfDNA concentration, may result in reduced analytic sensitivity. Guardant360 cannot 
+discern the source of circulating cfDNA, and for some variants in the range of ~40 to 60% cfDNA, the test cannot easily distinguish germline 
+variants from somatic alterations. Guardant360 is not validated for the detection of germline or de novo variants that are associated with 
+hereditary cancer risk. Tissue genotyping should be considered when plasma genotyping is negative, if clinically appropriate.
+Table 1: Genes on the Guardant360 Panel
+Guardant360 reports single nucleotide variants, splice site mutations, and insertion and deletion variants (indels) in all clinically relevant exons in 74 genes and reports 
+other variant types in select genes as indicated below.
+  ‡ Guardant360 reports alterations in the promoter region of this gene. # Guardant360 reports fusion events involving this gene.
+† Guardant360 reports amplifications of this gene.
+ 
+About the Test
+The Guardant360 assay was developed and its performance characteristics were determined by Guardant Health, Inc. This test has not been 
+cleared or approved by the U.S. Food and Drug Administration (FDA). The FDA has determined that such clearance or approval is not 
+necessary. This test may be used for clinical purposes and should not be regarded as investigational or for research only. Guardant Health's 
+clinical reference laboratory is certified under the Clinical Laboratory Improvement Amendments of 1988 (CLIA) as qualified to perform high 
+complexity clinical laboratory testing. The laboratory report should be interpreted in the context of other clinical information and laboratory, 
+pathology, and imaging studies by a qualified medical professional prior to initiating or changing a patient's treatment plan. The selection of 
+any, all, or none of the drugs associated with potential clinical benefit (or potential lack of clinical benefit) is entirely at the discretion of the 
+treating medical professional. Drug and trial information are based on the diagnosis written on the submitted test request form; this 
+information is not based on any supplemental information provided by the requesting medical professional, including pathology reports or 
+other molecular studies. Some drugs listed in this report may not be approved or cleared by the FDA for the indicated use. Guardant Health 
+makes no endorsement, express or implied, of any product, physician, or procedure contained in this report. This report makes no promises or 
+guarantees that a particular medication will affect (or not affect) the clinical outcome of any patient.
+Testing Performed at: Guardant Health
+Laboratory Director: Martina Lefterova, MD PhD | CLIA ID: 05D2070300 | CAP #: 8765297 | 505 Penobscot Drive, Redwood City, CA, 94063, USA# † †
+† † † † †
+† † † #†
+#
+† † †
+†
+# † † † #
+# ‡DOB: OCT-25-1947 | Test Number 127424460, Cheng (A0609834)
+   211-354-US |TST-PRT-001 R40
+Pg 6 of 6A more detailed Guardant360 Patient Report is available through our online portal:
+. To set up an account, contact Client Services: portal.guardanthealth.com 855.698.8887
+ 
+Additional information is available
+Any therapeutic annotations are based on publicly available information. This information is described in the "Detailed Therapy Results" and 
+"Relevance of Detected Alterations" sections.
+Visit  or email  with A0609834 in the subject line of the email for: portal.guardanthealth.com clientservices@guardanthealth.com
+  —Additional clinical trials —Relevance of Detected Alterations
+ —Detailed Therapy Results —References
+If you would like to receive this additional information with every Guardant360 report, please call client services at  to opt-in. 855.698.8887DOB: OCT-25-1947 | Test Number 1

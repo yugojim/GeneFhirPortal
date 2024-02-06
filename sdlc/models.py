@@ -10,22 +10,26 @@ from django.contrib.auth.models import User
 class Metaxlsx(models.Model):
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="Metaxlsx/")
+    status = models.CharField(max_length=200)
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
 
 class Genezip(models.Model):
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="Genezip/")
+    status = models.CharField(max_length=200)
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
 
 class Userright(models.Model):
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="Userright/")
+    status = models.CharField(max_length=200)
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
 
 class Genedata(models.Model):
     inlineRadioOptions= models.CharField(max_length=200)
     fileTitle = models.CharField(max_length=200)
     uploadedFile = models.FileField(upload_to="UploadedFiles/")
+    status = models.CharField(max_length=200)
     dateTimeOfUpload = models.DateTimeField(auto_now=True)
     '''
     def __str__(self):

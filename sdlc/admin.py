@@ -25,7 +25,7 @@ class PermissionAdmin(admin.ModelAdmin):
 @admin.register(Genedata)
 class GenedataAdmin(admin.ModelAdmin):
     #list display
-    list_display = ['inlineRadioOptions', 'fileTitle', 'uploadedFile']
+    list_display = ['inlineRadioOptions', 'fileTitle', 'uploadedFile','status']
     #list Filter
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list
@@ -34,7 +34,7 @@ class GenedataAdmin(admin.ModelAdmin):
 @admin.register(Metaxlsx)
 class MetaxlsxAdmin(admin.ModelAdmin):
     #list display
-    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload']
+    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload','status']
     #list Filter
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list
@@ -43,7 +43,7 @@ class MetaxlsxAdmin(admin.ModelAdmin):
 @admin.register(Userright)
 class UserrightAdmin(admin.ModelAdmin):
     #list display
-    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload']
+    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload','status']
     #list Filter
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list

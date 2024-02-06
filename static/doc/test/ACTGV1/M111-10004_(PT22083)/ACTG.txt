@@ -1,0 +1,1376 @@
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  1 of 29 
+PATIEN T 
+Identifier: 洪魁恩  Patient ID: 48812186  
+Date of Birth: Jun 01, 1988  Gender: Male  
+Diagnosis: Prostate high grade undifferentiated sarcoma  
+ORDERING PHYSICIAN  
+Name: 張延驊醫師  Tel: 886-228712121  
+Facility: 臺北榮總  
+Address: 臺北市北投區石牌路二段 201號 
+SPECIMEN  
+Specimen ID: S11129483H  Collection site: Prostate  Type: FFPE tissue  
+Date received: Nov 02, 2022  Lab ID: AA -22-06603  D/ID: NA  
+ 
+ABOUT ACTOnco®+ 
+The test is a next -generation sequencing (NGS) -based assay developed for efficient and comprehensive genomic profiling of cancers. This test 
+interrogates coding regions of 440 genes associated with cancer treatment, prognosis and diagnosis. Genetic mutations detecte d by this test include 
+small -scale mutations like single nucleotide variants (SNVs), small insertions and deletions (I nDels) (≤ 15 nucleotides) and large -scale genomic 
+alterations like copy number alterations (CNA s). The test  also includes an RNA test,  detect ing fusion transcripts of 13 genes . 
+ 
+ 
+SUMMARY FOR ACTIONABLE VARIANTS  
+VARIANTS/BIOMARKERS WITH EVIDENCE OF CLINICAL SIGNIFICANCE  
+Genomic 
+Alterations/Biomarkers  Probable Effects in Patient ’s Cancer Type  Probable Sensitive in Other 
+Cancer Types  Sensitive  Resistant  
+Not detected  
+ 
+VARIANTS/BIOMARKERS WITH POTENTIAL CLINICAL SIGNIFICANCE  
+Genomic Alterations/Biomarkers  Possibly Sensitive  Possibly Resistant  
+SMARCA4 R978*  Tazemetostat  - 
+PTEN Homozygous deletion  Olaparib, Rucaparib  Erlotinib, Gefitinib, Cetuximab, 
+Panitumumab, Trastuzu mab 
+ 
+Note:  
+- The above summary tables present genomic variants and biomarkers based on the three -tiered approach proposed by US 
+FDA for reporting tumor profiling NGS testing. “Variants/biomarkers with evidence of clinical significance ” refers to mutations 
+that are widely recognized as standard -of-care biomarkers (FDA level 2/AMP tier 1). “Variants/biomarkers with potential clinical 
+significance ” refers to mutations that are not included in the standard of care but are informational for clinicians, which are  
+commonly biomarkers used as inclusion criterial for clinical trials (FDA level 3/AMP tier 2).  
+- The therapeutic agents and possible effects to a given drug are based on mapping the variants/biomarkers with ACT Genomics 
+clinical knowledge database. The mappi ng results only provide information for reference, but not medical recommendation.  
+- Please refer to corresponding sections for more detailed information about genomic alteration and clinical relevance listed 
+above.  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  2 of 29 
+TESTING RESULTS  
+VARIANT(S) WITH CLINICAL  RELEVANCE  
+- Single Nucleotide and Small InDel Variants  
+Gene  Amino Acid Change  Allele Frequency  
+SMARCA4  R978*  39.3%  
+ 
+- Copy Number Alterations  
+Chromosome  Gene  Variation  Copy Number  
+Chr10  PTEN  Homozygous deletion  0 
+Chr11  ATM, CHEK1, MRE11  Heterozygous deletion  1 
+Chr4  FBXW7  Heterozygous deletion  1 
+ 
+- Fusions  
+Fusion Gene & Exon  Transcript ID  
+No fusion gene detected in this sample  
+ 
+- Immune Checkpoint Inhibitor (ICI) Related Biomarkers  
+Biomarker  Results  
+Tumor Mutational Burden (TMB)  3.8 muts/Mb  
+Microsatellite Instability (MSI)  Microsatellite stable (MSS)  
+ 
+Note:  
+- Loss of heterozygosity (LOH) information was used to infer tumor cellularity. Copy number alteration in the tumor was 
+determined based on 80% tumor purity.  
+- For more therapeutic agents which are possibly respond to heterozygous deletion of genes listed above, please refer to 
+APPENDIX for more information.  
+- TMB was calculated by using the sequenced regions of ACTOnco®+ to estimate the number of somatic nonsynon ymous 
+mutations per megabase of all protein -coding genes (whole exome). The threshold for high mutation load is set at ≥ 7.5 
+mutations per megabase. TMB, microsatellite status and gene copy number deletion cannot be determined if calculated tumor 
+purity is  < 30%.  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  3 of 29 
+THERAPEUTIC IMPLICATIONS  
+TARGETED THERAPIES  
+Genomic Alterations  Therapies  Effect  
+Level 3B  
+PTEN  Homozygous deletion  Olaparib, Rucaparib  sensitive  
+SMARCA4  R978*  Tazemetostat  sensitive  
+Level 4  
+PTEN  Homozygous deletion  Erlotinib, Gefitinib, Cetuximab, Panitumumab, Trastuzumab  resistant  
+Therapies associated with benefit or lack of benefit are based on biomarkers detected in this tumor and published evidence in  
+professional guidelines or peer -reviewed journals.  
+ 
+ 
+ 
+  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  4 of 29 
+IMMUNE CHECKPOINT INHIBITORS (ICIs)  
+No genomic alterations detected to confer sensitivity or lack of benefit to immune checkpoint therapies.  
+ 
+- Other Biomarkers with Potential Clinical Effects for ICIs  
+Genomic Alterations  Potential Clinical Effects  
+Not detected  
+Note: Tumor non -genomic factors, such as patient germline genetics, PDL1 expression, tumor microenvironment, epigenetic 
+alterations or other factors not provided by this test may affect ICI response.  
+ 
+CHEMOTHERAPIES  
+Genomic Alterations  Therapies  Effect  Level of Evidence  Cancer Type  
+SMARCA4  
+R978*  Cisplatin  
+Vinorelbine  Sensitive  Clinical  Lung cancer  
+Cyclophosphamide  
+Doxorubicin  Less sensitive  Clinical  Breast cancer  
+ 
+HORMONAL THERAPIES  
+No genomic alterations detected in this tumor predicted to confer sensitivity  or lack of benefit to hormonal therapies.  
+ 
+OTHERS  
+No genomic alterations detected in this tumor predicted to confer sensitivity or lack of benefit to other therapies.  
+ 
+Note:  
+Therapeutic implications provided in the test are based solely on the panel of 440 genes sequenced. Therefore, alterations in genes 
+not covered in this panel, epigenetic and post -transcriptional and post -translational factors may also determine a patient ’s response 
+to therapies. In addition, several other patient -associated clinical factors, including but not limited to, prior lines of therapies received, 
+dosage and combinations with other therapeutic agents, patient ’s cancer types, sub -types, and/or stages, may also determine the 
+patient ’s clinical response to therapies.  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  5 of 29 
+VARIANT IN TERPRETATION  
+SMARCA4  R978*  
+Biological Impact  
+The SWI/SNF -related, matrix -associated, actin -dependent regulator of chromatin, subfamily a, member 4 (SMARCA4) 
+gene encodes an ATP -dependent helicase, a catalytic subunit of the SWI/SNF chromatin remodeling complex which 
+play a role in gene transcription, DNA synthesis and DNA repair[1][2][3]. SMARCA4 has been implicated as a 
+haploinsufficient gene as demonstrated by the development of mammary tumors in SMARCA4 heterozygous mice[4]. 
+SMARCA4 is the most freque ntly mutated gene among the SWI/SNF subunits and its inactivation bas been implicated 
+in malignant rhabdoid tumors, lymphoma, medulloblastoma, lung and ovarian cancer[5][6][7]. Germline mutations in the 
+SMARCA4 gene predispose carriers to pediatric atypica l teratoid/ rhabdoid tumors (AT/RT)[6][7][8]and small cell 
+carcinoma of the ovary of hypercalcemic type (SCCOHT)[9][10][11]. 
+ 
+R978* mutation results in a premature truncation of the SMARCA4 protein at amino acid 978 (UniProtKB). This mutation 
+is predicted to lead to a loss of SMARCA4 function, despite not having characterized in the literature.  
+ 
+Therapeutic and prognostic relevance  
+Results of in vitro and in vivo preclinical models showed that SMARCA2 - and SMARCA4 -deficient small -cell carcinoma 
+of the ovar y hypercalcemic type (SCCOHT) were sensitive to the inhibitor of the H3K27 histone methyltransferase 
+(EZH2), tazemetostat[12]. Clinical trials are underway to evaluate the efficacy of tazemetostat in patients with SMARCA4 
+loss or mutation (NCT03155620, NCT 03213665, and NCT02601950).  
+ 
+Low SMARCA4  expression is a significant prognostic biomarker to predict increased sensitivity to cisplatin and 
+vinorelbine combination chemotherapy in non -small cell lung cancer (NSCLC) patients[13]. Loss or reduced expression 
+of SMARCA4 and SMARCB1 in triple -negative breast cancer (TNBC) cell lines and patients correlated with poor 
+response to doxorubicin -containing regimen (doxorubicin and cyclophosphamide)[14]. 
+ 
+ATM Heterozygous deletion  
+Biological Impact  
+The ataxia -telangiec tasia mutated protein kinase (ATM) gene encodes a PI3K -related serine/threonine protein kinase 
+involved in genomic integrity maintenance and plays central roles in DNA double -strand break (DSB) repair, which can 
+be induced by ionizing radiation, chemothera py drugs, or oxidative stress[15]. ATM is a well -characterized tumor 
+suppressor gene, hereditary mutations and haploinsufficiency of ATM result in markedly increased susceptibility to a 
+variety of cancer types[16][17][18][19][20]. Results from a case -cohor t study of colorectal cancer and cancer -free control 
+individuals suggested that germline pathogenic mutations in ATM and PALB2 should be added to established CRC risk 
+genes as part of standard tumor genetic testing panels[21]. ATM is among the most commonl y aberrant genes in sporadic 
+cancers. Somatic ATM aberrations are frequently observed in hematologic malignancies[22][23][24][25]and a board range 
+of tumors such as prostate cancer[26], head and neck squamous cell carcinoma (HNSCC)[27], pancreatic cancer[28], lung 
+adenocarcinoma[29], breast cancer[30], and ovarian cancer[17]. 
+ 
+Therapeutic and prognostic relevance  
+In May 2020, the U.S. FDA approved olaparib for the treatment of adult patients with metastatic castration -resistant 
+prostate cancer (mCRPC) who c arry mutations in homologous recombination repair (HRR) genes, including BRCA1, 
+BRCA2, ATM, BARD1, BRIP1, CDK12, CHEK1, CHEK2, FANCL, PALB2, RAD51B, RAD51C, RAD51D, RAD54L, and 
+progressed following prior treatment with enzalutamide or abiraterone acetate ( NCT02987543)[31]. 
+ 
+In a phase II trial (TOPARP -A; NCT01682772), 3 out of 4 metastatic prostate cancer patients harboring only ATM 
+inactivating mutations responded to olaparib treatment[32]. Also, the phase II TOPARP -B trial (NCT01682772) 
+demonstrated that olaparib treatment resulted in a RECIST 1.1 or PSA50 response rate of 10.5% (2/12) and a TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  6 of 29 
+composite overall response rate of 36.8% (7/19) in prostate cancer patients harboring deleterious ATM mutations[33].In 
+another randomized, double -blind phase II trial in Asian patients with metastatic gastric cancer has shown that addition 
+of olaparib to paclitaxel significantly increased the OS in both the overall population and patients with low or 
+undetectable ATM protein expression (NCT01063517)[34]. However, in the  subsequent phase III trial (GOLD; 
+NCT01924533), addition of olaparib to paclitaxel did not significantly improve OS in the overall or the ATM -negative 
+population of Asian gastric cancer patients[35]. Besides, in a phase II trial (TBCRC 048; NCT03344965), 7 metastatic 
+breast cancer patients harboring only ATM mutations were not responded to olaparib treatment (SD: n=2, PD: n=5)[36].In 
+a phase II trial (TRITON2; NCT02952534), 49 mCRPC patients harboring ATM alteration had limited response to 
+rucaparib treatm ent. The radiographic response rate was 10.5 % (n=2/19 evaluable patients), the prostate -specific 
+antigen response rate was 4.1% (n=2/49), and the 6 -month clinical benefit rate was 28.6% (n=12/42)[37]. 
+ 
+In preclinical studies, cells with ATM alternation we re sensitive to olaparib, niraparib, and talazoparib treatment in vitro 
+and in vivo[38][39][40][41]. 
+ 
+In addition, ATM has been determined as an inclusion criterion for the trials evaluating olaparib efficacy in breast cancer 
+(NCT04053322) and advanced sol id tumors (NCT03297606), rucaparib efficacy in ovarian cancer 
+(NCT01968213)[42]and prostate cancer (NCT02952534, NCT03533946)[37], niraparib efficacy in pancreatic cancer 
+(NCT03553004, NCT03601923), prostate cancer (NCT02854436), melanoma (NCT03925350), me tastatic 
+esophageal/gastroesophageal junction (GEJ)/proximal gastric adenocarcinoma (NCT03840967), and any malignancy, 
+except prostate (NCT03207347), and talazoparib efficacy in advanced or metastatic cancer (NCT02286687), HER2 -
+negative solid tumors (NCT02 401347), prostate cancer (NCT03148795), and lung cancer (NCT03377556), respectively.  
+ 
+Also, a prospective study in muscle -invasive bladder cancer patients suggested that genomic alternations in the DNA 
+repair genes ATMs, RB1 and FANCC could be recognized as biomarkers predictive of response to cisplatin -based 
+neoadjuvant chemotherapy[43]. However, loss -of-function of the ATM -CHEK2 -TP53 cascade is associated with 
+resistance to anthracycline/mitomycin -containing chemotherapy in patients with breast cancer[44]. 
+ 
+A retrospective study of VICTOR trial demonstrated that ATM loss was associated with worse prognosis in colorectal 
+cancer[45]. 
+ 
+CHEK1  Heterozygous deletion  
+Biological Impact  
+The checkpoint kinase 1 (CHEK1 or CHK1) gene encodes a protein kinase involved  in transducing DNA damage signals 
+and is required for both the intra -S phase and G2/M checkpoints[46]. CHEK1 heterozygosity has been shown to cause 
+haploinsufficient phenotypes that can contribute to tumorigenesis through inappropriate S phase entry, accu mulation 
+of DNA damage during replication, and failure to restrain mitotic entry[47][48]. Despite acting as a tumor suppressor, 
+homozygous loss -of-function mutations in CHEK1 have not been identified in tumors[49], and CHEK1 mutations are 
+extremely rare[46]. Overexpression of CHEK1 has been observed in a variety of tumors, including liver cancer[50], breast 
+cancer[51], colorectal cancer[52], non -small cell lung (NSCLC) cancer[53], and nasopharyngeal cancer[54]. 
+ 
+Therapeutic and prognostic relevance  
+In May 2 020, the U.S. FDA approved olaparib for the treatment of adult patients with metastatic castration -resistant 
+prostate cancer (mCRPC) who carry mutations in homologous recombination repair (HRR) genes, including BRCA1, 
+BRCA2, ATM, BARD1, BRIP1, CDK12, CHEK1 , CHEK2, FANCL, PALB2, RAD51B, RAD51C, RAD51D, RAD54L, and 
+progressed following prior treatment with enzalutamide or abiraterone acetate (NCT02987543)[31]. 
+ 
+In addition, CHEK1 has been determined as an inclusion criterion for the trials evaluating olaparib  efficacy in advanced 
+solid tumors (NCT03297606; CAPTUR trial), rucaparib efficacy in ovarian cancer (NCT01968213)[42], prostate cancer 
+(NCT03533946), niraparib efficacy in pancreatic cancer (NCT03553004), and any malignancy, except prostate TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  7 of 29 
+(NCT03207347),  and talazoparib efficacy in lung cancer (NCT03377556), respectively.  
+ 
+Selective inhibitors for CHEK1 and CHEK2 alone or in combination with other agents are currently being investigated 
+in clinical trials[55]. 
+ 
+FBXW7  Heterozygous deletion  
+Biological Impac t 
+The F -box/WD repeat -containing protein 7 (FBXW7) gene encodes a protein that belongs to the SCF (SKP1 -CUL1 -F-
+box protein) E3 ligase complex. FBXW7 is recognized as a tumor suppressor which is involved in the negative 
+regulation of oncogenes such as c -Myc[56][57], c-Jun[58], cyclin E[59], Notch family members[60][61], Aurora -A[62], mTOR[63], 
+KLF5[64], and MCL -1[65]. Inactivating FBXW7 mutation or copy number loss may result in the accumulation of 
+oncoproteins and therefore lead to malignant transformation[66]. FBXW7 is a haploinsufficient tumor suppressor gene 
+with one copy loss may lead to weak protein expression and is insufficient to execute its original physiological 
+functions[64][65][67]. 
+ 
+Therapeutic and prognostic relevance  
+Clinical efficacy of mTOR inhibitors was seen in patients harboring aberrations in the FBXW7 gene (one patient with 
+refractory fibrolamellar hepatocellular carcinoma, and one patient with lung adenocarcinoma)[68][69]. Moreover, in vitro 
+assay also suggested that loss or inactivatio n of FBXW7 may confer sensitivity to mTOR inhibitor[63]. 
+ 
+Preclinical studies suggested that mutations or loss of FBXW7 were associated with regorafenib and oxaliplatin 
+resistance in CRC cell lines and gefitinib resistance in lung cancer cells[70][71][72][ 73]. 
+ 
+Retrospective studies have indicated that a relatively low expression level of FBXW7 is an independent prognostic 
+marker of poor survival for patients with hepatocellular carcinoma, lung adenocarcinoma and squamous cell 
+carcinoma[74][72]. 
+ 
+MRE11  Heterozygous deletion  
+Biological Impact  
+The MRE11 gene encodes a protein that forms the MRE11 -RAD50 -NBS (MRN) complex involved in sensing and 
+repairing DNA double -strand breaks via homologous recombination and non -homologous end joining[75][76]. MRE11 has  
+been implicated as a haploinsufficient gene with one copy loss may lead to weak protein expression and is insufficient 
+to execute its original physiological function[75]. The carrier of MRE11 mutation may confer elevated risks for numerous 
+types of cancer s including breast cancer, ovarian cancer, endometrial cancer, colorectal cancer, and lymphoid 
+cancer[75][76][77][78][79][80][81]. 
+ 
+Therapeutic and prognostic relevance  
+In a Phase II clinical trial (n=50), one castration -resistant prostate cancer patient h arboring an MRE11 inactivating 
+mutation responded to olaparib[32]. Preclinically, loss of MRE11 also predicted sensitivity to PARP inhibitor talazoparib 
+and ABT -888 in endometrial cancer[82]and microsatellite unstable colorectal cancer (CRC) cell lines[83]. MRE11 has 
+been selected as an inclusion criterion for the trial examining olaparib in metastatic biliary tract cancer (NCT04042831), 
+and talazoparib in HER2 -negative breast cancer (NCT02401347) and prostate cancer (NCT03148795).  
+ 
+CRC patients with tumor deficient of MRE11 showed initially reduced disease -free survival (DFS) and overall survival 
+(OS) but improved long -term DFS and OS compared with patients with an intact MRE11[84]. 
+ 
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  8 of 29 
+PTEN  Homozygous deletion  
+Biological Impact  
+The phosphatase and tensin hom olog deleted on chromosome ten (PTEN) gene encodes a lipid/protein phosphatase 
+that is important for the regulation of cell proliferation, survival, homologous recombination and maintenance of genomic 
+integrity[85][86]. PTEN acts as an essential tumor supp ressor by antagonizing the PI3K/AKT/mTOR signaling pathway[87]. 
+PTEN is a haploinsufficient tumor suppressor gene, in which having only one copy of the wild -type allele does not 
+produce enough protein product to execute wild -type functions[88][89][90]. Ger mline loss -of-function PTEN mutations are 
+found in approximately 80% of patients with Cowden syndrome, a disorder that is associated with high -penetrance 
+breast and thyroid cancer[91][92][93]. Somatic mutations or monoallelic loss of PTEN is regularly obse rved in a significant 
+fraction of human cancers, including sporadic breast cancer, colon cancer, endometrial cancer, prostate cancer, and 
+glioblastoma[94][95][96][97][98]. 
+ 
+Therapeutic and prognostic relevance  
+Somatic loss of PTEN results in aberrant activ ation of PI3K/AKT/mTOR signaling pathway and provides a mechanistic 
+rationale for PI3K pathway inhibitors treatment[99][100]. Preclinical studies demonstrated that PTEN deficiency was 
+associated with increased sensitivity to PI3K pathway inhibitors in sele cted cancer subtypes[101][102][103][104][105][106]. 
+Although early clinical data indicated that PTEN loss was associated with improved response and survival in solid tumor 
+patients treated with mTORC1 inhibitor, everolimus[107][108][109], several phase II trials showed no clinical benefit of 
+everolimus or temsirolimus treatment in patients with advanced solid tumors harboring PTEN loss[110][111][112]. 
+ 
+Several groups found that PTEN loss was generally associated with poor response to trastuzumab therapy, wh ether 
+this agent was administered in the neoadjuvant, adjuvant, or metastatic settings[113][114][115][116][117]. Also, loss of PTEN 
+expression in advanced colorectal cancer (CRC) has been linked with resistance to anti -EGFR mAbs like cetuximab 
+and panitumu mab[118][119][120][121][122][123].Preclinical studies showed that loss of PTEN expression in EGFR mutant cells 
+was associated with decreased sensitivity to EGFR TKIs, erlotinib and gefitinib[124][125]. Inhibition of the PI3K/AKT/mTOR 
+signal pathway has bee n shown to be an effective strategy to radiosensitize NSCLC cells harboring the EGFR activating 
+mutation that acquires resistance to both TKIs due to PTEN loss or inactivation mutations[126].Loss or biallelic 
+inactivation of PTEN is associated with resista nce to anti -PD-1 checkpoint blockade therapies, including 
+pembrolizumab and nivolumab in melanoma and leiomyosarcoma patients[127][128][129]. 
+ 
+PTEN loss of function mutation has been determined as an inclusion criterion for the trial evaluating olaparib ef ficacy 
+in metastatic biliary tract cancer (NCT04042831); talazoparib efficacy in HER2 -negative solid tumors (NCT02401347); 
+rucaparib efficacy in prostate cancer (NCT02952534, NCT03533946), and niraparib efficacy in breast cancer 
+(NCT04508803) or any malign ancy (except prostate) cancer (NCT03207347). Clinical data also suggested that PTEN 
+deficient cancers may be sensitive to olaparib[130]. However, in a phase II trial (NCT02286687), 13 patients with 
+advanced solid tumors harboring PTEN mutation or loss (by IHC) had limited response to talazoparib treatment; only 
+one patient with PTEN mutation had prolonged SD (Mol Cancer Ther 2018;17(1 Suppl):Abstract nr A096; 
+NCT02286687). Besides, in a phase I trial (NCT00749502), no association between loss of PTEN expres sion and the 
+efficacy of niraparib was identified in patients with castration -resistant prostate cancer[131]. 
+ 
+In a preclinical study, PTEN null cancer cells were sensitive to rucaparib treatment in vitro[132]. 
+ 
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  9 of 29 
+US FDA -APPROVED DRUG(S)  
+Everolimus (AFINITOR)  
+Everolimus, a derivative of sirolimus, works as an inhibitor of mammalian target of rapamycin complex 1 (mTORC1) and blocks 
+mTORC1 -mediated downstream signals for cell growth, proliferation, and survival. Everolimus is developed and marketed by Novartis 
+under the trade name AFINITOR.  
+ 
+- FDA Approval Summary of Everolimus (AFINITOR)  
+RADIANT -4[133] 
+NCT01524783  Lung or gastrointestinal neuroendocrine tumor  (Approved on 2016/02/26)  
+- 
+Everolimus vs. Placebo [PFS(M): 11 vs. 3.9]  
+BOLERO -2[134] 
+NCT00863655  Breast cancer  (Approved on 2012/07/20)  
+ER+/HER2 - 
+Everolimus + exemestane vs. Placebo + exemestane [PFS(M): 7.8 vs. 3.2]  
+EXIST -2 
+NCT00790400  Tuberous sclerosis complex (tsc) -associated renal angiomyolipoma  (Approved on 
+2012/04/26)  
+- 
+Everolimus vs. Placebo [ORR(%): 41.8 vs. 0]  
+RADIANT -3[108] 
+NCT00510068  Pancreatic neuroendocrine tumor  (Approved on 2011/05/05)  
+- 
+Everolimus vs. Placebo [PFS(M): 11 vs. 4.6]  
+EXIST -1[135] 
+NCT00789828  Subependymal giant cell astrocytoma  (Approved on 2010/10/29)  
+- 
+Everolimus vs. Placebo [ORR(%): 35.0]  
+RECORD -1[136] 
+NCT00410124  Renal cell carcinoma  (Approved on 2009/05/30)  
+- 
+Everolimus vs. Placebo [PFS(M): 4.9 vs. 1.9]  
+ 
+Niraparib (ZEJULA)  
+Niraparib is an oral, small molecule inhibitor of the DNA repair enzyme poly (ADP -ribose) polymerase -1 and -2 (PARP -1, -2). Niraparib 
+is developed and marketed by Tesaro under the trade name ZEJULA.  
+ 
+- FDA Approval Summary of Niraparib (ZEJULA)  
+PRIMA  
+NCT02655016  Ovarian cancer, Fallopian tube  cancer, Peritoneal carcinoma  (Approved on 2020/04/29)  
+- 
+Niraparib vs. Placebo [PFS (overall population)(M): 13.8 vs. 8.2]  
+NOVA[137] 
+NCT01847274  Ovarian cancer, Fallopian tube cancer, Peritoneal carcinoma  (Approved on 2017/03/27)  
+- 
+Niraparib vs. Placebo [PFS (overall population)(M): 11.3 vs. 4.7]  
+ 
+ 
+ 
+ 
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  10 of 29 
+Olaparib (LYNPARZA)  
+Olaparib is an oral, small molecule inhibitor of poly (ADP -ribose) polymerase -1, -2, and -3 (PARP -1, -2, -3). Olaparib is developed by 
+KuDOS Pharmaceuticals and marketed by AstraZeneca under the trade name LYNPARZA.  
+ 
+- FDA Approval Summary of Olaparib (LYNPARZA)  
+OlympiA  
+NCT02032823  Her2 -negative high -risk early breast cancer  (Approved on 2022/03/11)  
+HER2 -/gBRCA mutation  
+Olaparib vs. Placebo [ invasive disease -free surviva l (IDFS)(M): ]  
+PROfound[31] 
+NCT02987543  Prostate cancer  (Approved on 2020/05/19)  
+HRR genes mutation  
+Olaparib vs. Enzalutamide or abiraterone acetate [PFS(M): 5.8 vs. 3.5]  
+PAOLA -1[138] 
+NCT02477644  Ovarian cancer  (Approved on 2020/05/08)  
+HRD+  
+Olaparib + bevacizumab vs. Placebo + bevacizumab [PFS(M): 37.2 vs. 17.7]  
+POLO[139] 
+NCT02184195  Pancreatic adenocarcinoma  (Approved on 2019/12/27)  
+gBRCA mutation  
+Olaparib vs. Placebo [ORR(%): 23.0 vs. 12.0, PFS(M): 7.4 vs. 3.8]  
+SOLO -1[140] 
+NCT01844986  Ovarian cancer, Fallopian tube cancer, Peritoneal carcinoma  (Approved on 2018/12/19)  
+gBRCA mutation or sBRCA mutation  
+Olaparib vs. Placebo [PFS(M): NR vs. 13.8]  
+OlympiAD[141] 
+NCT02000622  Breast cancer  (Approved on 2018/02/06)  
+HER2 -/gBRCA mutation  
+Olaparib vs. Chemotherapy [PFS(M): 7 vs. 4.2]  
+SOLO -2/ENGOT -Ov21[142] 
+NCT01874353  Ovarian cancer, Fallopian tube cancer, Peritoneal carcinoma  (Approved on 2017/08/17)  
+gBRCA mutation  
+Olaparib vs. Placebo [PFS(M): 19.1 vs. 5.5]  
+Study19[143] 
+NCT00753545  Ovarian cancer, Fallopian tube cancer, Peritoneal carcinoma  (Approved on 2017/08/17)  
+- 
+Olaparib vs. Placebo [PFS(M): 8.4 vs. 4.8]  
+ 
+Rucaparib (RUBRACA)  
+Rucaparib is an inhibitor of the DNA repair enzyme poly (ADP -ribose) polymerase -1, -2 and -3 (PARP -1, -2, -3). Rucaparib is 
+developed and marketed by Clovis Oncology under the trade name RUBRACA.  
+ 
+- FDA Approval Summary of Rucaparib (RUBRACA)  
+TRITON2  
+NCT02952534  Prostate cancer  (Approved on 2020/05/15)  
+gBRCA mutation or sBRCA mutation  
+Rucaparib [ORR(%): 44.0, DOR(M): NE]  
+ARIEL3[42] 
+NCT01968213  Ovarian cancer, Fallopian tube cancer, Peritoneal carcinoma  (Approved on 2018/04/06)  
+- 
+Rucaparib vs. Placebo [PFS (All)(M): 10.8 vs. 5.4, PFS (HRD)(M): 13.6 vs. 5.4, PFS 
+(tBRCA)(M): 16.6 vs. 5.4]  
+ 
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  11 of 29 
+Talazoparib (TALZENNA)  
+Talazoparib is an inhibitor of poly (ADP -ribose) polymerase (PARP) enzymes, including PARP1 and PARP2. Talazoparib is developed 
+and marketed by Pfizer under the trade name TALZENNA.  
+ 
+- FDA Approval Summary of Talazoparib (TALZENNA)  
+EMBRACA[144] 
+NCT01945775  Breast cancer  (Approved on 2018/10/16)  
+HER2 -/gBRCA mutation  
+Talazoparib vs. Chemotherapy [PFS(M): 8.6 vs. 5.6]  
+ 
+Tazemetostat (TAZVERIK)  
+Tazemetostat is an inhibitor of the methyltransferase, EZH2, and some EZH2 gain -of-function  mutations including Y646X, A682G, and 
+A692V. Tazemetostat is developed and marketed by Epizyme under the trade name TAZVERIK.  
+ 
+- FDA Approval Summary of Tazemetostat (TAZVERIK)  
+E7438 -G000 -101 
+NCT01897571  Follicular lymphoma  (Approved on 2020/06/18)  
+EZH2  mutation  
+Tazemetostat (ezh2 mutant) vs. Tazemetostat (ezh2 wild -type) [ORR(%): 69.0 vs. 34.0, 
+DOR(M): 10.9 vs. 13]  
+EZH-202 
+NCT02601950  Epithelioid sarcoma  (Approved on 2020/01/23)  
+INI1 loss  
+Tazemetostat [ORR(%): 15.0]  
+ 
+Temsirolimus (TORISEL)  
+Temsirolimus is a soluble ester of sirolimus (rapamycin, brand -name drug Rapamune) and functions as an inhibitor of mammalian 
+target of rapamycin complex (mTORC). The inhibitory molecular mechanism is similar to Everolimus. Temsirolimus is developed b y 
+Wyeth Pharmaceuticals and marketed by Pfizer under the trade name TORISEL.  
+ 
+- FDA Approval Summary of Temsirolimus (TORISEL)  
+[145] 
+NCT00065468  Renal cell carcinoma  (Approved on 2007/05/30)  
+- 
+Temsirolimus vs. Ifn -α [OS(M): 10.9 vs. 7.3]  
+D=day; W=week; M=month  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  12 of 29 
+ONGOING CLINICAL TRIALS  
+Trials were searched by applying filters: study status, patient's diagnosis, intervention, location and/or biomarker(s). Plea se visit 
+https://clinicaltrials.gov  to search and view for a complete list of open available and updated matched trials.  
+ 
+No trial has been found.  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  13 of 29 
+SUPPLEMENTARY INFORMATION OF TESTING RESULTS  
+DETAILED INFORMATION OF VARIANTS WITH CLINICAL RELEVANCE  
+- Single Nucleotide and Small InDel Variants  
+Gene  Amino 
+Acid 
+Change  Exon  cDNA 
+Change  Accession 
+Number  COSMIC ID  Allele 
+Frequency  Coverage  
+SMARCA4  R978*  21 c.2932C>T  NM_001128844  COSM1266239  39.3%  1519  
+ 
+- Copy Number Alterations  
+Observed copy number (CN) for each evaluated position is shown on the y -axis. Regions referred to as amplification or deletion are 
+shown in color. Regions without significant changes are represented in gray.  
+  
+ 
+  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  14 of 29 
+OTHER DETECTED VARIANTS  
+Gene  Amino 
+Acid 
+Change  Exon  cDNA Change  Accession 
+Number  COSMIC ID  Allele 
+Frequency  Coverage  
+ADAMTSL1  R1322G  22 c.3964A>G  NM_001040272  - 46.9%  682 
+ETV4  P433L  13 c.1298C>T  NM_001079675  - 51.8%  952 
+MITF  V13A  1 c.38T>C  NM_198159  - 48.0%  1795  
+MUC16  D6322F  3 c.18964_18965delinsTT  NM_024690  - 48.2%  1198  
+SMARCA4  A1307P  29 c.3919G>C  NM_001128844  - 6.0%  1225  
+SMARCA4  R973Q  21 c.2918G>A  NM_001128844  COSM1161252  36.3%  1528  
+TSC2  L957W  26 c.2870T>G  NM_000548  - 50.0%  292 
+ 
+Note:  
+- This table enlists variants detected by the panel other than those with clinical relevance (reported in Testing Result sectio n). 
+The clinical impact of a genetic variant is dete rmined according to ACT Genomics in -house clinical knowledge database. A 
+negative result does not necessarily indicate absence of biological effect on the tumor. Some variants listed here may possib ly 
+have preclinical data or may show potential clinical re levance in the future.  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  15 of 29 
+TEST DETAILS  
+SPECIMEN RECEIVED AND PATHOLOGY REVIEW  
+ 
+ 
+- Collection date: Aug 02, 2022  
+- Facility retrieved: 臺北榮總  
+- H&E-stained section No.: S11129483H  
+- Collection site: Prostate  
+- Examined by: Dr. Chien -Ta Chiang  
+1. The percentage of viable  tumor cells in total cells in the whole slide (%): 25%  
+2. The percentage of viable tumor cells in total cells in the encircled areas in the whole slide (%): 60%  
+3. The percentage of necrotic cells (including necrotic tumor cells) in total cells in the whole sli de (%): 0%  
+4. The percentage of necrotic cells (including necrotic tumor cells) in total cells in the encircled areas in the whole 
+slide (%): 0%  
+5. Additional comment: NA  
+- Manual macrodissection: Performed on the highlighted region  
+- The outline highlights the area  of malignant neoplasm annotated by a pathologist.  
+ 
+RUN QC  
+- Panel: ACTOnco®+ 
+DNA test  
+- Mean Depth: 1008x  
+- Target Base Coverage at 100x: 95%  
+RNA test  
+- Average unique RNA Start Sites per control GSP2: 154  
+ 
+LIMITATIONS  
+1. This test does not provide information of variant causality and does not detect variants in non -coding regions that could affect 
+gene expression. This report does not report polymorphisms and we do not classify whether a mutation is germline or somatic.  
+Variants identified by this assay were not s ubject to validation by Sanger or other technologies.  
+2. The possibility cannot be excluded that certain pathogenic variants detected by other sequencing tools may not be reported in  
+the test because of technical limitation of bioinformatics algorithm or the NGS sequencing platform, e.g. low coverage.  
+3. This test has been designed to detect fusions in 13 genes sequenced. Therefore, fusion in genes not covered by this test woul d 
+not be reported. For novel fusions detected in this test, Sanger sequencing confirmat ion is recommended if residue specimen 
+is available.  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  16 of 29 
+NEXT -GENERATION SEQUENCING (NGS) METHODS  
+DNA test  
+Extracted genomic DNA was amplified using primers targeting coding exons of analyzed genes and subjected to library construct ion. 
+Barcoded libraries were  subsequently conjugated with sequencing beads by emulsion PCR and enriched using Ion Chef system. 
+Sequencing was performed according to Ion Proton or Ion S5 sequencer protocol (Thermo Fisher Scientific).  
+ 
+Raw reads generated by the sequencer were mapped t o the hg19 reference genome using the Ion Torrent Suite. Coverage depth 
+was calculated using Torrent Coverage Analysis plug -in. Single nucleotide variants (SNVs) and short insertions/deletions (InDels) 
+were identified using the Torrent Variant Caller plug -in. VEP (Variant Effect Predictor) was used to annotate every variant using 
+databases from Clinvar, COSMIC and Genome Aggregation database. Variants with coverage ≥ 20, allele frequency ≥ 5% and 
+actionable variants with allele frequency ≥ 2% were retained.  This test provides uniform coverage of the targeted regions, enabling 
+target base coverage at 100x ≥ 85% with a mean coverage ≥ 500x. 
+ 
+Variants reported in Genome Aggregation database with > 1% minor allele frequency (MAF) were considered as polymorphisms . ACT 
+Genomics in -house database was used to determine technical errors. Clinically actionable and biologically significant variants were 
+determined based on the published medical literature.  
+ 
+The copy number alterations (CNAs) were predicted as described below:  
+Amplicons with read counts in the lowest 5th percentile of all detectable amplicons and amplicons with a coefficient of varia tion ≥ 0.3 
+were removed. The remaining amplicons were normalized to correct the pool design bias. ONCOCNV (an established me thod for 
+calculating copy number aberrations in amplicon sequencing data by Boeva et al., 2014) was applied for the normalization of t otal 
+amplicon number, amplicon GC content, amplicon length, and technology -related biases, followed by segmenting the samp le with a 
+gene -aware model. The method was used as well for establishing the baseline of copy number variations.  
+ 
+Tumor mutational burden (TMB) was calculated by using the sequenced regions of ACTOnco®+ to estimate the number of somatic 
+nonsynonymous mutat ions per megabase of all protein -coding genes (whole exome). The TMB calculation predicted somatic variants 
+and applied a machine learning model with a cancer hotspot correction. TMB may be reported as “TMB -High”, “TMB -Low” or “Cannot 
+Be Determined ”. TMB -High corresponds to ≥ 7.5 mutations per megabase (Muts/Mb); TMB -Low corresponds to < 7.5 Muts/Mb. TMB 
+is reported as “Cannot Be Determined ” if the tumor purity of the sample is < 30%. 
+ 
+Classification of microsatellite instability (MSI) status is determined by a machine learning prediction algorithm. The change of a 
+number of repeats of different lengths from a pooled microsatellite stable (MSS) baseline in > 400 genomic loci are used as t he 
+features for the algorithm. The final output of the results is eithe r microsatellite Stable (MSS) or microsatellite instability high (MSI -H). 
+ 
+RNA test  
+Extracted RNA was reverse -transcribed and subjected to library construction. Sequencing was performed according to Ion Proton or 
+Ion S5 sequencer protocol (Thermo Fisher Sc ientific). To ensure sequencing quality for fusion variant analysis, the average unique 
+RNA Start Sites (SS) per control Gene Specific Primer 2 (GSP 2) should be ≥ 10. 
+ 
+The fusion analysis pipeline aligned sequenced reads to the human reference genome, ide ntified regions that map to noncontiguous 
+regions of the genome, applied filters to exclude probable false -positive events and, annotated previously characterized fusion events 
+according to Quiver Gene Fusion Database, a curated database owned and maintain ed by ArcherDX. In general, samples with 
+detectable fusions need to meet the following criteria: (1) Number of unique start sites (SS) for the GSP2 ≥ 3; (2) Number of supporting 
+reads spanning the fusion junction ≥ 5; (3) Percentage of supporting reads spa nning the fusion junction ≥ 10%; (4) Fusions annotated 
+in Quiver Gene Fusion Database.  
+ 
+ 
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  17 of 29 
+DATABASE USED  
+- Reference genome: Human genome sequence hg19  
+- COSMIC v.92  
+- Genome Aggregation database r2.1.1  
+- ClinVar (version 20210404)  
+- ACT Genomics in -house database  
+- Quiver Gene Fusion Database version 5.1.18  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Variant Analysis:  
+醫檢師陳韻伃  博士 
+Yun-Yu Chen Ph.D.  
+檢字第 015647號  
+ 
+ Sign Off  
+解剖病理專科醫師王業翰  
+Yeh-Han Wang M.D.  
+病解字第 000545號  
+ 
+ 
+  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  18 of 29 
+GENE LIST  
+SNV & CNV  
+ABCB1*  ABCC2*  ABCG2*  ABL1 ABL2 ADAMTS1  ADAMTS13  ADAMTS15  ADAMTS16  ADAMTS18  ADAMTS6  ADAMTS9  
+ADAMTSL1  ADGRA2  ADH1C*  AKT1 AKT2 AKT3 ALDH1A1*  ALK AMER1  APC AR ARAF 
+ARID1A  ARID1B  ARID2  ASXL1  ATM ATR ATRX AURKA  AURKB  AXIN1  AXIN2  AXL 
+B2M BAP1 BARD1  BCL10  BCL2*  BCL2L1  BCL2L2*  BCL6 BCL9 BCOR BIRC2 BIRC3 
+BLM BMPR1A  BRAF BRCA1  BRCA2  BRD4 BRIP1 BTG1 BTG2*  BTK BUB1B  CALR 
+CANX CARD11  CASP8  CBFB CBL CCNA1  CCNA CCNB1  CCNB2  CCNB3  CCND1  CCND2  
+CCND3  CCNE1  CCNE2  CCNH CD19 CD274  CD58 CD70*  CD79A  CD79B  CDC73  CDH1 
+CDK1 CDK12  CDK2 CDK4 CDK5 CDK6 CDK7 CDK8 CDK9 CDKN1A  CDKN1B  CDKN2A  
+CDKN2B  CDKN2C  CEBPA*  CHEK1  CHEK2  CIC CREBBP  CRKL CRLF2  CSF1R  CTCF CTLA4  
+CTNNA1  CTNNB1  CUL3 CYLD CYP1A1*  CYP2B6*  CYP2C19*  CYP2C8*  CYP2D6  CYP2E1*  CYP3A4*  CYP3A5*  
+DAXX DCUN1D1  DDR2 DICER1  DNMT3A  DOT1L  DPYD DTX1 E2F3 EGFR EP300  EPCAM  
+EPHA2  EPHA3  EPHA5  EPHA7  EPHB1  ERBB2  ERBB3  ERBB4  ERCC1  ERCC2  ERCC3  ERCC4  
+ERCC5  ERG ESR1 ESR2 ETV1 ETV4 EZH2 FAM46C  FANCA  FANCC  FANCD2  FANCE  
+FANCF  FANCG  FANCL  FAS FAT1 FBXW7  FCGR2B  FGF1*  FGF10  FGF14  FGF19*  FGF23  
+FGF3 FGF4*  FGF6 FGFR1  FGFR2  FGFR3  FGFR4  FH FLCN FLT1 FLT3 FLT4 
+FOXL2*  FOXP1  FRG1 FUBP1  GATA1  GATA2  GATA3  GNA11  GNA13  GNAQ  GNAS GREM1  
+GRIN2A  GSK3B  GSTP1*  GSTT1*  HGF HIF1A  HIST1H1C*  HIST1H1E*  HNF1A  HR HRAS*  HSP90AA1  
+HSP90AB1  HSPA4  HSPA5  IDH1 IDH2 IFNL3*  IGF1 IGF1R IGF2 IKBKB IKBKE IKZF1 
+IL6 IL7R INPP4B  INSR IRF4 IRS1 IRS2* JAK1 JAK2 JAK3 JUN* KAT6A  
+KDM5A  KDM5C  KDM6A  KDR KEAP1  KIT KMT2A  KMT2C  KMT2D  KRAS LCK LIG1 
+LIG3 LMO1  LRP1B  LYN MALT1  MAP2K1  MAP2K2  MAP2K4  MAP3K1  MAP3K7  MAPK1  MAPK3  
+MAX MCL1 MDM2  MDM4  MED12  MEF2B  MEN1  MET MITF MLH1 MPL MRE11  
+MSH2  MSH6  MTHFR*  MTOR  MUC16  MUC4  MUC6  MUTYH  MYC MYCL MYCN  MYD88  
+NAT2*  NBN NEFH NF1 NF2 NFE2L2  NFKB1  NFKBIA  NKX2-1* NOTCH1  NOTCH2  NOTCH3  
+NOTCH4  NPM1  NQO1*  NRAS NSD1 NTRK1  NTRK2  NTRK3  PAK3 PALB2  PARP1  PAX5 
+PAX8 PBRM1  PDCD1  PDCD1LG2  PDGFRA  PDGFRB  PDIA3  PGF PHOX2B*  PIK3C2B  PIK3C2G  PIK3C3  
+PIK3CA  PIK3CB  PIK3CD  PIK3CG  PIK3R1  PIK3R2  PIK3R3  PIM1 PMS1 PMS2 POLB POLD1  
+POLE PPARG  PPP2R1A  PRDM1  PRKAR1A  PRKCA  PRKCB  PRKCG  PRKCI PRKCQ  PRKDC  PRKN 
+PSMB8  PSMB9  PSME1  PSME2  PSME3  PTCH1  PTEN PTGS2  PTPN11  PTPRD  PTPRT  RAC1 
+RAD50  RAD51  RAD51B  RAD51C  RAD51D  RAD52  RAD54L  RAF1 RARA RB1 RBM10  RECQL4  
+REL RET RHOA RICTOR  RNF43  ROS1 RPPH1  RPTOR  RUNX1  RUNX1T1  RXRA SDHA 
+SDHB SDHC SDHD SERPINB3  SERPINB4  SETD2  SF3B1  SGK1 SH2D1A*  SLC19A1*  SLC22A2*  SLCO1B1*  
+SLCO1B3*  SMAD2  SMAD3  SMAD4  SMARCA4  SMARCB1  SMO SOCS1*  SOX2*  SOX9 SPEN SPOP 
+SRC STAG2  STAT3 STK11  SUFU SYK SYNE1  TAF1 TAP1 TAP2 TAPBP  TBX3 
+TEK TERT TET1 TET2 TGFBR2  TMSB4X*  TNF TNFAIP3  TNFRSF14  TNFSF11  TOP1 TP53 
+TPMT*  TSC1 TSC2 TSHR TYMS U2AF1  UBE2A*  UBE2K  UBR5 UGT1A1*  USH2A  VDR* 
+VEGFA  VEGFB  VHL WT1 XIAP XPO1 XRCC2  ZNF217      
+*Analysis of copy number alterations NOT available.  
+ 
+FUSION  
+ALK BRAF EGFR FGFR1  FGFR2  FGFR3  MET NRG1 NTRK1  NTRK2  NTRK3  RET ROS1 
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  19 of 29 
+APPENDIX  
+POSSIBLE THERAPEUTIC IMPLICATIONS FOR HETEROZYGOUS DELETION  
+Gene  Therapies  Possible effect  
+FBXW7  Everolimus, Temsirolimus  sensitive  
+ATM Niraparib, Olaparib, Rucaparib, Talazoparib  sensitive  
+CHEK1  Niraparib, Olaparib, Rucaparib, Talazoparib  sensitive  
+MRE11  Niraparib, Olaparib, Rucaparib, Talazoparib  sensitive  
+FBXW7  Gefitinib, Regorafenib  resistant  
+ 
+SIGNALING PATHWAYS AND MOLECULAR -TARGETED AGENTS  
+ 
+1: Everolimus, Temsirolimus  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  20 of 29 
+ 
+1: Olaparib, Niraparib, Rucaparib, Talazoparib  
+  
+TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  21 of 29 
+DISCLAIMER  
+法律聲明  
+本檢驗報告僅提供專業醫療參考，結果需經專業醫師解釋及判讀。基因突變資訊非必具備藥物或治療有效性指標，反之亦然。本檢驗報
+告提供之用藥指引不聲明或保證其臨床有效性，反之亦然。本基因檢測方法係由本公司研究開發，已經過有效性測試。  
+本檢驗報告非經本公司許可，不得私自變造、塗改，或以任何方式作為廣告及其他宣傳之用途。  
+本公司於提供檢驗報告後，即已完成本次契約義務，後續之報告解釋、判讀及用藥、治療，應自行尋求相關專業醫師協助，若需將報告
+移件其他醫師，本人應取得該醫師同意並填寫移件申請書，主動告知行動基因，行動基因僅能配 合該醫師意願與時間提供醫師解說。  
+ 
+醫療決策需由醫師決定  
+任何治療與用藥需經由醫師在考慮病患所有健康狀況相關資訊包含健檢、其他檢測報告和病患意願後，依照該地區醫療照護標準由醫
+師獨立判斷。醫師不應僅依據單一報告結果 (例如本檢測或本報告書內容 )做決策。  
+ 
+基因突變與用藥資訊並非依照有效性排序  
+本報告中列出之生物標記變異與藥物資訊並非依照潛在治療有效性排序。  
+ 
+證據等級  
+藥物潛在臨床效益 (或缺乏潛在臨床效益 )的實證證據是依據至少一篇臨床療效個案報告或臨床前試驗做為評估。本公司盡力提供適時及
+準確之資料，但由於醫學科 技之發展日新月異，本公司不就本報告提供的資料是否為準確、適宜或最新作保證。  
+ 
+責任  
+本檢驗報告僅提供專業醫療參考，本公司及其員工不對任何由使用本報告之內容引起的直接、間接、特殊、連帶或衍生的損失或損害承
+擔責任。  
+  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  22 of 29 
+REFERENCE  
+ 
+1. PMID: 10078207; 1999, Mol Cell;3(2):247 -53  
+Reconstitution of a core chromatin remodeling complex from SWI/SNF subunits.  
+ 
+2. PMID: 23568486;  2013, Nat Rev Genet;14(5):347 -59  
+From neural development to cognition: unexpected roles for chromatin.  
+ 
+3. PMID: 25387058; 2015, Annu Rev Pathol;10():145 -71  
+SWI/SNF chromatin remodeling and human malignancies.  
+ 
+4. PMID: 17637742; 2008, Oncogene;27(4):460 -8  
+Characterization of mammary tumors from Brg1 heterozygous mice.  
+ 
+5. PMID: 23644491; 2013, Nat Genet;45(6):592 -601  
+Proteomic and bioinformatic analysis of mammalian SWI/SNF complexes identifies extensive roles in human malignancy.  
+ 
+6. PMID: 25060813; 2014, Acta Neuropathol;128(3):453 -6  
+SMARCA4 -mutated atypical teratoid/rhabdoid tumors are associated with inherited germline alterations and poor prognosis.  
+ 
+7. PMID: 23143597; 2012, Nat Genet;44(12):1321 -5  
+The genetic landscape of mutations in Burkitt lymphoma.  
+ 
+8. PMID : 20137775; 2010, Am J Hum Genet;86(2):279 -84  
+Germline nonsense mutation and somatic inactivation of SMARCA4/BRG1 in a family with rhabdoid tumor predisposition syndrome.  
+ 
+9. PMID: 24658002; 2014, Nat Genet;46(5):438 -43  
+Germline and somatic SMARCA4 mutation s characterize small cell carcinoma of the ovary, hypercalcemic type.  
+ 
+10. PMID: 24658004; 2014, Nat Genet;46(5):424 -6  
+Recurrent SMARCA4 mutations in small cell carcinoma of the ovary.  
+ 
+11. PMID: 24658001; 2014, Nat Genet;46(5):427 -9  
+Small cell carcinoma of the ovary, hypercalcemic type, displays frequent inactivating germline and somatic mutations in SMARCA4.  
+ 
+12. PMID: 28292935; 2017, Mol Cancer Ther;16(5):850 -860  
+Selective Killing of SMARCA2 - and SMARCA4 -deficient Small Cell Carcinoma of the Ovary, Hypercalcemic Type Cells by Inhibition of EZH2: 
+In Vitro and In Vivo Preclinical Models.  
+ 
+13. PMID: 26671993; 2016, Clin Cancer Res;22(10):2396 -404  
+SMARCA4/BRG1 Is a Novel Prognostic Biomarker Predictive of Cisplatin -Based Chemotherapy Outcomes in Resected Non -Small Cell L ung 
+Cancer.  
+ 
+14. PMID: 26260527; 2015, Cancer Res;75(19):4176 -87  
+Genome -Wide Identification and Characterization of Novel Factors Conferring Resistance to Topoisomerase II Poisons in Cancer.  
+ 
+15. PMID: 22079189; 2012, Trends Biochem Sci;37(1):15 -22  
+The ATM prote in kinase and cellular redox signaling: beyond the DNA damage response.  
+ 
+16. PMID: 1548942; 1992, Leukemia;6 Suppl 1():8 -13  
+Cancer susceptibility in ataxia -telangiectasia.  
+ 
+17. PMID: 12810666; 2003, Cancer Res;63(12):3325 -33  
+Contributions of ATM mutations to fam ilial breast and ovarian cancer.  
+ 
+18. PMID: 1961222; 1991, N Engl J Med;325(26):1831 -6  
+Incidence of cancer in 161 families affected by ataxia -telangiectasia.  
+ 
+19. PMID: 28779002; 2017, J Med Genet;54(11):732 -741  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  23 of 29 
+Rare, protein -truncating variants in ATM, CHEK2 an d PALB2, but not XRCC2, are associated with increased breast cancer risks.  
+ 
+20. PMID: 16400190; 2006, Carcinogenesis;27(4):848 -55  
+Atm-haploinsufficiency enhances susceptibility to carcinogen -induced mammary tumors.  
+ 
+21. PMID: 29478780; 2018, Am J Hum Genet;102(3) :401-414  
+Inherited DNA -Repair Defects in Colorectal Cancer.  
+ 
+22. PMID: 9488043; 1998, Oncogene;16(6):789 -96  
+ATM is usually rearranged in T -cell prolymphocytic leukaemia.  
+ 
+23. PMID: 11429421; 2001, J Clin Pathol;54(7):512 -6  
+Ataxia telangiectasia gene mutations i n leukaemia and lymphoma.  
+ 
+24. PMID: 11756177; 2002, Blood;99(1):238 -44  
+ATM gene inactivation in mantle cell lymphoma mainly occurs by truncating mutations and missense mutations involving the 
+phosphatidylinositol -3 kinase domain and is associated with increa sing numbers of chromosomal imbalances.  
+ 
+25. PMID: 21993670; 2012, Haematologica;97(1):47 -55  
+ATM gene alterations in chronic lymphocytic leukemia patients induce a distinct gene expression profile and predict disease p rogression.  
+ 
+26. PMID: 22981675; 2013, Eur Ur ol;63(5):920 -6  
+Targeted next -generation sequencing of advanced prostate cancer identifies potential therapeutic targets and disease heterogeneity.  
+ 
+27. PMID: 22410096; 2012, Oral Oncol;48(8):698 -702  
+Correlation of Ataxia -Telangiectasia -Mutated (ATM) gene los s with outcome in head and neck squamous cell carcinoma.  
+ 
+28. PMID: 23103869; 2012, Nature;491(7424):399 -405  
+Pancreatic cancer genomes reveal aberrations in axon guidance pathway genes.  
+ 
+29. PMID: 18948947; 2008, Nature;455(7216):1069 -75  
+Somatic mutations affect  key pathways in lung adenocarcinoma.  
+ 
+30. PMID: 30537493; 2019, Hum Pathol;86():85 -92  
+Molecular characterization of metaplastic breast carcinoma via next -generation sequencing.  
+ 
+31. PMID: 32343890; 2020, N Engl J Med;382(22):2091 -2102   
+Olaparib for Metastatic Castration -Resistant Prostate Cancer.  
+ 
+32. PMID: 26510020; 2015, N Engl J Med;373(18):1697 -708  
+DNA -Repair Defects and Olaparib in Metastatic Prostate Cancer.  
+ 
+33. PMID: 31806540; 2020, Lancet Oncol;21(1):162 -174  
+Olaparib in patients with metastatic castration -resistant prostate cancer with DNA repair gene aberrations (TOPARP -B): a multicentre, open -
+label, randomised, phase 2 trial.  
+ 
+34. PMID: 26282658; 2015, J Clin Oncol;33(33):3858 -65  
+Randomized, Double -Blind Phase II Trial With Prospective Classification by ATM Pr otein Level to Evaluate the Efficacy and Tolerability of 
+Olaparib Plus Paclitaxel in Patients With Recurrent or Metastatic Gastric Cancer.  
+ 
+35. PMID: 29103871; 2017, Lancet Oncol;18(12):1637 -1651   
+Olaparib in combination with paclitaxel in patients with advanc ed gastric cancer who have progressed following first -line therapy (GOLD): a 
+double -blind, randomised, placebo -controlled, phase 3 trial.  
+ 
+36. PMID: 33119476; 2020, J Clin Oncol;38(36):4274 -4282   
+TBCRC 048: Phase II Study of Olaparib for Metastatic Breast Canc er and Mutations in Homologous Recombination -Related Genes.  
+ 
+37. PMID: 32086346; 2020, Clin Cancer Res;26(11):2487 -2496   
+Non-BRCA DNA Damage Repair Gene Alterations and Response to the PARP Inhibitor Rucaparib in Metastatic Castration -Resistant Prostate 
+Cancer : Analysis From the Phase II TRITON2 Study.  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  24 of 29 
+ 
+38. PMID: 20739657; 2010, Blood;116(22):4578 -87  
+The PARP inhibitor olaparib induces significant killing of ATM -deficient lymphoid tumor cells in vitro and in vivo.  
+ 
+39. PMID: 31699977; 2019, Nat Commun;10(1):5065   
+AZD7 648 is a potent and selective DNA -PK inhibitor that enhances radiation, chemotherapy and olaparib activity.  
+ 
+40. PMID: 34503215; 2021, Cancers (Basel);13(17):   
+Niraparib Suppresses Cholangiocarcinoma Tumor Growth by Inducing Oxidative and Replication Stress.  
+ 
+41. PMID: 23881923; 2013, Clin Cancer Res;19(18):5003 -15  
+BMN 673, a novel and highly potent PARP1/2 inhibitor for the treatment of human cancers with DNA repair deficiency.  
+ 
+42. PMID: 28916367; 2017, Lancet;390(10106):1949 -1961   
+Rucaparib maintenance treatment fo r recurrent ovarian carcinoma after response to platinum therapy (ARIEL3): a randomised, double -blind, 
+placebo -controlled, phase 3 trial.  
+ 
+43. PMID: 26238431; 2015, Eur Urol;68(6):959 -67  
+Defects in DNA Repair Genes Predict Response to Neoadjuvant Cisplatin -based Chemotherapy in Muscle -invasive Bladder Cancer.  
+ 
+44. PMID: 22420423; 2012, Breast Cancer Res;14(2):R47   
+Low expression levels of ATM may substitute for CHEK2 /TP53 mutations predicting resistance towards anthracycline and mitomyc in 
+chemotherapy in breast c ancer.  
+ 
+45. PMID: 23154512; 2012, Oncotarget;3(11):1348 -55  
+Loss of expression of the double strand break repair protein ATM is associated with worse prognosis in colorectal cancer and loss of Ku70 
+expression is associated with CIN.  
+ 
+46. PMID: 12781359; 2003, Canc er Cell;3(5):421 -9  
+Chk1 and Chk2 kinases in checkpoint control and cancer.  
+ 
+47. PMID: 15261141; 2004, Cancer Cell;6(1):45 -59  
+Chk1 is haploinsufficient for multiple functions critical to tumor suppression.  
+ 
+48. PMID: 15539958; 2005, Cell Cycle;4(1):131 -9  
+Chk1 is  essential for tumor cell viability following activation of the replication checkpoint.  
+ 
+49. PMID: 15459660; 2004, Nat Rev Mol Cell Biol;5(10):792 -804  
+Checking on DNA damage in S phase.  
+ 
+50. PMID: 22585575; 2012, J Clin Invest;122(6):2165 -75  
+CHK1 targets spleen tyrosine kinase (L) for proteolysis in hepatocellular carcinoma.  
+ 
+51. PMID: 17638866; 2007, Cancer Res;67(14):6574 -81  
+The E2F -regulated gene Chk1 is highly expressed in triple -negative estrogen receptor /progesterone receptor /HER -2 breast carcinomas.  
+ 
+52. PMID: 17848589; 2007, Mol Cell Proteomics;6(12):2150 -64  
+A proteomics analysis of cell signaling alterations in colorectal cancer.  
+ 
+53. PMID: 24418519; 2014, J Surg Res;187(1):6 -13  
+Checkpoint kinase 1 protein expression indicates sensitization to therapy by checkpo int kinase 1 inhibition in non -small cell lung cancer.  
+ 
+54. PMID: 15297395; 2004, Clin Cancer Res;10(15):4944 -58  
+Global gene expression profile of nasopharyngeal carcinoma by laser capture microdissection and complementary DNA microarrays . 
+ 
+55. PMID: 21458083; 20 11, Trends Pharmacol Sci;32(5):308 -16  
+Anticancer therapy with checkpoint inhibitors: what, where and when?  
+ 
+56. PMID: 15498494; 2004, Curr Biol;14(20):1852 -7  
+A nucleolar isoform of the Fbw7 ubiquitin ligase regulates c -Myc and cell size.  TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  25 of 29 
+ 
+57. PMID: 15103331; 200 4, EMBO J;23(10):2116 -25  
+Phosphorylation -dependent degradation of c -Myc is mediated by the F -box protein Fbw7.  
+ 
+58. PMID: 16023596; 2005, Cancer Cell;8(1):25 -33  
+The v -Jun point mutation allows c -Jun to escape GSK3 -dependent recognition and destruction by the  Fbw7 ubiquitin ligase.  
+ 
+59. PMID: 11533444; 2001, Science;294(5540):173 -7  
+Phosphorylation -dependent ubiquitination of cyclin E by the SCFFbw7 ubiquitin ligase.  
+ 
+60. PMID: 11461910; 2001, J Biol Chem;276(38):35847 -53  
+The Notch intracellular domain is ubiquitinated and negatively regulated by the mammalian Sel -10 homolog.  
+ 
+61. PMID: 11425854; 2001, J Biol Chem;276(37):34371 -8  
+Functional interaction between SEL -10, an F -box protein, and the nuclear form of activated Notch1 receptor.  
+ 
+62. PMID: 16863506; 2006, C ancer Sci;97(8):729 -36  
+Fbxw7 contributes to tumor suppression by targeting multiple proteins for ubiquitin -dependent degradation.  
+ 
+63. PMID: 18787170; 2008, Science;321(5895):1499 -502  
+FBXW7 targets mTOR for degradation and cooperates with PTEN in tumor suppr ession.  
+ 
+64. PMID: 20484041; 2010, Cancer Res;70(11):4728 -38  
+The Fbw7 tumor suppressor targets KLF5 for ubiquitin -mediated degradation and suppresses breast cell proliferation.  
+ 
+65. PMID: 21368833; 2011, Nature;471(7336):104 -9  
+SCF(FBW7) regulates cellular apopto sis by targeting MCL1 for ubiquitylation and destruction.  
+ 
+66. PMID: 18094723; 2008, Nat Rev Cancer;8(2):83 -93  
+FBW7 ubiquitin ligase: a tumour suppressor at the crossroads of cell division, growth and differentiation.  
+ 
+67. PMID: 23032637; 2012, Cancer Inform;11() :157-71  
+Haploinsufficiency of Tumor Suppressor Genes is Driven by the Cumulative Effect of microRNAs, microRNA Binding Site Polymorph isms and 
+microRNA Polymorphisms: An In silico Approach.  
+ 
+68. PMID: 24586741; 2014, PLoS One;9(2):e89388   
+FBXW7 mutations in pa tients with advanced cancers: clinical and molecular characteristics and outcomes with mTOR inhibitors.  
+ 
+69. PMID: 24360397; 2014, Lung Cancer;83(2):300 -1  
+Temsirolimus therapy in a patient with lung adenocarcinoma harboring an FBXW7 mutation.  
+ 
+70. PMID: 27399335;  2017, Oncogene;36(6):787 -796  
+FBW7 mutations mediate resistance of colorectal cancer to targeted therapies by blocking Mcl -1 degradation.  
+ 
+71. PMID: 25860929; 2015, Oncotarget;6(11):9240 -56  
+FBXW7 -mutated colorectal cancer cells exhibit aberrant expression of  phosphorylated -p53 at Serine -15. 
+ 
+72. PMID: 29633504; 2018, Mol Oncol;12(6):883 -895  
+FBXW7 deletion contributes to lung tumor development and confers resistance to gefitinib therapy.  
+ 
+73. PMID: 28522751; 2017, Cancer Res;77(13):3527 -3539   
+Targeting FBW7 as a Stra tegy to Overcome Resistance to Targeted Therapy in Non -Small Cell Lung Cancer.  
+ 
+74. PMID: 24884509; 2014, Mol Cancer;13():110   
+Fbxw7 is an independent prognostic marker and induces apoptosis and growth arrest by regulating YAP abundance in hepatocellul ar 
+carci noma.  
+ 
+75. PMID: 19910469; 2010, J Biol Chem;285(2):1097 -104  
+MRE11 -RAD50 -NBS1 complex dictates DNA repair independent of H2AX.  
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  26 of 29 
+76. PMID: 20655309; 2010, FEBS Lett;584(17):3682 -95  
+The MRN complex in double -strand break repair and telomere maintenance.  
+ 
+77. PMID: 248 94818; 2014, Breast Cancer Res;16(3):R58   
+Rare key functional domain missense substitutions in MRE11A, RAD50, and NBN contribute to breast cancer susceptibility: resul ts from a 
+Breast Cancer Family Registry case -control mutation -screening study.  
+ 
+78. PMID: 237 55103; 2014, PLoS One;8(6):e63313   
+Sequencing of candidate chromosome instability genes in endometrial cancers reveals somatic mutations in ESCO1, CHTF18, and M RE11A.  
+ 
+79. PMID: 11196167; 2001, Cancer Res;61(1):23 -6  
+Alterations of the double -strand break repa ir gene MRE11 in cancer.  
+ 
+80. PMID: 11850399; 2002, EMBO Rep;3(3):248 -54  
+Human MRE11 is inactivated in mismatch repair -deficient cancers.  
+ 
+81. PMID: 16959974; 2006, Science;314(5797):268 -74  
+The consensus coding sequences of human breast and colorectal cancers.  
+ 
+82. PMID: 24927325; 2014, PLoS One;9(6):e100041   
+Effect of MRE11 loss on PARP -inhibitor sensitivity in endometrial cancer in vitro.  
+ 
+83. PMID: 21300766; 2011, Cancer Res;71(7):2632 -42  
+MRE11 deficiency increases sensitivity to poly(ADP -ribose) polymerase inhibitio n in microsatellite unstable colorectal cancers.  
+ 
+84. PMID: 25310185; 2014, PLoS One;9(10):e108483   
+MRE11 -deficiency associated with improved long -term disease free survival and overall survival in a subset of stage III colon cancer patients 
+in randomized CALG B 89803 trial.  
+ 
+85. PMID: 17218262; 2007, Cell;128(1):157 -70  
+Essential role for nuclear PTEN in maintaining chromosomal integrity.  
+ 
+86. PMID: 18794879; 2008, Oncogene;27(41):5443 -53  
+PTEN: a new guardian of the genome.  
+ 
+87. PMID: 18767981; 2009, Annu Rev Pathol;4():127 -50  
+PTEN and the PI3 -kinase pathway in cancer.  
+ 
+88. PMID: 21125671; 2011, J Pathol;223(2):137 -46  
+Haplo -insufficiency: a driving force in cancer.  
+ 
+89. PMID: 11553783; 2001, Proc Natl Acad Sci U S A;98(20):11563 -8  
+Haploinsufficiency of the Pten tumo r suppressor gene promotes prostate cancer progression.  
+ 
+90. PMID: 20400965; 2010, Nat Genet;42(5):454 -8  
+Subtle variations in Pten dose determine cancer susceptibility.  
+ 
+91. PMID: 9467011; 1998, Hum Mol Genet;7(3):507 -15  
+Mutation spectrum and genotype -phenotype analyses in Cowden disease and Bannayan -Zonana syndrome, two hamartoma syndromes with 
+germline PTEN mutation.  
+ 
+92. PMID: 24136893; 2013, J Natl Cancer Inst;105(21):1607 -16  
+Cowden syndrome and the PTEN hamartoma tumor syndrome: systematic review and revised di agnostic criteria.  
+ 
+93. PMID: 21430697; 2011, Nat Rev Cancer;11(4):289 -301  
+PTEN loss in the continuum of common cancers, rare syndromes and mouse models.  
+ 
+94. PMID: 18455982; 2008, Cell;133(3):403 -14  
+Tenets of PTEN tumor suppression.  
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  27 of 29 
+95. PMID: 9393738; 1997, Cancer  Res;57(23):5221 -5  
+MMAC1/PTEN mutations in primary tumor specimens and tumor cell lines.  
+ 
+96. PMID: 9829719; 1998, Clin Cancer Res;4(11):2577 -83  
+Loss of heterozygosity and mutational analysis of the PTEN/MMAC1 gene in synchronous endometrial and ovarian carcinomas.  
+ 
+97. PMID: 9582022; 1998, Oncogene;16(13):1743 -8  
+Analysis of PTEN and the 10q23 region in primary prostate carcinomas.  
+ 
+98. PMID: 9671321; 1998, Oncogene;17(1):123 -7  
+Allelic loss of chromosome 10q23 is associated with tumor progression in breast carc inomas.  
+ 
+99. PMID: 11504908; 2001, Proc Natl Acad Sci U S A;98(18):10314 -9  
+Enhanced sensitivity of PTEN -deficient tumors to inhibition of FRAP/mTOR.  
+ 
+100. PMID: 23714559; 2013, Am Soc Clin Oncol Educ Book;():   
+Targeting the PI3K/AKT/mTOR pathway: biomarkers of suc cess and tribulation.  
+ 
+101. PMID: 20231295; 2010, J Biol Chem;285(20):14980 -9  
+Phosphoinositide 3 -kinase pathway activation in phosphate and tensin homolog (PTEN) -deficient prostate cancer cells is independent of 
+receptor tyrosine kinases and mediated by the p1 10beta and p110delta catalytic subunits.  
+ 
+102. PMID: 23287563; 2013, Clin Cancer Res;19(7):1760 -72  
+Targeting activated Akt with GDC -0068, a novel selective Akt inhibitor that is efficacious in multiple tumor models.  
+ 
+103. PMID: 17047067; 2006, Cancer Res;66(20):100 40-7  
+Inhibition of mammalian target of rapamycin or apoptotic pathway induces autophagy and radiosensitizes PTEN null prostate can cer cells.  
+ 
+104. PMID: 22422409; 2012, Clin Cancer Res;18(6):1777 -89  
+PIK3CA/PTEN mutations and Akt activation as markers of sensi tivity to allosteric mTOR inhibitors.  
+ 
+105. PMID: 22662154; 2012, PLoS One;7(5):e37431   
+Genotype -dependent efficacy of a dual PI3K/mTOR inhibitor, NVP -BEZ235, and an mTOR inhibitor, RAD001, in endometrial carcinomas.  
+ 
+106. PMID: 23136191; 2012, Clin Cancer Res;18(24 ):6771 -83  
+Phosphoinositide 3 -kinase (PI3K) pathway alterations are associated with histologic subtypes and are predictive of sensitivity to PI3K 
+inhibitors in lung cancer preclinical models.  
+ 
+107. PMID: 27091708; 2016, J Clin Oncol;34(18):2115 -24  
+Molecular Al terations and Everolimus Efficacy in Human Epidermal Growth Factor Receptor 2 -Overexpressing Metastatic Breast Cancers: 
+Combined Exploratory Biomarker Analysis From BOLERO -1 and BOLERO -3. 
+ 
+108. PMID: 21306238; 2011, N Engl J Med;364(6):514 -23  
+Everolimus for ad vanced pancreatic neuroendocrine tumors.  
+ 
+109. PMID: 23582881; 2013, Eur Urol;64(1):150 -8  
+Phase 2 trial of single -agent everolimus in chemotherapy -naive patients with castration -resistant prostate cancer (SAKK 08/08).  
+ 
+110. PMID: 28330462; 2017, BMC Cancer;17(1):21 1  
+Prospective phase II trial of everolimus in PIK3CA amplification/mutation and/or PTEN loss patients with advanced solid tumor s refractory to 
+standard therapy.  
+ 
+111. PMID: 27016228; 2016, Gynecol Oncol;141(1):43 -8  
+Tumor mutational analysis of GOG248, a phase  II study of temsirolimus or temsirolimus and alternating megestrol acetate and tamoxifen for 
+advanced endometrial cancer (EC): An NRG Oncology/Gynecologic Oncology Group study.  
+ 
+112. PMID: 26951309; 2016, J Clin Oncol;34(14):1660 -8  
+Randomized Open -Label Phase  II Trial of Apitolisib (GDC -0980), a Novel Inhibitor of the PI3K/Mammalian Target of Rapamycin Pathway, 
+Versus Everolimus in Patients With Metastatic Renal Cell Carcinoma.  
+ TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  28 of 29 
+113. PMID: 15324695; 2004, Cancer Cell;6(2):117 -27  
+PTEN activation contributes to tumo r inhibition by trastuzumab, and loss of PTEN predicts trastuzumab resistance in patients.  
+ 
+114. PMID: 20813970; 2010, Am J Pathol;177(4):1647 -56  
+PTEN, PIK3CA, p -AKT, and p -p70S6K status: association with trastuzumab response and survival in patients with HER2 -positive metastatic 
+breast cancer.  
+ 
+115. PMID: 21135276; 2011, J Clin Oncol;29(2):166 -73  
+Loss of phosphatase and tensin homolog or phosphoinositol -3 kinase activation and response to trastuzumab or lapatinib in human epidermal 
+growth factor receptor 2-overexpressing locally advanced breast cancers.  
+ 
+116. PMID: 21594665; 2011, Breast Cancer Res Treat;128(2):447 -56  
+Evaluation of the association of PIK3CA mutations and PTEN loss with efficacy of trastuzumab therapy in metastatic breast can cer. 
+ 
+117. PMID: 1793656 3; 2007, Cancer Cell;12(4):395 -402  
+A functional genetic approach identifies the PI3K pathway as a major determinant of trastuzumab resistance in breast cancer.  
+ 
+118. PMID: 18700047; 2008, BMC Cancer;8():234   
+Potential value of PTEN in predicting cetuximab resp onse in colorectal cancer: an exploratory study.  
+ 
+119. PMID: 17940504; 2007, Br J Cancer;97(8):1139 -45  
+PTEN loss of expression predicts cetuximab efficacy in metastatic colorectal cancer patients.  
+ 
+120. PMID: 19398573; 2009, J Clin Oncol;27(16):2622 -9  
+PTEN express ion and KRAS mutations on primary tumors and metastases in the prediction of benefit from cetuximab plus irinotecan for 
+patients with metastatic colorectal cancer.  
+ 
+121. PMID: 19953097; 2010, Br J Cancer;102(1):162 -4  
+PTEN status in advanced colorectal cancer t reated with cetuximab.  
+ 
+122. PMID: 27605871; 2016, World J Gastroenterol;22(28):6345 -61  
+Mechanisms of resistance to anti -epidermal growth factor receptor inhibitors in metastatic colorectal cancer.  
+ 
+123. PMID: 24666267; 2014, Acta Oncol;53(7):852 -64  
+The predictive  value of KRAS, NRAS, BRAF, PIK3CA and PTEN for anti -EGFR treatment in metastatic colorectal cancer: A systematic review 
+and meta -analysis.  
+ 
+124. PMID: 19351834; 2009, Cancer Res;69(8):3256 -61  
+PTEN loss contributes to erlotinib resistance in EGFR -mutant lung c ancer by activation of Akt and EGFR.  
+ 
+125. PMID: 23133538; 2012, PLoS One;7(10):e48004   
+Modeling of tumor progression in NSCLC and intrinsic resistance to TKI in loss of PTEN expression.  
+ 
+126. PMID: 23592446; 2013, J Cell Biochem;114(6):1248 -56  
+mTOR inhibitors radi osensitize PTEN -deficient non -small -cell lung cancer cells harboring an EGFR activating mutation by inducing autophagy.  
+ 
+127. PMID: 26645196; 2016, Cancer Discov;6(2):202 -16  
+Loss of PTEN Promotes Resistance to T Cell -Mediated Immunotherapy.  
+ 
+128. PMID: 28228279; 20 17, Immunity;46(2):197 -204  
+Loss of PTEN Is Associated with Resistance to Anti -PD-1 Checkpoint Blockade Therapy in Metastatic Uterine Leiomyosarcoma.  
+ 
+129. PMID: 30150660; 2018, Nat Genet;50(9):1271 -1281   
+Genomic correlates of response to immune checkpoint bloc kade in microsatellite -stable solid tumors.  
+ 
+130. PMID: 21468130; 2011, Nat Rev Clin Oncol;8(5):302 -6  
+Treatment with olaparib in a patient with PTEN -deficient endometrioid endometrial cancer.  
+ 
+131. PMID: 23810788; 2013, Lancet Oncol;14(9):882 -92  
+The poly(ADP -ribos e) polymerase inhibitor niraparib (MK4827) in BRCA mutation carriers and patients with sporadic cancer: a phase 1 dose -TW21070020320221115 142301
+ 
+ 洪魁恩  
+Project ID: C22-M001 -03317  
+Report No.: AA-22-06603_ONC  
+Date Reported: Nov 15, 2022  
+ 
+AG4-QP4001 -02(07)                                                                                                       page  29 of 29 
+escalation trial.  
+ 
+132. PMID: 23565244; 2013, PLoS One;8(4):e60408   
+PARP inhibition sensitizes to low dose -rate radiation TMPRSS2 -ERG fusion g ene-expressing and PTEN -deficient prostate cancer cells.  
+ 
+133. PMID: 26703889; 2016, Lancet;387(10022):968 -977  
+Everolimus for the treatment of advanced, non -functional neuroendocrine tumours of the lung or gastrointestinal tract (RADIANT -4): a 
+randomised, plac ebo-controlled, phase 3 study.  
+ 
+134. PMID: 22149876; 2012, N Engl J Med;366(6):520 -9  
+Everolimus in postmenopausal hormone -receptor -positive advanced breast cancer.  
+ 
+135. PMID: 23158522; 2013, Lancet;381(9861):125 -32  
+Efficacy and safety of everolimus for subependym al giant cell astrocytomas associated with tuberous sclerosis complex (EXIST -1): a 
+multicentre, randomised, placebo -controlled phase 3 trial.  
+ 
+136. PMID: 18653228; 2008, Lancet;372(9637):449 -56  
+Efficacy of everolimus in advanced renal cell carcinoma: a double -blind, randomised, placebo -controlled phase III trial.  
+ 
+137. PMID: 27717299; 2016, N Engl J Med;375(22):2154 -2164   
+Niraparib Maintenance Therapy in Platinum -Sensitive, Recurrent Ovarian Cancer.  
+ 
+138. PMID: 31851799; 2019, N Engl J Med;381(25):2416 -2428   
+Olaparib plu s Bevacizumab as First -Line Maintenance in Ovarian Cancer.  
+ 
+139. PMID: 31157963; 2019, N Engl J Med;381(4):317 -327  
+Maintenance Olaparib for Germline BRCA -Mutated Metastatic Pancreatic Cancer.  
+ 
+140. PMID: 30345884; 2018, N Engl J Med;379(26):2495 -2505   
+Maintenance O laparib in Patients with Newly Diagnosed Advanced Ovarian Cancer.  
+ 
+141. PMID: 28578601; 2017, N Engl J Med;377(6):523 -533  
+Olaparib for Metastatic Breast Cancer in Patients with a Germline BRCA Mutation.  
+ 
+142. PMID: 28754483; 2017, Lancet Oncol;18(9):1274 -1284   
+Olap arib tablets as maintenance therapy in patients with platinum -sensitive, relapsed ovarian cancer and a BRCA1/2 mutation 
+(SOLO2/ENGOT -Ov21): a double -blind, randomised, placebo -controlled, phase 3 trial.  
+ 
+143. PMID: 27617661; 2016, Lancet Oncol;17(11):1579 -1589   
+Overall survival in patients with platinum -sensitive recurrent serous ovarian cancer receiving olaparib maintenance monotherapy: an updated 
+analysis from a randomised, placebo -controlled, double -blind, phase 2 trial.  
+ 
+144. PMID: 30110579; 2018, N Engl J Med;37 9(8):753 -763  
+Talazoparib in Patients with Advanced Breast Cancer and a Germline BRCA Mutation.  
+ 
+145. PMID: 17538086; 2007, N Engl J Med;356(22):2271 -81  
+Temsirolimus, interferon alfa, or both for advanced renal -cell carcinoma.  
+ 
+ 

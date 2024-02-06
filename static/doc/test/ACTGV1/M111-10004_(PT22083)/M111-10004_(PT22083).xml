@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rr:ResultsReport>
+	<rr:ResultsPayload>
+		<FinalReport>
+			<Sample>
+				<FM_Id>AA -22-06603</FM_Id>
+				<BlockId>M111-10004_(PT22083)</BlockId>
+				<TestType>ACTOnco</TestType>
+				<SpecFormat>Prostate  Type</SpecFormat>
+				<ReceivedDate>Nov 02, 2022</ReceivedDate>
+			</Sample>
+			<PMI>
+				<MRN>48812186</MRN>
+				<FullName>洪魁恩</FullName>
+				<SubmittedDiagnosis>Prostate high grade undifferentiated sarcoma</SubmittedDiagnosis>
+				<Gender>Male</Gender>
+				<DOB>Jun 01, 1988</DOB>
+				<OrderingMD>張延驊醫師</OrderingMD>
+				<MedFacilName>臺北榮總</MedFacilName>
+			</PMI>
+		</FinalReport>
+		<variant-report>
+			<short_variants>
+				<short_variant>
+					<cds_effect>c.2932C&gt;T</cds_effect>
+					<depth>1519</depth>
+					<gene>SMARCA4</gene>
+					<percent_reads>39.3%</percent_reads>
+					<protein_effect>R978*</protein_effect>
+					<transcript>NM_001128844</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.3964A&gt;G</cds_effect>
+					<depth>682</depth>
+					<gene>ADAMTSL1</gene>
+					<percent_reads>46.9%</percent_reads>
+					<protein_effect>R1322G</protein_effect>
+					<transcript>NM_001040272</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.1298C&gt;T</cds_effect>
+					<depth>952</depth>
+					<gene>ETV4</gene>
+					<percent_reads>51.8%</percent_reads>
+					<protein_effect>P433L</protein_effect>
+					<transcript>NM_001079675</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.38T&gt;C</cds_effect>
+					<depth>1795</depth>
+					<gene>MITF</gene>
+					<percent_reads>48.0%</percent_reads>
+					<protein_effect>V13A</protein_effect>
+					<transcript>NM_198159</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.18964_18965delinsTT</cds_effect>
+					<depth>1198</depth>
+					<gene>MUC16</gene>
+					<percent_reads>48.2%</percent_reads>
+					<protein_effect>D6322F</protein_effect>
+					<transcript>NM_024690</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.3919G&gt;C</cds_effect>
+					<depth>1225</depth>
+					<gene>SMARCA4</gene>
+					<percent_reads>6.0%</percent_reads>
+					<protein_effect>A1307P</protein_effect>
+					<transcript>NM_001128844</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.2918G&gt;A</cds_effect>
+					<depth>1528</depth>
+					<gene>SMARCA4</gene>
+					<percent_reads>36.3%</percent_reads>
+					<protein_effect>R973Q</protein_effect>
+					<transcript>NM_001128844</transcript>
+				</short_variant>
+				<short_variant>
+					<cds_effect>c.2870T&gt;G</cds_effect>
+					<depth>29</depth>
+					<gene>TSC2</gene>
+					<percent_reads>50.0%</percent_reads>
+					<protein_effect>L957W</protein_effect>
+					<transcript>NM_000548</transcript>
+				</short_variant>
+			</short_variants>
+			<copy_number_alterations>
+				<copy_number_alteration>
+					<copy_number>0</copy_number>
+					<gene>PTEN</gene>
+					<position>Chr10</position>
+					<type>Homozygous deletion</type>
+				</copy_number_alteration>
+				<copy_number_alteration>
+					<copy_number>1</copy_number>
+					<gene>ATM, CHEK1, MRE11</gene>
+					<position>Chr11</position>
+					<type>Heterozygous deletion</type>
+				</copy_number_alteration>
+				<copy_number_alteration>
+					<copy_number>1</copy_number>
+					<gene>FBXW7</gene>
+					<position>Chr4</position>
+					<type>Heterozygous deletion</type>
+				</copy_number_alteration>
+			</copy_number_alterations>
+			<rearrangements>
+				<rearrangement>
+					<description>No fusion gene detected in this sample</description>
+					<other_gene></other_gene>
+					<targeted_gene></targeted_gene>
+				</rearrangement>
+			</rearrangements>
+			<biomarkers>
+				<microsatellite_instability>
+					<status>Microsatellite stable (MSS)</status>
+				</microsatellite_instability>
+				<tumor_mutation_burden>
+					<score>3.8 muts/Mb</score>
+				</tumor_mutation_burden>
+			</biomarkers>
+		</variant-report>
+	</rr:ResultsPayload>
+</rr:ResultsReport>
