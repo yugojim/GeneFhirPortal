@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Permission,Genedata,Genepermission,Metaxlsx,Userright
+from .models import Permission,Genedata,Genepermission,Metaxlsx,Userright,Genezip
 from django.contrib.auth.admin import UserAdmin
 
 UserAdmin.list_display = ('username', 'email', 'is_staff', 'is_active', 'is_superuser', 'last_login','date_joined')
@@ -30,9 +30,18 @@ class GenedataAdmin(admin.ModelAdmin):
     list_filter = ('fileTitle','dateTimeOfUpload')
     # search list
     #search_fields = ['User']
-    
+
 @admin.register(Metaxlsx)
 class MetaxlsxAdmin(admin.ModelAdmin):
+    #list display
+    list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload','status']
+    #list Filter
+    list_filter = ('fileTitle','dateTimeOfUpload')
+    # search list
+    #search_fields = ['User']
+    
+@admin.register(Genezip)
+class GenezipAdmin(admin.ModelAdmin):
     #list display
     list_display = ['fileTitle', 'uploadedFile', 'dateTimeOfUpload','status']
     #list Filter

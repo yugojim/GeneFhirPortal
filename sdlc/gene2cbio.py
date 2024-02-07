@@ -7,7 +7,6 @@ import json
 import psycopg2
 import os
 import shutil
-import path
 import re
 import pandas as pd
 import csv
@@ -74,7 +73,689 @@ def xml2sql(PdfPath,conn,cur):
             print(dirpath + ' NG')
     os.chdir('..')
     return 'xml2sql done'
+### Guardant360 ###
+def Guardant3602xml(PdfPath):
+    os.chdir(PdfPath)
+    dirlist=glob.glob('*')
+    #print(len(dirlist))
+    for dirpath in dirlist:
+        try: 
+            basedict={
+                "rr:ResultsReport": {
+                    "rr:ResultsPayload": {
+                        "FinalReport":{
+                            "Sample": {
+                                "FM_Id": "",
+                                "SampleId": "",
+                                "BlockId": "",
+                                "TRFNumber": "",
+                                "TestType": "",
+                                "SpecFormat": "",
+                                "ReceivedDate": "",
+                                },
+                            "PMI" : {
+                                "ReportId": "",
+                                "MRN": "",
+                                "FullName": "",
+                                "FirstName": "",
+                                "LastName": "",
+                                "SubmittedDiagnosis": "",
+                                "Gender": "",
+                                "DOB": "",
+                                "OrderingMD": "",
+                                "OrderingMDId": "",
+                                "Pathologist": "",
+                                "CopiedPhysician1": "",
+                                "MedFacilName": "",
+                                "MedFacilID": "",
+                                "SpecSite": "",
+                                "CollDate": "",
+                                "ReceivedDate": "",
+                                "CountryOfOrigin": ""
+                               }
+                            },
+                        "variant-report": {
+                            "short_variants": {
+                                "short_variant":[]
+                                },
+                            "copy_number_alterations": {
+                                "copy_number_alteration": []
+                                },
+                            "rearrangements": {
+                            	"rearrangement": []
+                            },
+                            "biomarkers": {
+                                "microsatellite_instability": {
+                                    "status": ""
+                                },
+                                "tumor_mutation_burden": {
+                                    "score": ""
+                                }
+                            }                
+                        }
+                        }
+                    }
+            }
+            ReportNo, MPNo  = dirpath.replace('(', '').replace(')', '').split('_')
+            filepathlist =glob.glob(os.path.join(dirpath, "*).pdf"))
+            #print(filepathlist)        
+            for filename in filepathlist:
+                #print(filename)
+                reader = PyPDF2.PdfReader(filename)
+                #text_file = open("Output.txt", "w", encoding="utf-8")
+                text=[]
+                for i in range(len(reader.pages)):
+                    text.append(reader.pages[i].extract_text())
+                    #text_file.write(reader.pages[i].extract_text())
+                #text_file.close()
+                short_variants = []            
+                rearrangement = []
+                biomarkers = []
+                copy_number_alterations = []
+                pmi = []           
+                
+                for i in range(len(text)):
+                    #print(text[i])
+                    #print(i)
+                       
+                    try:                    
+                        #biomarkers
+                        if text[i].find('Additional Biomarker') > -1: 
+                            #print('biomarkers '+str(i))
+                            #print(text[i])
+                            start = text[i].find('Additional Details')
+                            end = text[i].find('Alterations or')
+                            biomarkers = []
+                            biomarkers.extend(text[i][start + 19:end-1].split('\n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['microsatellite_instability']['status']=biomarkers[0].split(' ')[0]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['tumor_mutation_burden']['score']=biomarkers[0].split(' ')[1]
+                    except:
+                        None
+                    
+                    try:
+                    #copy_number_alterations
+                        if text[i].find('Guardant360 Tumor Response Map') > -1: 
+                            #print('copy_number_alterations' + str(i))
+                            start = text[i].find('\xa0\n')
+                            end = text[i].find('\xa0\nThe')
+                            #print(text[i][start+43:end-4].split(' \n'))
+                            copy_number_alterations.extend(text[i][start+3:end-1].replace('Variants of Uncertain Clinical Significance §', '').replace('Synonymous Alteration §', '').strip().split('\n'))
+                            copy_number_alterationlist=[]
+                            short_variantllist=[]
+                            rearrangementlist=[]
+                            for copy_number_alteration in copy_number_alterations:
+                                if copy_number_alteration != '':
+                                    if len(copy_number_alteration.strip().split(' '))==2:
+                                        short_variantllist.append({
+                                            "gene": copy_number_alteration.strip().split(' ')[0],
+                                            "allele_fraction": copy_number_alteration.strip().split(' ')[1]}) 
+                                        basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['short_variants']['short_variant'] = short_variantllist
+                                    else:
+                                        print(copy_number_alteration)
+                                        try:
+                                            if 'Amplification' in copy_number_alteration:
+                                                #print(copy_number_alteration.strip())
+                                                if copy_number_alteration.strip().replace('Amplification','').split(' ')[0] > 2:
+                                                    copy_number_alterationlist.append({
+                                                        "gene": copy_number_alteration.strip().replace('Amplification','').split(' ')[0],
+                                                        "type": 'Amplification'
+                                                        })
+                                                
+                                            if 'SNV' in copy_number_alteration:
+                                                #print(copy_number_alteration.strip())
+                                                copy_number_alterationlist.append({
+                                                    "gene": copy_number_alteration.strip().replace('SNV','').split(' ')[1],
+                                                    "type": 'SNV'
+                                                    })
+                                            
+                                            if 'deletion' in copy_number_alteration:
+                                                #print(copy_number_alteration.strip())
+                                                copy_number_alterationlist.append({
+                                                    "gene": copy_number_alteration.strip().split(' ')[1],
+                                                    "type": 'deletion'
+                                                    })
+                                                
+                                            if 'insertion' in copy_number_alteration:
+                                                #print(copy_number_alteration.strip())
+                                                copy_number_alterationlist.append({
+                                                    "gene": copy_number_alteration.strip().split(' ')[1],
+                                                    "type": 'insertion'
+                                                    })
+                                                
+                                            if 'Fusion' in copy_number_alteration:
+                                                Fusion=copy_number_alteration
+                                                rearrangementlist.append({
+                                                    "description":copy_number_alteration.strip().split(' ')[1],
+                                                    "other_gene": copy_number_alteration.strip().split(' ')[1].split('-')[0],
+                                                    "targeted_gene": copy_number_alteration.strip().split(' ')[1].split('-')[1]
+                                                    })
+                                            
+                                            if '%' in copy_number_alteration.strip().split(' ')[3]:
+                                                #print('%')
+                                                copy_number_alterationlist.append({
+                                                    "gene": copy_number_alteration.strip().split(' ')[2],
+                                                    "ratio": copy_number_alteration.strip().split(' ')[3]
+                                                    })
+                                        except:
+                                            None
+                                        #print(copy_number_alterationlist)
+                                        #print(rearrangementlist)
+                                        basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['copy_number_alterations']['copy_number_alteration'] = copy_number_alterationlist
+                                        basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement']=rearrangementlist
+                            #print(len(text[i][start+43:end-4].split(' \n')))
+                        #print(copy_number_alterations)
+                    except:
+                        None
+                        
+                    try:
+                        #pmi
+                        if text[i].find('PATIENT AND SAMPLE INFORMATION') > -1: 
+                            #print('PMI')
+                            start = text[i].find('ORDERING PHYSICIAN')
+                            end = text[i].find('ID: NA')
+                            PATIENT = text[i][start+21:end]
+                            #print(PATIENT)
+                            #print(PATIENT.split(' \n'))
+                            ['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['FullName'] = PATIENT.split(' \n')[0].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['MRN'] = PATIENT.split(' \n')[3].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SpecSite'] = PATIENT.split(' \n')[2].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['DOB'] = PATIENT.split(' \n')[2].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['Gender'] = PATIENT.split(' \n')[1].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis'] = PATIENT.split(' \n')[4].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['OrderingMD'] = PATIENT.split(' \n')[0].split('  ')[2].split(': ')[1]
+                            
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['SpecFormat'] = PATIENT.split(' \n')[0].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['BlockId'] = PATIENT.split(' \n')[3].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['ReceivedDate'] = PATIENT.split(' \n')[1].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['TestType'] = 'ACTOnco'
+                    except:
+                        None 
 
+                with open(dirpath+'\\'+ReportNo+'_('+MPNo+'.xml', 'w', encoding="utf-8") as output:
+                    output.write(xmltodict.unparse(basedict, pretty=True))            
+                #print(dirpath + ' OK')
+        except:
+            None
+            #print(dirpath + ' NG')   
+    os.chdir('..')
+    return 'Guardant3602xml done'
+
+### ACTOnco V1 ###
+def ACTGV12xml(PdfPath):
+    os.chdir(PdfPath)
+    dirlist=glob.glob('*')
+    for dirpath in dirlist:
+        basedict={
+            "rr:ResultsReport": {
+                "rr:ResultsPayload": {
+                    "FinalReport":{
+                        "Sample": {
+                            "FM_Id": "",
+                            "SampleId": "",
+                            "BlockId": "",
+                            "TRFNumber": "",
+                            "TestType": "",
+                            "SpecFormat": "",
+                            "ReceivedDate": "",
+                            },
+                        "PMI" : {
+                            "ReportId": "",
+                            "MRN": "",
+                            "FullName": "",
+                            "FirstName": "",
+                            "LastName": "",
+                            "SubmittedDiagnosis": "",
+                            "Gender": "",
+                            "DOB": "",
+                            "OrderingMD": "",
+                            "OrderingMDId": "",
+                            "Pathologist": "",
+                            "CopiedPhysician1": "",
+                            "MedFacilName": "",
+                            "MedFacilID": "",
+                            "SpecSite": "",
+                            "CollDate": "",
+                            "ReceivedDate": "",
+                            "CountryOfOrigin": ""
+                           }
+                        },
+                    "variant-report": {
+                        "short_variants": {
+                            "short_variant":[]
+                            },
+                        "copy_number_alterations": {
+                            "copy_number_alteration": []
+                            },
+                        "rearrangements": {
+                        	"rearrangement": []
+                        },
+                        "biomarkers": {
+                            "microsatellite_instability": {
+                                "status": ""
+                            },
+                            "tumor_mutation_burden": {
+                                "score": ""
+                            }
+                        }                
+                    }
+                    }
+                }
+        }
+        try:    
+            ReportNo, MPNo = dirpath.replace('(', '').replace(')', '').split('_')
+            filepathlist =glob.glob(os.path.join(dirpath, "*).pdf"))
+            #print(filepathlist)        
+            for filename in filepathlist:
+                #print(filename)
+                reader = PyPDF2.PdfReader(filename)
+                #text_file = open("Output.txt", "w", encoding="utf-8")
+                text=[]
+                for i in range(len(reader.pages)):
+                    text.append(reader.pages[i].extract_text())
+                    #text_file.write(reader.pages[i].extract_text())
+                #text_file.close()
+                short_variants = []            
+                rearrangement = []
+                biomarkers = []
+                copy_number_alterations = []
+                pmi = []           
+                
+                for i in range(len(text)):
+                    #print(text[i])
+                    #short variants
+                    try:                    
+                        if text[i].find('OTHER DETECTED VARIANTS') > -1:
+                            #print('\nDETECTED VARIANTS')
+                            start = text[i].find('Frequency  Coverag')
+                            end = text[i].find('Note:')
+                            short_variants.extend(text[i][start+21:end-5].split(' \n'))
+                            #print(len(text[i][start+22:end-5].split(' \n')))
+                            #print(text[i][start+22:end-5].split(' \n'))
+                        
+                        if text[i].find('VARIANTS WITH CLINICAL RELEVANCE') > -1: 
+                            #print('\nCLINICAL RELEVANCE')
+                            #print(text[i])
+                            start = text[i].find('Frequency  Coverag')
+                            end = text[i].find('- Copy')
+                            short_variants.extend(text[i][start+21:end-5].split(' \n'))
+                            #print(len(text[i][start+22:end-5].split(' \n')))
+                            #print(text[i][start+22:end-5].split(' \n'))
+                            
+                        if len(short_variants) > 0:
+                            short_variantllist=[]
+                            for i in range(len(short_variants)):
+                                short_variants[i] = short_variants[i].strip().replace(' ', ',').replace(',,', ',')
+                                if len(short_variants[i].split(',')) > 3:                            
+                                    short_variantllist.append({
+                                        "cds_effect": short_variants[i].split(',')[3],
+                                        "depth": short_variants[i].split(',')[7],
+                                        "gene": short_variants[i].split(',')[0],
+                                        "percent_reads": short_variants[i].split(',')[6],
+                                        "protein_effect": short_variants[i].split(',')[1],
+                                        "transcript": short_variants[i].split(',')[4],
+                                        }) 
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['short_variants']['short_variant'] = short_variantllist
+                        #print(short_variantllist)   
+                    except:
+                        None
+                        
+                    try:    
+                        #rearrangement
+                        if text[i].find('- Fusions') > -1: 
+                            #print(text[i])
+                            start = text[i].find('Transcript ID ')
+                            end = text[i].find('- Immune')
+                            #print(text[i][start+16:end-5].split(' \n'))
+                            rearrangement.extend(text[i][start+16:end-5].split(' \n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['description'] = rearrangement[0]
+                            if len(rearrangement[0].split('  ')) > 1:
+                                print('\nFusions')
+                                basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['other_gene'] = rearrangement[0].split('  ')[0].split(' ')[0]
+                                basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['targeted_gene'] = rearrangement[0].split('  ')[0].split(' ')[1]
+                            #print(rearrangement)    
+                            #print(len(text[i][start+16:end-5].split(' \n')))
+                    except:
+                        None
+                        
+                    try:                    
+                        #biomarkers
+                        if text[i].find('- Immune Checkpoint') > -1: 
+                            #print('\nbiomarkers')
+                            #print(text[i])
+                            start = text[i].find('Biomarker  Results ')
+                            end = text[i].find('Note:')
+                            #print(text[i][start + 21:end - 5].split('\n'))
+                            biomarkers.extend(text[i][start + 21:end - 5].split('\n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['microsatellite_instability']['status']=biomarkers[1].split('  ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['tumor_mutation_burden']['score']=biomarkers[0].split('  ')[1]
+                            #print(len(text[i][start + 21:end - 5].split('\n')))
+                            #print(biomarkers)
+                    except:
+                        None
+                    
+                    try:
+                        #copy_number_alterations
+                        #print(i)
+                        if text[i].find('Chromosome  Gene  Variation  Copy Number') > -1: 
+                            #print('\ncopy_number_alterations')
+                            #print(text[i])
+                            start = text[i].find('Chromosome  Gene  Variation  Copy Number')
+                            end = text[i].find('- Fusions')
+                            #print(text[i][start+43:end-4].split(' \n'))
+                            copy_number_alterations.extend(text[i][start+43:end-4].split(' \n'))
+                            copy_number_alterationlist=[]
+                            for copy_number_alteration in copy_number_alterations:
+                                try:
+                                    alterationlist = copy_number_alteration.split('  ')
+                                    copy_number_alterationlist.append({"copy_number": alterationlist[3],
+                                                              "gene": alterationlist[1],
+                                                              "position": alterationlist[0],
+                                                              "type": alterationlist[2]})
+                                except:
+                                    None
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['copy_number_alterations']['copy_number_alteration'] = copy_number_alterationlist
+                            #print(len(text[i][start+43:end-4].split(' \n')))
+                        #print(copy_number_alterations)
+                    except:
+                        None
+                    try:
+                        #pmi
+                        if text[i].find('PATIEN') > -1: 
+                            #print('\nPMI')
+                            #print(text[0])
+                            start = text[0].find('PATIEN')
+                            end = text[0].find('ORDERING PHYSICIAN')
+                            #print(text[0][start+10:end-1])
+                            PATIENT = text[0][start+10:end-1]
+                            #print(PATIENT)
+                            #print(PATIENT.split(' \n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['FullName'] = PATIENT.split(' \n')[0].split(':')[1].split(' ')[1] #name
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['MRN'] = PATIENT.split(' \n')[0].split(':')[2].strip()    
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['DOB'] = PATIENT.split(' \n')[1].split(':')[1].replace('Gender', '').strip()
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['Gender'] = PATIENT.split(' \n')[1].split(':')[2].strip()
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis'] = PATIENT.split(' \n')[2].split(':')[1].strip()
+                            
+                            start = text[0].find('ORDERING PHYSICIAN')
+                            end = text[0].find('SPECIMEN')
+                            #print(text[0][start+21:end-1]) 
+                            PHYSICIAN = text[0][start+21:end-1]
+                            #print(PHYSICIAN)
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['OrderingMD'] = PHYSICIAN.split('\n')[0].split(':')[1].replace('Tel', '').strip()
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['MedFacilName'] = PHYSICIAN.split('\n')[1].split(':')[1].strip()
+                            
+                            start = text[0].find('SPECIMEN')
+                            end = text[0].find('ABOUT')
+                            #print(text[0][start+11:end-1])
+                            SPECIMEN = text[0][start+11:end-4]
+                            #print(SPECIMEN)
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['SpecFormat'] = SPECIMEN.split('\n')[0].split(':')[2].strip()
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['BlockId'] = dirpath
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['FM_Id'] = SPECIMEN.split('\n')[1].split(':')[2].replace('D/ID', '').strip()
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['ReceivedDate'] = SPECIMEN.split('\n')[1].split(':')[1].replace('Lab ID', '').strip()
+                    except:
+                        None
+                with open(dirpath+'\\'+dirpath+'.xml', 'w', encoding="utf-8") as output:
+                    output.write(xmltodict.unparse(basedict, pretty=True))            
+                #print(dirpath + ' OK')
+        except:
+            None
+            #print(dirpath + ' NG')
+    os.chdir('..')
+    return 'ACTGV12xml done'
+### ACTOnco V2 ###
+def ACTGV22xml(PdfPath):
+    os.chdir(PdfPath)
+    dirlist=glob.glob('*')    
+    for dirpath in dirlist:
+        try: 
+            basedict={
+                "rr:ResultsReport": {
+                    "rr:ResultsPayload": {
+                        "FinalReport":{
+                            "Sample": {
+                                "FM_Id": "",
+                                "SampleId": "",
+                                "BlockId": "",
+                                "TRFNumber": "",
+                                "TestType": "",
+                                "SpecFormat": "",
+                                "ReceivedDate": "",
+                                },
+                            "PMI" : {
+                                "ReportId": "",
+                                "MRN": "",
+                                "FullName": "",
+                                "FirstName": "",
+                                "LastName": "",
+                                "SubmittedDiagnosis": "",
+                                "Gender": "",
+                                "DOB": "",
+                                "OrderingMD": "",
+                                "OrderingMDId": "",
+                                "Pathologist": "",
+                                "CopiedPhysician1": "",
+                                "MedFacilName": "",
+                                "MedFacilID": "",
+                                "SpecSite": "",
+                                "CollDate": "",
+                                "ReceivedDate": "",
+                                "CountryOfOrigin": ""
+                               }
+                            },
+                        "variant-report": {
+                            "short_variants": {
+                                "short_variant":[]
+                                },
+                            "copy_number_alterations": {
+                                "copy_number_alteration": []
+                                },
+                            "rearrangements": {
+                            	"rearrangement": []
+                            },
+                            "biomarkers": {
+                                "microsatellite_instability": {
+                                    "status": ""
+                                },
+                                "tumor_mutation_burden": {
+                                    "score": ""
+                                }
+                            }                
+                        }
+                        }
+                    }
+            }
+            ReportNo, MPNo  = dirpath.replace('(', '').replace(')', '').split('_')
+            filepathlist =glob.glob(os.path.join(dirpath, "*).pdf"))
+            #print(filepathlist)        
+            for filename in filepathlist:
+                #print(filename)
+                reader = PyPDF2.PdfReader(filename)
+                #text_file = open("Output.txt", "w", encoding="utf-8")
+                text=[]
+                for i in range(len(reader.pages)):
+                    text.append(reader.pages[i].extract_text())
+                    #text_file.write(reader.pages[i].extract_text())
+                #text_file.close()
+                short_variants = []            
+                rearrangement = []
+                biomarkers = []
+                copy_number_alterations = []
+                pmi = []           
+                
+                for i in range(len(text)):
+                    #print(text[i])
+                    #print(i)
+                    try:
+                        if i==1: 
+                            print('PMI')
+                            start = text[i].find('ORDERING PHYSICIAN')
+                            end = text[i].find('ID: NA')
+                            PATIENT = text[i][start+21:end]
+                            #print(PATIENT)
+                            #print(PATIENT.split(' \n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['FullName'] = PATIENT.split(' \n')[0].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['MRN'] = PATIENT.split(' \n')[3].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SpecSite'] = PATIENT.split(' \n')[2].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['DOB'] = PATIENT.split(' \n')[2].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['Gender'] = PATIENT.split(' \n')[1].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis'] = PATIENT.split(' \n')[4].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['OrderingMD'] = PATIENT.split(' \n')[0].split('  ')[2].split(': ')[1]
+                            
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['SpecFormat'] = PATIENT.split(' \n')[0].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['BlockId'] = PATIENT.split(' \n')[3].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['ReceivedDate'] = PATIENT.split(' \n')[1].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['TestType'] = 'ACTOnco'
+                        
+                        
+                            #print(text[i])
+                        
+                            if text[i].find('INSTA BILITY (MSI)') >-1:
+                                start = text[i].find('INSTA BILITY (MSI)')
+                            else:
+                                start = text[i].find('INSTABILITY (MSI)')
+                            
+                            end = text[i].find('Note:')
+                            biomarkers = []
+                            biomarkers.extend(text[i][start + 21:end - 5].split('\n'))
+                            if biomarkers[0].split('  ')[2] == '':
+                                status=biomarkers[0].split('  ')[1]
+                            else:
+                                status=biomarkers[0].split('  ')[2]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['microsatellite_instability']['status']=status
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['tumor_mutation_burden']['score']=biomarkers[0].split('  ')[0].split(' ')[0]
+                    except:
+                        None
+                            
+                    try:                    
+                        #biomarkers
+                        if text[i].find('TUMOR MUTATIONAL') > -1: 
+                            print('biomarkers '+str(i))
+                            #print(text[i])
+                            start = text[i].find('INSTA BILITY (MSI)')
+                            end = text[i].find('Note:')
+                            biomarkers = []
+                            biomarkers.extend(text[i][start + 21:end - 5].split('\n'))
+                            if biomarkers[0].split('  ')[2] == '':
+                                status=biomarkers[0].split('  ')[1]
+                            else:
+                                status=biomarkers[0].split('  ')[2]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['microsatellite_instability']['status']=status
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['biomarkers']['tumor_mutation_burden']['score']=biomarkers[0].split('  ')[0].split(' ')[0]
+                    except:
+                        None
+                    
+                    try:
+                    #copy_number_alterations
+                        if text[i].find('(CNVS)') > -1 or text[i].find('(CNV S)') > -1: 
+                            print('copy_number_alterations' + str(i))
+                            #print(text[i])
+                            start = text[i].find('Amplification')
+                            if text[i].find('TUMOR') > -1:
+                                end = text[i].find('TUMOR')
+                            else:
+                                end = text[i].find('ND, Not Detected')
+                            #print(text[i][start+43:end-4].split(' \n'))
+                            copy_number_alterations.extend(text[i][start:end].replace(' Copy Number', '').replace('Chr Gene ', '').replace('  ', ' ').replace(', ', ',').strip().split(' \n'))
+                            copy_number_alterationlist=[]
+                            for copy_number_alteration in copy_number_alterations:
+                                if copy_number_alteration != '':
+                                    if 'Copy number' in copy_number_alteration:
+                                        #print(copy_number_alteration.split(' (Copy number'))
+                                        altertype=copy_number_alteration.split(' (Copy number')[0]
+                                        copy_number=re.findall(r"-?\d+\.?\d*", copy_number_alteration.split(' (Copy number')[1])
+                                    else:
+                                        try:
+                                            list_copy_number=copy_number_alteration.split(' ')[2]
+                                        except:
+                                            list_copy_number=copy_number
+                                        copy_number_alterationlist.append({"copy_number": list_copy_number,            
+                                                      "gene": copy_number_alteration.split(' ')[1],
+                                                      "position": copy_number_alteration.split(' ')[0],
+                                                      "type": altertype})
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['copy_number_alterations']['copy_number_alteration'] = copy_number_alterationlist
+                    
+                            #print(len(text[i][start+43:end-4].split(' \n')))
+                        #print(copy_number_alterations)
+                    except:
+                        None
+                        
+                    try:  
+                        #short variants
+                        if text[i].find('Gene  Amino Acid Change') > -1:
+                            print('short variants' + str(i))
+                            start = text[i].find('Frequency  COSMIC ID')
+                            end = text[i].find('COPY NUMBER')
+                            short_variants.extend(text[i][start+23:end-3].split(' \n'))
+                            #print(len(text[i][start+22:end-5].split(' \n')))
+                            #print(text[i][start+22:end-5].split(' \n'))
+                            
+                        if len(short_variants) > 0:
+                            short_variantllist=[]
+                            for i in range(len(short_variants)):
+                                
+                                if len(short_variants[i].split('  ')) >= 3:                            
+                                    short_variantllist.append({
+                                        "depth": short_variants[i].replace('  ', ' ').split(' ')[2],
+                                        "gene": short_variants[i].replace('  ', ' ').split(' ')[0],
+                                        "percent_reads": short_variants[i].replace('  ', ' ').split(' ')[3],
+                                        "protein_effect": short_variants[i].replace('  ', ' ').split(' ')[1],
+                                         }) 
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['short_variants']['short_variant'] = short_variantllist
+                        #print(short_variantllist)   
+                    except:
+                        None
+                       
+                    try:
+                        #pmi
+                        if text[i].find('PATIENT AND SAMPLE INFORMATION') > -1: 
+                            #print('PMI')
+                            start = text[i].find('ORDERING PHYSICIAN')
+                            end = text[i].find('ID: NA')
+                            PATIENT = text[i][start+21:end]
+                            #print(PATIENT)
+                            #print(PATIENT.split(' \n'))
+                            ['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['FullName'] = PATIENT.split(' \n')[0].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['MRN'] = PATIENT.split(' \n')[3].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SpecSite'] = PATIENT.split(' \n')[2].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['DOB'] = PATIENT.split(' \n')[2].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['Gender'] = PATIENT.split(' \n')[1].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['SubmittedDiagnosis'] = PATIENT.split(' \n')[4].split('  ')[0].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['PMI']['OrderingMD'] = PATIENT.split(' \n')[0].split('  ')[2].split(': ')[1]
+                            
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['SpecFormat'] = PATIENT.split(' \n')[0].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['BlockId'] = PATIENT.split(' \n')[3].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['ReceivedDate'] = PATIENT.split(' \n')[1].split('  ')[1].split(': ')[1]
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['FinalReport']['Sample']['TestType'] = 'ACTOnco'
+                    except:
+                        None 
+                        
+                    try:    
+                        #rearrangement
+                        if text[i].find('- Fusions') > -1: 
+                            #print(text[i])
+                            print('rearrangement ' + str(i))
+                            start = text[i].find('Transcript ID ')
+                            end = text[i].find('- Immune')
+                            #print(text[i][start+16:end-5].split(' \n'))
+                            rearrangement.extend(text[i][start+16:end-5].split(' \n'))
+                            basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['description'] = rearrangement[0]
+                            if len(rearrangement[0].split('  ')) > 1:
+                                #print('\nFusions')
+                                basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['other_gene'] = rearrangement[0].split('  ')[0].split(' ')[0]
+                                basedict['rr:ResultsReport']['rr:ResultsPayload']['variant-report']['rearrangements']['rearrangement'][0]['targeted_gene'] = rearrangement[0].split('  ')[0].split(' ')[1]
+                            #print(rearrangement)    
+                            #print(len(text[i][start+16:end-5].split(' \n')))
+                    except:
+                        None
+    
+                with open(dirpath+'\\'+ReportNo+'_('+MPNo+'.xml', 'w', encoding="utf-8") as output:
+                    output.write(xmltodict.unparse(basedict, pretty=True))            
+                #print(dirpath + ' OK')
+        except:
+            None
+            #print(dirpath + ' NG')
+    os.chdir('..')
+    return 'ACTGV22xml done'
 ### Archer ###
 def Archer2xml(PdfPath):
     os.chdir(PdfPath)

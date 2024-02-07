@@ -825,7 +825,7 @@ def PatientUpload(request):
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     Genedataall=models.Genedata.objects.all().order_by('-id')
     #df = pd.read_excel(uploadedFile)
-    root=os.getcwd()
+    
     try:
         try:
             inlineRadioOptions = request.POST["inlineRadioOptions"]
@@ -846,54 +846,8 @@ def PatientUpload(request):
             fileTitle = fileTitle,
             uploadedFile = uploadedFile
         )
-        #Genedata.save() 
-        #print(inlineRadioOptions)
-        conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="172.174.201.121", port="5432")
-        cur = conn.cursor()
-        #print('Opened database successfully')
-        #print(uploadedFile)
-        filename = root+'/media/UploadedFiles/'+str(uploadedFile).replace('(','').replace(')','')
-        #print(filename)
-        source = filename
-        destination = root+'/static/doc/'+str(uploadedFile)
-        #print(destination)
-        dest = shutil.copyfile(source, destination)                       
-        #print(dest)
-        with zipfile.ZipFile(dest,"r") as zip_ref:
-            zip_ref.extractall(root + '/static/doc/')
-        #print(os.listdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', '')))        
-        os.chdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', ''))
-        #print(os.getcwd())
-        #'ACTGV1', 'ACTGV2', 'Guardant360']
-        dirpath = 'Archer'
-        print(gene2cbio.Archer2xml(dirpath))
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        
-        dirpath = 'BRCA Assay'
-        print(gene2cbio.BRCAAssay2xml(dirpath))
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        
-        dirpath = 'Focus Assay'
-        print(gene2cbio.FocusAssay2xml(dirpath))
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        
-        dirpath = 'Foundation One'
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        
-        dirpath = 'Myeloid Assay'
-        print(gene2cbio.MyeloidAssay2xml(dirpath))
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        
-        dirpath = 'Tumor Mutation Load Assay'
-        print(gene2cbio.MutationLoadAssay2xml(dirpath))
-        #gene2cbio.xmlisql(dirpath, conn, cur)
-        gene2cbio.pdf2dir(dirpath, root)
-        #
+        Genedata.save() 
+
         #print(os.getcwd())
         
         context = {
@@ -959,9 +913,12 @@ def UpGeneZip(request):
     Generight=models.Genepermission.objects.filter(user__username__startswith=user.username)
     right=models.Permission.objects.filter(user__username__startswith=user.username)
     Genezipall=models.Genezip.objects.all().order_by('-id')
+    root=os.getcwd()
     #df = pd.read_excel(uploadedFile)
     #print(method)
-    
+        #print(inlineRadioOptions)
+
+    #
     try:
         if request.POST["fileTitle"] !='' and request.FILES["uploadedFile"]!='':
             if request.POST["fileTitle"] !='':
@@ -977,7 +934,67 @@ def UpGeneZip(request):
                 fileTitle = fileTitle,
                 uploadedFile = uploadedFile,
             )            
-            Genezip.save()        
+            Genezip.save()
+            conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host="172.174.201.121", port="5432")
+            cur = conn.cursor()
+            #print('Opened database successfully')
+            #print(uploadedFile)
+            filename = root+'/media/UploadedFiles/'+str(uploadedFile).replace('(','').replace(')','')
+            #print(filename)
+            source = filename
+            destination = root+'/static/doc/'+str(uploadedFile)
+            #print(destination)
+            dest = shutil.copyfile(source, destination)                       
+            #print(dest)
+            with zipfile.ZipFile(dest,"r") as zip_ref:
+                zip_ref.extractall(root + '/static/doc/')
+            #print(os.listdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', '')))        
+            os.chdir(root+'/static/doc/'+str(uploadedFile).replace('.zip', ''))
+            #print(os.getcwd())
+
+            dirpath = 'ACTGV1'
+            gene2cbio.ACTGV12xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'ACTGV2'
+            gene2cbio.ACTGV22xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Guardant360'
+            gene2cbio.Guardant3602xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Archer'
+            gene2cbio.Archer2xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'BRCA Assay'
+            gene2cbio.BRCAAssay2xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Focus Assay'
+            gene2cbio.FocusAssay2xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Foundation One'
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Myeloid Assay'
+            gene2cbio.MyeloidAssay2xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
+            
+            dirpath = 'Tumor Mutation Load Assay'
+            gene2cbio.MutationLoadAssay2xml(dirpath)
+            gene2cbio.xmlisql(dirpath, conn, cur)
+            gene2cbio.pdf2dir(dirpath, root)
             #documents = models.Document.objects.all()        
         context = {
                 'Generight' : Generight,
@@ -1077,14 +1094,14 @@ def Metaxlsx(request):
             for i in range(len(df)):
                 #if i % 10 ==0:11111
                     #print(i)
-                    #print(df['分生號碼'][i] + ' ' + df['報告號碼'][i])
+                #print(df['分生號碼'][i] + ' ' + df['報告號碼'][i])
                 try:
                     ReportNo=df['報告號碼'][i]
                     MPNo=df['分生號碼'][i]
                     query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
                     
                     df1 = pd.read_sql(query, conn)
-                    
+                    #print(df[i])
                     for j in range(len(df1)):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
@@ -1122,26 +1139,6 @@ def Metaxlsx(request):
                 except:
                     df['update'][i]='NG'
             df.to_excel(dfpath,index=False)
-            '''
-            try:
-                import paramiko
-                ssh = paramiko.SSHClient()
-                ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-                target_host = '172.174.201.121'
-                #target_port = 22
-                pwd = 'sdfWER234SDF'
-                un = 'sdfWER234'
-                ssh.connect( hostname = target_host , username = un, password = pwd )
-                ssh.exec_command('bash automate_etl_process.sh &')
-                #stdin, stdout, stderr = ssh.exec_command('bash automate_etl_process.sh &')
-                #with open("stdout.txt", "w") as text_file:
-                    #text_file.write(stdout.read())
-                #print("STDOUT:\n%s\n\nSTDERR:\n%s\n" %( stdout.read(), stderr.read() )) 
-                ssh.close()
-                #print(os.path.abspath(os.getcwd()))
-            except:
-                None
-                '''
         context = {
                 'Generight' : Generight,
                 'right' : right,

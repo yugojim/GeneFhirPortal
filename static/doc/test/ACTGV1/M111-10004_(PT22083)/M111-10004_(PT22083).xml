@@ -4,19 +4,32 @@
 		<FinalReport>
 			<Sample>
 				<FM_Id>AA -22-06603</FM_Id>
+				<SampleId></SampleId>
 				<BlockId>M111-10004_(PT22083)</BlockId>
-				<TestType>ACTOnco</TestType>
+				<TRFNumber></TRFNumber>
+				<TestType></TestType>
 				<SpecFormat>Prostate  Type</SpecFormat>
 				<ReceivedDate>Nov 02, 2022</ReceivedDate>
 			</Sample>
 			<PMI>
+				<ReportId></ReportId>
 				<MRN>48812186</MRN>
 				<FullName>洪魁恩</FullName>
+				<FirstName></FirstName>
+				<LastName></LastName>
 				<SubmittedDiagnosis>Prostate high grade undifferentiated sarcoma</SubmittedDiagnosis>
 				<Gender>Male</Gender>
 				<DOB>Jun 01, 1988</DOB>
 				<OrderingMD>張延驊醫師</OrderingMD>
+				<OrderingMDId></OrderingMDId>
+				<Pathologist></Pathologist>
+				<CopiedPhysician1></CopiedPhysician1>
 				<MedFacilName>臺北榮總</MedFacilName>
+				<MedFacilID></MedFacilID>
+				<SpecSite></SpecSite>
+				<CollDate></CollDate>
+				<ReceivedDate></ReceivedDate>
+				<CountryOfOrigin></CountryOfOrigin>
 			</PMI>
 		</FinalReport>
 		<variant-report>
@@ -107,11 +120,6 @@
 				</copy_number_alteration>
 			</copy_number_alterations>
 			<rearrangements>
-				<rearrangement>
-					<description>No fusion gene detected in this sample</description>
-					<other_gene></other_gene>
-					<targeted_gene></targeted_gene>
-				</rearrangement>
 			</rearrangements>
 			<biomarkers>
 				<microsatellite_instability>
