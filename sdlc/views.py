@@ -1083,7 +1083,7 @@ def Metaxlsx(request):
             #print(dfpath)
 
             conn = psycopg2.connect(database="vghtpegene", user="postgres", password="1qaz@WSX3edc", host=genepostgresip, port=genepostgresport)
-            #print('Opened database successfully')
+            print('Opened database successfully')
             cur = conn.cursor()
             
             df = pd.read_excel(dfpath)
@@ -1099,9 +1099,9 @@ def Metaxlsx(request):
                     ReportNo=df['報告號碼'][i]
                     MPNo=df['分生號碼'][i]
                     query= "SELECT id, resultsreport, \"ReportNo\", \"MPNo\" FROM public.reportxml where \"ReportNo\" = '"+df['報告號碼'][i]+"' and \"MPNo\" = '"+df['分生號碼'][i]+"';"
-                    
+                    #print(query)
                     df1 = pd.read_sql(query, conn)
-                    #print(df[i])
+                    #print(df1)
                     for j in range(len(df1)):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReportId']=str(df['報告號碼'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['MRN']=str(df['病歷號'][i])
@@ -1111,18 +1111,22 @@ def Metaxlsx(request):
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['Pathologist']=str(df['病理醫師'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['ReceivedDate']=str(df['報告日期'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['PMI']['TumorType']=str(df['Tumor type'][i])
-                            
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['BlockId']=str(df['蠟塊號'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TestType']=str(df['檢測項目'][i])
                             df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecFormat']=str(df['檢體別'][i])
-                            #print(df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity'])
+                            #print(df.columns)
+                           
                             try:
                                 #print(int(str(df['Tumor purity %'][i]).replace('%','')))
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']=str(df['Tumor purity %'][i]).replace('%','')
                             except:
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity']='NA'
-                            if not np.isnan(df['標本組織部位來源'][i]):
+                            
+                            try:
                                 df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']=str(df['標本組織部位來源'][i])
+                            except:
+                                df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['SpecimenLocation']='NA'
+                            #print(df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample'])
                             sql='UPDATE public.reportxml SET resultsreport = \'' + json.dumps(df1['resultsreport'][j], cls=NpEncoder) + '\' WHERE id = ' + str(df1['id'][j]) +';'
                             #if i ==1:
                             #print(df1['resultsreport'][j]['ResultsReport']['ResultsPayload']['FinalReport']['Sample']['TumorPurity'])
